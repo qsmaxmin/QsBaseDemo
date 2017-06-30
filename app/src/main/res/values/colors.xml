@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="color_primary">#000000</color>
+    <color name="color_primary_dark">#000000</color>
+    <color name="color_accent">#00BEB4</color>
+
+    <color name="color_actionbar_background">#EEEFEF</color>
+
+    <!--black color-->
+    <color name="color_black">#000000</color>
+    <color name="color_black_two">#2A2A2A</color>
+    <color name="color_black_three">#303030</color>
+
+    <!--gray color-->
+    <color name="color_gray">#838383</color>
+    <color name="color_gray_6">#5F6060</color>
+    <color name="color_gray_c">#C8C8C8</color>
+    <color name="color_gray_d">#D8D8D8</color>
+    <color name="color_gray_e">#EEEFEF</color>
+    <color name="color_gray_f">#F1F1F1</color>
+
+    <color name="color_white">#FFFFFF</color>
+    <color name="color_bg">#EAEBED</color>
+    <color name="color_red">#DE2B2B</color>
+    <color name="color_blue_green">#00BEB4</color>
+    <color name="transparent">#00000000</color>
+    <color name="color_half_transparent">#88000000</color>
+    <color name="color_black_transparent_a">#99000000</color>
+    <color name="color_black_transparent_b">#d4000000</color>
+
+
+</resources>

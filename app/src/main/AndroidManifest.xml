@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.sugar.grapecollege"
+    android:versionCode="1"
+    android:versionName="1.0.0.000001">
+
+    <!-- SD卡创建和删除文件 -->
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <!-- SD卡读写 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <!-- 访问网络 -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <!-- 网络状态 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <!--wifi 状态-->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <!--手机状态-->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+
+    <application
+        android:name="com.sugar.grapecollege.GrapeApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/SugarTheme">
+
+        <!--aliPay h5支付-->
+        <activity
+            android:name="com.alipay.sdk.app.H5PayActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind">
+        </activity>
+        <!--aliPay 客户端支付-->
+        <activity
+            android:name="com.alipay.sdk.auth.AuthActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind">
+        </activity>
+        <!--WeChat 回调-->
+        <activity
+            android:name="com.sugar.grapecollege.wxapi.WXPayEntryActivity"
+            android:exported="true"
+            android:launchMode="singleTop"/>
+
+        <!--首页-->
+        <activity
+            android:name="com.sugar.grapecollege.home.HomeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/SugarTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <!--搜索相关-->
+        <activity
+            android:name="com.sugar.grapecollege.searcher.SearcherActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/SugarTheme"/>
+
+        <!--账户相关-->
+        <activity
+            android:name="com.sugar.grapecollege.account.AccountActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/SugarTheme"/>
+
+        <!-- 字体详情页 -->
+        <activity
+            android:name="com.sugar.grapecollege.font.FontDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/SugarTheme"/>
+
+        <!-- 字体排行 -->
+        <activity
+            android:name="com.sugar.grapecollege.font.FontRankActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/SugarTheme"/>
+        <!-- 历史字体 -->
+        <activity
+            android:name="com.sugar.grapecollege.font.FontHistoryActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/SugarTheme"/>
+
+        <!-- 专题列表 -->
+        <activity
+            android:name="com.sugar.grapecollege.theme.ThemeListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/SugarTheme"/>
+        <!-- 专题字体列表 -->
+        <activity
+            android:name="com.sugar.grapecollege.theme.ThemeDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/SugarTheme"/>
+
+        <!--本地字体-->
+        <activity
+            android:name="com.sugar.grapecollege.local.LocalFontActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/SugarTheme"/>
+        <!--下载管理-->
+        <activity
+            android:name="com.sugar.grapecollege.local.FontDownloadActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/SugarTheme"/>
+        <!-- 许可协议 -->
+        <activity
+            android:name="com.sugar.grapecollege.setting.AgreementActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/SugarTheme"/>
+        <!--webView-->
+        <activity
+            android:name="com.sugar.grapecollege.web.WebViewActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/SugarTheme"/>
+        <!--pay-->
+        <activity
+            android:name="com.sugar.grapecollege.pay.PayActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/SugarTheme"/>
+    </application>
+</manifest>

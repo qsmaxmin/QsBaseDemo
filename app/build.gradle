@@ -1,0 +1,76 @@
+apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao' // apply plugin
+apply plugin: 'com.hujiang.android-aspectjx'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.3"
+    defaultConfig {
+        applicationId "com.sugar.grapecollege"
+        minSdkVersion 14
+        targetSdkVersion 25
+    }
+    sourceSets {
+        main {
+            java.srcDirs = ['src/main/java', 'src/main/aidl']
+        }
+    }
+
+    signingConfigs {
+        release {
+            storeFile file(STORE_FILE)
+            storePassword STORE_PASSWORD
+            keyAlias KEY_ALIAS
+            keyPassword KEY_PASSWORD
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+            applicationVariants.all { variant ->
+                variant.outputs.each { output ->
+                    def outputFile = output.outputFile
+                    def fileName = outputFile.name.replace("app", readApkName() + "-" + variant.getVersionName() + "-" + releaseTime());
+                    output.outputFile = new File(outputFile.parent, fileName)
+                }
+            }
+        }
+
+        debug {
+            minifyEnabled false
+            shrinkResources false
+            signingConfig signingConfigs.release
+        }
+    }
+
+}
+
+//获取名字
+static def readApkName() {
+    return "GrapeCollege";
+}
+
+//获取时间
+static def releaseTime() {
+    return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
+}
+
+greendao {
+    schemaVersion 1
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'org.greenrobot:greendao:3.2.2'
+    compile 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:1.1.6'
+    compile 'com.joooonho:selectableroundedimageview:1.0.1'
+
+    //    compile 'com.founder:base:3.9.9'
+//    compile 'com.github.qsmaxmin:AndroidBase:75b93bbb52'
+    compile 'com.github.qsmaxmin:QsBase:f7db3f2141'
+}

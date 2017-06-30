@@ -1,0 +1,107 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- 系统主题样式 -->
+    <style name="SugarTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!--actionbar底色-->
+        <item name="colorPrimary">@color/color_primary</item>
+        <item name="colorPrimaryDark">@color/color_primary_dark</item>
+        <item name="colorAccent">@color/color_accent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <!--不使用系统的toolbar-->
+        <item name="android:windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="actionBarSize">@dimen/dp_50</item>
+        <item name="android:windowAnimationStyle">@style/SugarWindowAnimationStyle</item>
+    </style>
+
+    <!--activity 切换动画-->
+    <style name="SugarWindowAnimationStyle" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/activity_open_in</item>
+        <item name="android:activityOpenExitAnimation">@anim/activity_open_out</item>
+
+        <item name="android:activityCloseEnterAnimation">@anim/activity_close_in</item>
+        <item name="android:activityCloseExitAnimation">@anim/activity_close_out</item>
+    </style>
+
+    <!--从下而上的对话框样式-->
+    <style name="BottomTopDialogStyle" parent="android:style/Theme.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowAnimationStyle">@style/Animation_Bottom_Top</item>
+        <item name="android:windowBackground">@color/transparent</item>
+    </style>
+
+    <style name="Animation_Bottom_Top">
+        <item name="android:windowEnterAnimation">@anim/dialog_bottom_to_top</item>
+        <item name="android:windowExitAnimation">@anim/dialog_top_to_bottom</item>
+    </style>
+
+
+    <!--公共ProgressBar Style-->
+    <style name="J2W.Dialog_ProgressBar" parent="J2W.Dialog_Simple">
+        <item name="android:backgroundDimAmount">0.4</item>
+    </style>
+
+
+    <!--公共对话框(SimpleDialog)Style-->
+    <style name="J2W.Dialog_Simple" parent="android:Theme">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@style/Animation_Simple_Dialog</item>
+        <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
+        <item name="android:windowActionBar" tools:ignore="NewApi">false</item>
+        <item name="android:windowActionModeOverlay" tools:ignore="NewApi">true</item>
+        <item name="android:windowCloseOnTouchOutside" tools:ignore="NewApi">true</item>
+        <item name="android:backgroundDimAmount">0.5</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowBackground">@color/transparent</item>
+    </style>
+
+    <style name="Animation_Simple_Dialog">
+        <item name="android:windowEnterAnimation">@anim/dialog_simple_in</item>
+        <item name="android:windowExitAnimation">@anim/dialog_simple_out</item>
+    </style>
+
+
+    <!--自下而上的对话框样式-->
+    <style name="ProgressBar_Main" parent="@android:style/Widget.ProgressBar.Horizontal">
+        <item name="android:maxHeight">50dip</item>
+        <item name="android:minHeight">8dip</item>
+        <item name="android:indeterminateOnly">false</item>
+        <item name="android:indeterminateDrawable">@android:drawable/progress_indeterminate_horizontal</item>
+        <item name="android:progressDrawable">@drawable/main_progressbar_horizontal</item>
+    </style>
+
+    <!--标准按钮（支付按钮）-->
+    <style name="ButtonText_Login">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dp_40</item>
+        <item name="android:layout_marginLeft">@dimen/dp_12</item>
+        <item name="android:layout_marginRight">@dimen/dp_12</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/color_white</item>
+        <item name="android:text">@string/ok</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:background">@drawable/selector_bg_accent_gray</item>
+    </style>
+
+    <!--可点击的Item，如“我”的页面item-->
+    <style name="ClickAble_Item">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dp_48</item>
+        <item name="android:background">?android:selectableItemBackground</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingLeft">@dimen/dp_20</item>
+        <item name="android:paddingRight">@dimen/dp_20</item>
+        <item name="android:textSize">@dimen/font_size_five</item>
+        <item name="android:drawableRight">@mipmap/ic_right_arrow</item>
+        <item name="android:drawableEnd">@mipmap/ic_right_arrow</item>
+        <item name="android:textColor">@color/color_black_three</item>
+    </style>
+
+</resources>

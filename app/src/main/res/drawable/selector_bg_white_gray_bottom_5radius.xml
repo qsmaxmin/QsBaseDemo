@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@drawable/shape_rect_gray_bottom_5radius" android:state_pressed="true"/>
+    <item android:drawable="@drawable/shape_rect_white_bottom_5radius" android:state_pressed="false"/>
+    <item android:drawable="@drawable/shape_rect_gray_bottom_5radius" android:state_selected="true"/>
+    <item android:drawable="@drawable/shape_rect_white_bottom_5radius"/>
+
+</selector>
