@@ -57,7 +57,7 @@ public class WebPresenter extends GrapeCollegePresenter<WebFragment> {
      */
     public boolean shouldOverrideUrl(WebView view, String url) {
         if (TextUtils.isEmpty(url)) return false;
-        L.e(getTag(), url + "");
+        L.e(initTag(), url + "");
         Uri uri = Uri.parse(url);
         String scheme = uri.getScheme();
         if ("https".equals(scheme) || "http".equals(scheme) || "ftp".equals(scheme)) {
@@ -72,7 +72,7 @@ public class WebPresenter extends GrapeCollegePresenter<WebFragment> {
                 QsHelper.getInstance().getScreenHelper().currentActivity().startActivity(intent);
                 return true;
             } catch (Exception e) {
-                L.e(getTag(), e.getMessage());
+                L.e(initTag(), e.getMessage());
             }
             return false;
         }

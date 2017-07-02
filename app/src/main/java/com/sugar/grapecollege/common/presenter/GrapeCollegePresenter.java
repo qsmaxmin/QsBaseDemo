@@ -1,7 +1,11 @@
 package com.sugar.grapecollege.common.presenter;
 
 import com.qsmaxmin.qsbase.common.utils.QsHelper;
+import com.qsmaxmin.qsbase.common.widget.listview.LoadingFooter;
 import com.qsmaxmin.qsbase.mvp.QsIView;
+import com.qsmaxmin.qsbase.mvp.fragment.QsIPullListFragment;
+import com.qsmaxmin.qsbase.mvp.fragment.QsIPullRecyclerFragment;
+import com.qsmaxmin.qsbase.mvp.model.QsConstants;
 import com.qsmaxmin.qsbase.mvp.presenter.QsPresenter;
 import com.sugar.grapecollege.common.model.BaseModel;
 
@@ -22,33 +26,29 @@ public abstract class GrapeCollegePresenter<V extends QsIView> extends QsPresent
      * 请求网络是否成功
      */
     protected boolean isSuccess(BaseModel baseModel, boolean shouldToast) {
-//        L.i("isSuccess  " + baseModel);
-//        if (baseModel != null && "0".equals(baseModel.code)) {
-//            return true;
-//        } else if (baseModel != null) {
-//            J2WIView j2WIView = (J2WIView) getView();
-//            if (j2WIView != null) {
-//                if (j2WIView instanceof J2WIViewPullListFragment) {
-//                    L.i("isSuccess  J2WIViewPullListFragment ");
-//                    J2WIViewPullListFragment pullListFragment = (J2WIViewPullListFragment) j2WIView;
-//                    pullListFragment.setRefreshing(false);
-//                } else if (j2WIView instanceof J2WIViewPullRecyclerViewFragment) {
-//                    L.i("isSuccess  J2WIViewPullRecyclerViewFragment ");
-//                    J2WIViewPullRecyclerViewFragment pullListFragment = (J2WIViewPullRecyclerViewFragment) j2WIView;
-//                    pullListFragment.setRefreshing(false);
-//                } else if (j2WIView instanceof J2WIPullHeaderViewpagerFragment) {
+        if (baseModel != null && baseModel.code == 0) {
+            return true;
+        } else if (baseModel != null) {
+            QsIView qsIview = getView();
+            if (qsIview != null) {
+                if (qsIview instanceof QsIPullListFragment) {
+                    ((QsIPullListFragment) qsIview).stopRefreshing();
+                } else if (qsIview instanceof QsIPullRecyclerFragment) {
+                    ((QsIPullRecyclerFragment) qsIview).stopRefreshing();
+                }
+//                else if (qsIview instanceof J2WIPullHeaderViewpagerFragment) {
 //                    L.i("isSuccess  J2WIPullHeaderViewpagerFragment ");
-//                    J2WIPullHeaderViewpagerFragment pullHeaderViewpagerFragment = (J2WIPullHeaderViewpagerFragment) j2WIView;
+//                    J2WIPullHeaderViewpagerFragment pullHeaderViewpagerFragment = (J2WIPullHeaderViewpagerFragment) qsIview;
 //                    pullHeaderViewpagerFragment.setRefresh(false);
 //                }
-//                if (j2WIView.isShowContent()) {
+                if (qsIview.currentViewState() == QsConstants.VIEW_STATE_CONTENT) {
 //                    if (shouldToast) J2WToast.show(baseModel.msg);
-//                } else {
-//                    j2WIView.showError();
-//                }
-//                j2WIView.loadingClose();
-//            }
-//        }
+                } else {
+                    qsIview.showErrorView();
+                }
+                qsIview.loadingClose();
+            }
+        }
         return true;
     }
 
@@ -63,27 +63,24 @@ public abstract class GrapeCollegePresenter<V extends QsIView> extends QsPresent
      * 分页
      * @param baseModel 分页数据持有
      */
-    public void paging(BaseModel baseModel) {
-//        if (baseModel == null) {
-//            return;
-//        }
-//        J2WIView j2WIView = (J2WIView) getView();
-//        if (j2WIView == null) return;
-//        if (j2WIView instanceof J2WIViewPullListFragment) {
-//            J2WIViewPullListFragment fragment = (J2WIViewPullListFragment) j2WIView;
-//            if (baseModel.isLastPage) {
-//                fragment.setLoading(LoadingFooter.State.TheEnd);
-//            } else {
-//                fragment.setLoading(LoadingFooter.State.Normal);
-//            }
-//        } else if (j2WIView instanceof J2WIViewPullRecyclerViewFragment) {
-//            J2WIViewPullRecyclerViewFragment recyclerViewFragment = (J2WIViewPullRecyclerViewFragment) j2WIView;
-//            if (baseModel.isLastPage) {
-//                recyclerViewFragment.setLoading(LoadingFooter.State.TheEnd);
-//            } else {
-//                recyclerViewFragment.setLoading(LoadingFooter.State.Normal);
-//            }
-//        }
+    protected void paging(BaseModel baseModel) {
+        if (baseModel == null) {
+            return;
+        }
+        QsIView qsIView = getView();
+        if (qsIView == null) return;
+        if (qsIView instanceof QsIPullListFragment) {
+            if (baseModel.isLastPage) {
+                ((QsIPullListFragment) qsIView).setLoadingState(LoadingFooter.State.TheEnd);
+            } else {
+                ((QsIPullListFragment) qsIView).setLoadingState(LoadingFooter.State.Normal);
+            }
+        } else if (qsIView instanceof QsIPullRecyclerFragment) {
+            if (baseModel.isLastPage) {
+                ((QsIPullRecyclerFragment) qsIView).setLoadingState(LoadingFooter.State.TheEnd);
+            } else {
+                ((QsIPullRecyclerFragment) qsIView).setLoadingState(LoadingFooter.State.Normal);
+            }
+        }
     }
-
 }

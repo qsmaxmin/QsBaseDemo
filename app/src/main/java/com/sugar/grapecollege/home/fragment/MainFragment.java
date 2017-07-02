@@ -10,8 +10,11 @@ import com.qsmaxmin.qsbase.mvp.presenter.Presenter;
 import com.sugar.grapecollege.R;
 import com.sugar.grapecollege.home.model.ModelHomeHeader;
 import com.sugar.grapecollege.home.presenter.MainPresenter;
+import com.sugar.grapecollege.searcher.SearcherActivity;
 
 import java.util.ArrayList;
+
+import butterknife.OnClick;
 
 /**
  * @CreateBy qsmaxmin
@@ -20,9 +23,6 @@ import java.util.ArrayList;
  */
 @Presenter(MainPresenter.class)
 public class MainFragment extends QsFragment<MainPresenter> {
-
-    private ModelHomeHeader headerData;
-
 
     @Override public int layoutId() {
         return R.layout.fragment_main;
@@ -34,13 +34,17 @@ public class MainFragment extends QsFragment<MainPresenter> {
 
     @ThreadPoint(ThreadType.MAIN) public void updateHeader(ModelHomeHeader header) {
         L.i(initTag(), "updateHeader 当前线程:" + Thread.currentThread().getName());
-        this.headerData = header;
+        showContentView();
         if (header != null && header.responseData != null && !header.responseData.isEmpty()) {
             ArrayList<String> arrayList = new ArrayList<>();
             for (ModelHomeHeader.ResponseDataModel model : header.responseData) {
                 arrayList.add(model.picUrl);
             }
         }
+    }
+
+    @OnClick(R.id.bt_search) public void onItemViewClick() {
+        intent2Activity(SearcherActivity.class);
     }
 
 

@@ -16,6 +16,7 @@ import com.sugar.grapecollege.product.model.ModelProductList;
 
 import java.util.ArrayList;
 
+
 /**
  * @CreateBy qsmaxmin
  * @Date 2017/5/3 13:29
@@ -27,12 +28,11 @@ public class MainPresenter extends GrapeCollegePresenter<MainFragment> {
 
     @ThreadPoint(ThreadType.HTTP) public void requestBannerData() {
 //        setHeaderCacheData();
-        L.i(getTag(),"requestBannerData 当前线程:"+Thread.currentThread().getName());
+        L.i(initTag(), "requestBannerData 当前线程:" + Thread.currentThread().getName());
 //        HomeHttp homeHttp = QsHelper.initRestAdapter().create(HomeHttp.class);
 //        ModelHomeHeader header = homeHttp.requestHomeHeaderData(new BaseModelReq());
         ModelHomeHeader header = getTestHeaderData();
         getView().updateHeader(header);
-        saveHeaderDataToCache(header);
     }
 
     @ThreadPoint(ThreadType.HTTP) public void requestListData(boolean isLoadingMore, boolean needCache) {
@@ -94,11 +94,6 @@ public class MainPresenter extends GrapeCollegePresenter<MainFragment> {
             productList.list.add(detail);
         }
         return productList;
-    }
-
-    private void setHeaderCacheData() {
-        ModelHomeHeader header = new CacheUtils().getObjectFromFile(HomeConstants.CACHE_MAIN_HEADER, ModelHomeHeader.class);
-        if (header != null) getView().updateHeader(header);
     }
 
     private void saveHeaderDataToCache(ModelHomeHeader header) {

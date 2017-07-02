@@ -1,6 +1,7 @@
 package com.sugar.grapecollege.product.model;
 
 import com.qsmaxmin.qsbase.common.model.QsModel;
+import com.sugar.grapecollege.common.model.BaseModel;
 
 /**
  * @CreateBy qsmaxmin
@@ -8,7 +9,7 @@ import com.qsmaxmin.qsbase.common.model.QsModel;
  * @Description
  */
 
-public class ModelProduct {
+public class ModelProduct extends BaseModel{
     public ProductDetail resp;
 
     public static class ProductDetail extends QsModel {

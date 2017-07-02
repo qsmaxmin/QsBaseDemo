@@ -2,9 +2,11 @@ package com.sugar.grapecollege.searcher.fragment;
 
 import android.os.Bundle;
 
-import com.qsmaxmin.qsbase.mvp.fragment.QsFragment;
+import com.qsmaxmin.qsbase.mvp.adapter.QsListAdapterItem;
 import com.qsmaxmin.qsbase.mvp.presenter.Presenter;
-import com.sugar.grapecollege.R;
+import com.sugar.grapecollege.common.fragment.BasePullListFragment;
+import com.sugar.grapecollege.product.model.ModelProduct;
+import com.sugar.grapecollege.searcher.adapter.SearcherAdapterItem;
 import com.sugar.grapecollege.searcher.model.SearcherConstants;
 import com.sugar.grapecollege.searcher.presenter.SearcherListPresenter;
 
@@ -15,12 +17,20 @@ import com.sugar.grapecollege.searcher.presenter.SearcherListPresenter;
  * @Description
  */
 @Presenter(SearcherListPresenter.class)
-public class SearcherListFragment extends QsFragment<SearcherListPresenter> {
+public class SearcherListFragment extends BasePullListFragment<SearcherListPresenter, ModelProduct.ProductDetail> {
 
     private String keyWord;
 
-    @Override public int layoutId() {
-        return R.layout.fragment_main;
+    @Override public void onRefresh() {
+        getPresenter().requestSearcherData(keyWord, false);
+    }
+
+    @Override public void onLoad() {
+        getPresenter().requestSearcherData(keyWord, true);
+    }
+
+    @Override public QsListAdapterItem getListAdapterItem(int i) {
+        return new SearcherAdapterItem();
     }
 
     public static SearcherListFragment getInstance(Bundle keyWord) {
@@ -31,10 +41,8 @@ public class SearcherListFragment extends QsFragment<SearcherListPresenter> {
 
     @Override public void initData(Bundle savedInstanceState) {
         Bundle bundle = getArguments();
-        if (bundle != null) {
-            keyWord = bundle.getString(SearcherConstants.SEARCH_KEY_WORD);
-            getPresenter().requestSearcherData(keyWord, false);
-        }
+        keyWord = bundle.getString(SearcherConstants.SEARCH_KEY_WORD, "你好");
+        getPresenter().requestSearcherData(keyWord, false);
     }
 
     public void executeSearch(String str) {

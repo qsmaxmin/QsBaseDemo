@@ -1,5 +1,6 @@
 package com.sugar.grapecollege.searcher.presenter;
 
+import android.os.SystemClock;
 import android.text.TextUtils;
 
 import com.qsmaxmin.qsbase.common.aspect.ThreadPoint;
@@ -7,9 +8,12 @@ import com.qsmaxmin.qsbase.common.log.L;
 import com.qsmaxmin.qsbase.common.utils.QsHelper;
 import com.sugar.grapecollege.common.http.SearcherHttp;
 import com.sugar.grapecollege.common.presenter.GrapeCollegePresenter;
+import com.sugar.grapecollege.product.model.ModelProduct;
 import com.sugar.grapecollege.product.model.ModelProductList;
 import com.sugar.grapecollege.searcher.fragment.SearcherListFragment;
 import com.sugar.grapecollege.searcher.model.ModelSearchReq;
+
+import java.util.ArrayList;
 
 
 /**
@@ -30,24 +34,41 @@ public class SearcherListPresenter extends GrapeCollegePresenter<SearcherListFra
             if (isLoadingMore) {
                 if (page < 1) return;
                 req.pageNumber = page;
-                ModelProductList modelSearch = searcherHttp.requestSearchData(req);
+//                ModelProductList modelSearch = searcherHttp.requestSearchData(req);
+                ModelProductList modelSearch = getTestData();
                 if (isSuccess(modelSearch, true)) {
                     page++;
-//                    getView().addData(ModelTransformUtils.transform(modelSearch.list, 2));
+                    getView().addData(modelSearch.list);
                     paging(modelSearch);
                 }
             } else {
                 page = 0;
                 req.pageNumber = page;
-                ModelProductList modelSearch = searcherHttp.requestSearchData(req);
+//                ModelProductList modelSearch = searcherHttp.requestSearchData(req);
+                ModelProductList modelSearch = getTestData();
                 if (isSuccess(modelSearch, true)) {
                     page = 1;
-//                    getView().setData(ModelTransformUtils.transform(modelSearch.list, 2));
+                    getView().setData(modelSearch.list);
                     paging(modelSearch);
                 }
             }
         } else {
-            L.e(getTag(), "search key word is empty!!");
+            L.e(initTag(), "search key word is empty!!");
         }
+    }
+
+    private ModelProductList getTestData() {
+        ModelProductList modelProductList = new ModelProductList();
+        modelProductList.code = 0;
+        modelProductList.list = new ArrayList<>();
+        modelProductList.isLastPage = page >= 5;
+        for (int i = 0; i < 20; i++) {
+            ModelProduct.ProductDetail productDetail = new ModelProduct.ProductDetail();
+            productDetail.productId = (i * page) + "";
+            productDetail.productName = "第" + page + "页  index=" + i;
+            modelProductList.list.add(productDetail);
+        }
+        SystemClock.sleep(1000);
+        return modelProductList;
     }
 }

@@ -35,8 +35,7 @@ public class SearcherActivity extends QsABActivity implements TextWatcher, TextV
     @Override public void initData(Bundle savedInstanceState) {
         et_input.addTextChangedListener(this);
         et_input.setOnEditorActionListener(this);
-        commitFragment(SearcherListFragment.getInstance(getIntent().getExtras()));
-//        KeyboardUtils.showSoftInputDelay(this, et_input);
+        commitFragment(SearcherListFragment.getInstance(getIntent().getExtras() == null ? new Bundle() : getIntent().getExtras()));
     }
 
     @OnClick({R.id.tv_cancel, R.id.iv_clean}) public void onItemViewClick(View view) {
