@@ -24,8 +24,8 @@ allprojects {
             url 'https://jitpack.io'
         }
         maven {
-//            url "file:///Users/qsmaxmin/Documents/git/QsBase/base/Users/repository"
-            url "file:///E:/git/QsBase/base/Users/repository"
+            url "file:///Users/qsmaxmin/Documents/git/QsBase/base/Users/repository"
+//            url "file:///E:/git/QsBase/base/Users/repository"
         }
 
     }
