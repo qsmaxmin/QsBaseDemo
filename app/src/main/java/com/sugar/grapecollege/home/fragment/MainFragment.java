@@ -1,7 +1,9 @@
 package com.sugar.grapecollege.home.fragment;
 
+import android.Manifest;
 import android.os.Bundle;
 
+import com.qsmaxmin.qsbase.common.aspect.Permission;
 import com.qsmaxmin.qsbase.common.aspect.ThreadPoint;
 import com.qsmaxmin.qsbase.common.aspect.ThreadType;
 import com.qsmaxmin.qsbase.common.log.L;
@@ -44,6 +46,10 @@ public class MainFragment extends QsFragment<MainPresenter> {
     }
 
     @OnClick(R.id.bt_search) public void onItemViewClick() {
+        goSearch();
+    }
+
+    @Permission(values = {Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}) private void goSearch() {
         intent2Activity(SearcherActivity.class);
     }
 
