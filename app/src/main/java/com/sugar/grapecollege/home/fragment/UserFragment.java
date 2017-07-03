@@ -4,9 +4,11 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.View;
 
+import com.qsmaxmin.qsbase.common.utils.QsHelper;
 import com.qsmaxmin.qsbase.mvp.fragment.QsFragment;
 import com.sugar.grapecollege.R;
 import com.sugar.grapecollege.account.AccountActivity;
+import com.sugar.grapecollege.common.dialog.CustomDialog;
 
 import butterknife.OnClick;
 
@@ -40,6 +42,7 @@ public class UserFragment extends QsFragment {
                 intent2Activity(AccountActivity.class);
                 break;
             case R.id.tv_myfont:
+                QsHelper.getInstance().commitDialogFragment(new CustomDialog());
                 break;
             case R.id.tv_download:
                 break;
