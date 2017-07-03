@@ -71,7 +71,7 @@
             android:paddingStart="@dimen/dp_14"
             android:paddingTop="@dimen/dp_10"
             android:text="@string/cancel"
-            android:textColor="@color/color_accent"
+            android:textColor="@color/colorAccent"
             android:textSize="@dimen/font_size_four"/>
     </LinearLayout>
 </RelativeLayout>

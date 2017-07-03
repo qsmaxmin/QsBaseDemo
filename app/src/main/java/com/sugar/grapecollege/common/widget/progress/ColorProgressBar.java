@@ -48,7 +48,7 @@ public class ColorProgressBar extends View {
     }
 
     private void init() {
-        color = getResources().getColor(R.color.color_accent);
+        color = getResources().getColor(R.color.colorAccent);
         colorArr[0] = Color.TRANSPARENT;
         colorArr[1] = color;
         colorArr[2] = Color.TRANSPARENT;

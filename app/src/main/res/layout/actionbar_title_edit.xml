@@ -32,7 +32,7 @@
             android:paddingLeft="@dimen/dp_10"
             android:paddingRight="@dimen/dp_10"
             android:text="@string/cancel"
-            android:textColor="@color/color_accent"
+            android:textColor="@color/colorAccent"
             android:textSize="@dimen/font_size_four"
             android:visibility="gone"/>
     </RelativeLayout>
@@ -56,6 +56,6 @@
         android:gravity="center"
         android:padding="@dimen/dp_10"
         android:text="编辑"
-        android:textColor="@color/color_accent"/>
+        android:textColor="@color/colorAccent"/>
 
 </RelativeLayout>

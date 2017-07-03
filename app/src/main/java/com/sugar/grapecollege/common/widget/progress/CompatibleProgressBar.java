@@ -60,7 +60,7 @@ public class CompatibleProgressBar extends RelativeLayout implements DownloadCal
         setClickable(true);
         TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.CompatibleProgressBar);
         int bgColor = typedArray.getColor(R.styleable.CompatibleProgressBar_cpb_backgroundColor, Color.WHITE);
-        int fillColor = typedArray.getColor(R.styleable.CompatibleProgressBar_cpb_fillColor, getResources().getColor(R.color.color_accent));
+        int fillColor = typedArray.getColor(R.styleable.CompatibleProgressBar_cpb_fillColor, getResources().getColor(R.color.colorAccent));
         int strokeColor = typedArray.getColor(R.styleable.CompatibleProgressBar_cpb_strokeColor, getResources().getColor(R.color.color_gray));
         float radius = typedArray.getDimension(R.styleable.CompatibleProgressBar_cpb_radius, 15);
         float strokeWidth = typedArray.getDimension(R.styleable.CompatibleProgressBar_cpb_strokeWidth, 1);

@@ -3,9 +3,9 @@
     <!-- 系统主题样式 -->
     <style name="SugarTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!--actionbar底色-->
-        <item name="colorPrimary">@color/color_primary</item>
-        <item name="colorPrimaryDark">@color/color_primary_dark</item>
-        <item name="colorAccent">@color/color_accent</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowActionBarOverlay">true</item>
         <!--不使用系统的toolbar-->
