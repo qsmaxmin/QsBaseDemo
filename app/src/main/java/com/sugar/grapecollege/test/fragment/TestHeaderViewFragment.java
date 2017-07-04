@@ -2,11 +2,14 @@ package com.sugar.grapecollege.test.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.view.View;
+import android.widget.TextView;
 
+import com.qsmaxmin.qsbase.common.log.L;
 import com.qsmaxmin.qsbase.mvp.fragment.QsHeaderViewpagerFragment;
 import com.qsmaxmin.qsbase.mvp.model.QsModelPager;
 import com.sugar.grapecollege.R;
+
+import butterknife.Bind;
 
 /**
  * @CreateBy qsmaxmin
@@ -15,9 +18,14 @@ import com.sugar.grapecollege.R;
  */
 
 public class TestHeaderViewFragment extends QsHeaderViewpagerFragment {
+    @Bind(R.id.tv_left) TextView tv_left;
 
     public static Fragment getInstance() {
         return new TestHeaderViewFragment();
+    }
+
+    @Override public int getHeaderLayout() {
+        return R.layout.header_main_fragment;
     }
 
     @Override public QsModelPager[] getModelPagers() {
@@ -34,8 +42,7 @@ public class TestHeaderViewFragment extends QsHeaderViewpagerFragment {
     }
 
     @Override public void initData(Bundle savedInstanceState) {
-        View headerView = View.inflate(getContext(), R.layout.header_main_fragment, null);
-        headerViewPager.addHeaderView(headerView);
+        L.i(initTag(), "+++++++>>> " + tv_left);
     }
 
     @Override public boolean isOpenViewState() {
