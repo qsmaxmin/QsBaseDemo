@@ -5,7 +5,7 @@ import android.os.Bundle;
 import com.qsmaxmin.qsbase.mvp.adapter.QsListAdapterItem;
 import com.qsmaxmin.qsbase.mvp.presenter.Presenter;
 import com.sugar.grapecollege.common.fragment.BasePullListFragment;
-import com.sugar.grapecollege.product.model.ModelProduct;
+import com.sugar.grapecollege.product.model.ModelProductInfo;
 import com.sugar.grapecollege.searcher.adapter.SearcherAdapterItem;
 import com.sugar.grapecollege.searcher.model.SearcherConstants;
 import com.sugar.grapecollege.searcher.presenter.SearcherListPresenter;
@@ -17,7 +17,7 @@ import com.sugar.grapecollege.searcher.presenter.SearcherListPresenter;
  * @Description
  */
 @Presenter(SearcherListPresenter.class)
-public class SearcherListFragment extends BasePullListFragment<SearcherListPresenter, ModelProduct.ProductDetail> {
+public class SearcherListFragment extends BasePullListFragment<SearcherListPresenter, ModelProductInfo.ProductInfo> {
 
     private String keyWord;
 
@@ -29,13 +29,13 @@ public class SearcherListFragment extends BasePullListFragment<SearcherListPrese
         getPresenter().requestSearcherData(keyWord, true);
     }
 
-    @Override public QsListAdapterItem getListAdapterItem(int i) {
+    @Override public QsListAdapterItem<ModelProductInfo.ProductInfo> getListAdapterItem(int i) {
         return new SearcherAdapterItem();
     }
 
     public static SearcherListFragment getInstance(Bundle keyWord) {
         SearcherListFragment fragment = new SearcherListFragment();
-        if (keyWord != null) fragment.setArguments(keyWord);
+        fragment.setArguments(keyWord == null ? new Bundle() : keyWord);
         return fragment;
     }
 
@@ -48,5 +48,9 @@ public class SearcherListFragment extends BasePullListFragment<SearcherListPrese
     public void executeSearch(String str) {
         this.keyWord = str;
         getPresenter().requestSearcherData(keyWord, false);
+    }
+
+    @Override public boolean isOpenViewState() {
+        return false;
     }
 }

@@ -18,7 +18,7 @@
 //import com.sugar.grapecollege.common.download.threadpoll.DownloadThreadPollManager;
 //import com.sugar.grapecollege.common.greendao.DataBaseHelper;
 //import com.sugar.grapecollege.common.greendao.model.DownloadState;
-//import com.sugar.grapecollege.common.greendao.model.ModelProduct;
+//import com.sugar.grapecollege.common.greendao.model.ModelProductInfo;
 //import com.sugar.grapecollege.common.utils.NetworkUtils;
 //
 //import java.io.File;
@@ -96,9 +96,9 @@
 //     * 如下载中突然结束进程
 //     */
 //    private void recoveryTaskState() {
-//        List<ModelProduct> entities = DataBaseHelper.getInstance().queryAll();
-//        ArrayList<ModelProduct> updateList = new ArrayList<>();
-//        for (ModelProduct entity : entities) {
+//        List<ModelProductInfo> entities = DataBaseHelper.getInstance().queryAll();
+//        ArrayList<ModelProductInfo> updateList = new ArrayList<>();
+//        for (ModelProductInfo entity : entities) {
 //            long completedSize = entity.getTempSize();
 //            long totalSize = entity.getSize();
 //            if (completedSize > 0 && totalSize > 0 && completedSize < totalSize && entity.getDownloadState() != DownloadState.DOWNLOAD_PAUSE) {
@@ -112,10 +112,10 @@
 //
 //    /**
 //     * 检查model数据的完整性
-//     * 其中{@link ModelProduct#productId, ModelProduct#downloadUrl}为必要数据，不能为空
-//     * 当其他数据不完整时，自动补充{@link ModelProduct#productName, ModelProduct#ttfFileName, ModelProduct#zipFileName}
+//     * 其中{@link ModelProductInfo#productId, ModelProductInfo#downloadUrl}为必要数据，不能为空
+//     * 当其他数据不完整时，自动补充{@link ModelProductInfo#productName, ModelProductInfo#ttfFileName, ModelProductInfo#zipFileName}
 //     */
-//    private boolean checkAndInitData(ModelProduct modelProduct) {
+//    private boolean checkAndInitData(ModelProductInfo modelProduct) {
 //        if (modelProduct == null) {
 //            L.e("DownloadHelper  checkAndInitData  modelProduct is null...");
 //            return false;
@@ -165,7 +165,7 @@
 //        return name;
 //    }
 //
-//    private void dispatchDownload(final ModelProduct modelProduct, final DownloadCallback callback) {
+//    private void dispatchDownload(final ModelProductInfo modelProduct, final DownloadCallback callback) {
 //        File zipDir = new File(modelProduct.getPath());
 //        if (!zipDir.exists() && !zipDir.mkdirs()) {
 //            onDownloadFail(modelProduct.getProductId(), "创建文件夹失败...path=" + modelProduct.getPath(), callback);
@@ -179,7 +179,7 @@
 //        }
 //    }
 //
-//    private void applyNewDownload(ModelProduct modelProduct, DownloadCallback callback) {
+//    private void applyNewDownload(ModelProductInfo modelProduct, DownloadCallback callback) {
 //        DownloadExecutor executor = new DownloadExecutor(modelProduct);
 //        executor.setClient(mOkHttpClient);
 //        executor.addCallback(callback);//传参回调
@@ -195,7 +195,7 @@
 //
 //
 //    private void applyOldDownload(DownloadExecutor executor, DownloadCallback callback) {
-//        ModelProduct modelProduct = executor.getModelProduct();
+//        ModelProductInfo modelProduct = executor.getModelProduct();
 //        if (modelProduct != null) {
 //            executor.addCallback(callback);
 //            executor.addCallback(mainListener);//用于全局下载回调
@@ -245,7 +245,7 @@
 //        }
 //    }
 //
-//    private void rCancel(final ModelProduct modelProduct, boolean deleteFile) {
+//    private void rCancel(final ModelProductInfo modelProduct, boolean deleteFile) {
 //        int key = modelProduct.getProductId().hashCode();
 //        DownloadExecutor executor = executorMap.get(key);
 //        if (executor != null) {
@@ -289,7 +289,7 @@
 //    /**
 //     * 检查下载配置信息，4G开关
 //     */
-//    private void checkDownloadConfig(final Activity activity, final ModelProduct modelProduct, final DownloadCallback callback) {
+//    private void checkDownloadConfig(final Activity activity, final ModelProductInfo modelProduct, final DownloadCallback callback) {
 //        if (NetworkUtils.isNetworkConnected()) {
 //            if (!AppConfig.getInstance().forceDownload) {
 //                if (!NetworkUtils.isWifiConnected()) {
@@ -338,7 +338,7 @@
 //    /**
 //     * 检查权限
 //     */
-//    private void checkPermission(Activity activity, final ModelProduct modelProduct, final DownloadCallback callback) {
+//    private void checkPermission(Activity activity, final ModelProductInfo modelProduct, final DownloadCallback callback) {
 //        PermissionUtil.getInstance()//
 //                .addWantPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)//
 //                .setShowCustomDialog(true)//
@@ -371,7 +371,7 @@
 //    /**
 //     * 执行下载动作
 //     */
-//    public void requestDownload(ModelProduct modelProduct) {
+//    public void requestDownload(ModelProductInfo modelProduct) {
 //        requestDownload(modelProduct, null);
 //    }
 //
@@ -381,7 +381,7 @@
 //     * @param modelProduct 下载模型
 //     * @param callback     回调
 //     */
-//    public void requestDownload(final ModelProduct modelProduct, final DownloadCallback callback) {
+//    public void requestDownload(final ModelProductInfo modelProduct, final DownloadCallback callback) {
 //        FragmentActivity activity = QsHelper.getScreenHelper().currentActivity();
 //        if (activity == null) {
 //            L.e("DownloadHelper  requestDownload....  current Activity is null...");
@@ -395,7 +395,7 @@
 //    /**
 //     * 暂停下载
 //     */
-//    public void requestPause(final ModelProduct modelProduct) {
+//    public void requestPause(final ModelProductInfo modelProduct) {
 //        if (modelProduct != null) {
 //            requestPause(modelProduct.getProductId());
 //        }
@@ -416,7 +416,7 @@
 //        }
 //    }
 //
-//    public void requestCancel(ModelProduct modelProduct) {
+//    public void requestCancel(ModelProductInfo modelProduct) {
 //        requestCancel(modelProduct, true);
 //    }
 //
@@ -426,7 +426,7 @@
 //     * @param modelProduct 字体模型
 //     * @param deleteFile   是否删除对应的数据库
 //     */
-//    public void requestCancel(final ModelProduct modelProduct, final boolean deleteFile) {
+//    public void requestCancel(final ModelProductInfo modelProduct, final boolean deleteFile) {
 //        if (modelProduct != null && !TextUtils.isEmpty(modelProduct.getProductId())) {
 //            L.i("DownloadHelper  requestCancel...." + modelProduct.toString());
 //            if (isMainThread()) {

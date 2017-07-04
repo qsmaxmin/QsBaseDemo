@@ -8,7 +8,7 @@ import com.qsmaxmin.qsbase.common.log.L;
 import com.qsmaxmin.qsbase.common.utils.QsHelper;
 import com.sugar.grapecollege.common.http.SearcherHttp;
 import com.sugar.grapecollege.common.presenter.GrapeCollegePresenter;
-import com.sugar.grapecollege.product.model.ModelProduct;
+import com.sugar.grapecollege.product.model.ModelProductInfo;
 import com.sugar.grapecollege.product.model.ModelProductList;
 import com.sugar.grapecollege.searcher.fragment.SearcherListFragment;
 import com.sugar.grapecollege.searcher.model.ModelSearchReq;
@@ -63,10 +63,10 @@ public class SearcherListPresenter extends GrapeCollegePresenter<SearcherListFra
         modelProductList.list = new ArrayList<>();
         modelProductList.isLastPage = page >= 5;
         for (int i = 0; i < 20; i++) {
-            ModelProduct.ProductDetail productDetail = new ModelProduct.ProductDetail();
-            productDetail.productId = (i * page) + "";
-            productDetail.productName = "第" + page + "页  index=" + i;
-            modelProductList.list.add(productDetail);
+            ModelProductInfo.ProductInfo productInfo = new ModelProductInfo.ProductInfo();
+            productInfo.productId = (i * page) + "";
+            productInfo.productName = "第" + page + "页  index=" + i;
+            modelProductList.list.add(productInfo);
         }
         SystemClock.sleep(1000);
         return modelProductList;

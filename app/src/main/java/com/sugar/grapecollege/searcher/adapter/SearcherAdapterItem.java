@@ -5,7 +5,7 @@ import android.widget.TextView;
 
 import com.qsmaxmin.qsbase.mvp.adapter.QsListAdapterItem;
 import com.sugar.grapecollege.R;
-import com.sugar.grapecollege.product.model.ModelProduct;
+import com.sugar.grapecollege.product.model.ModelProductInfo;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -16,19 +16,19 @@ import butterknife.ButterKnife;
  * @Description
  */
 
-public class SearcherAdapterItem extends QsListAdapterItem<ModelProduct.ProductDetail> {
+public class SearcherAdapterItem extends QsListAdapterItem<ModelProductInfo.ProductInfo> {
 
     @Bind(R.id.tv_name) TextView tv_name;
 
     @Override public int getItemLayout() {
-        return R.layout.item_main_list;
+        return R.layout.item_product_list;
     }
 
     @Override public void init(View view) {
         ButterKnife.bind(this, view);
     }
 
-    @Override public void bindData(ModelProduct.ProductDetail modelProduct, int i, int i1) {
+    @Override public void bindData(ModelProductInfo.ProductInfo modelProduct, int i, int i1) {
         tv_name.setText(modelProduct.productName);
     }
 }

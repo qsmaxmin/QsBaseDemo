@@ -24,18 +24,4 @@ public abstract class BasePullListFragment<T extends QsPresenter, D> extends QsP
         }
         return refreshHeader;
     }
-
-//    @Override protected void initListView(View view) {
-//        super.initListView(view);
-//        if (loadingFooter == null) {
-//            return;
-//        }
-//        loadingFooter.setOnClickListener(new View.OnClickListener() {
-//            @Override public void onClick(View view) {
-//                if (loadingFooter != null && view == loadingFooter && loadingFooter.getState() == LoadingFooter.State.NetWorkError) {
-//                    loadingMoreData();
-//                }
-//            }
-//        });
-//    }
 }

@@ -9,10 +9,10 @@ import com.sugar.grapecollege.common.model.BaseModel;
  * @Description
  */
 
-public class ModelProduct extends BaseModel{
-    public ProductDetail resp;
+public class ModelProductInfo extends BaseModel{
+    public ProductInfo resp;
 
-    public static class ProductDetail extends QsModel {
+    public static class ProductInfo extends QsModel {
         public String productId;
         public String productName;
     }

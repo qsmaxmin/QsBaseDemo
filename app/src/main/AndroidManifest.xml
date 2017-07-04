@@ -66,54 +66,9 @@
             android:name="com.sugar.grapecollege.searcher.SearcherActivity"
             android:screenOrientation="portrait"
             android:theme="@style/SugarTheme"/>
-
         <!--账户相关-->
         <activity
             android:name="com.sugar.grapecollege.account.AccountActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/SugarTheme"/>
-
-        <!-- 字体详情页 -->
-        <activity
-            android:name="com.sugar.grapecollege.font.FontDetailActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/SugarTheme"/>
-
-        <!-- 字体排行 -->
-        <activity
-            android:name="com.sugar.grapecollege.font.FontRankActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/SugarTheme"/>
-        <!-- 历史字体 -->
-        <activity
-            android:name="com.sugar.grapecollege.font.FontHistoryActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/SugarTheme"/>
-
-        <!-- 专题列表 -->
-        <activity
-            android:name="com.sugar.grapecollege.theme.ThemeListActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/SugarTheme"/>
-        <!-- 专题字体列表 -->
-        <activity
-            android:name="com.sugar.grapecollege.theme.ThemeDetailActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/SugarTheme"/>
-
-        <!--本地字体-->
-        <activity
-            android:name="com.sugar.grapecollege.local.LocalFontActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/SugarTheme"/>
-        <!--下载管理-->
-        <activity
-            android:name="com.sugar.grapecollege.local.FontDownloadActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/SugarTheme"/>
-        <!-- 许可协议 -->
-        <activity
-            android:name="com.sugar.grapecollege.setting.AgreementActivity"
             android:screenOrientation="portrait"
             android:theme="@style/SugarTheme"/>
         <!--webView-->
@@ -124,6 +79,15 @@
         <!--pay-->
         <activity
             android:name="com.sugar.grapecollege.pay.PayActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/SugarTheme"/>
+
+        <activity
+            android:name=".test.TestABActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/SugarTheme"/>
+        <activity
+            android:name=".test.TestActivity"
             android:screenOrientation="portrait"
             android:theme="@style/SugarTheme"/>
     </application>

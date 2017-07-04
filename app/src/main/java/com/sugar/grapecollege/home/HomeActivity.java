@@ -8,6 +8,7 @@ import com.qsmaxmin.qsbase.mvp.QsViewPagerABActivity;
 import com.qsmaxmin.qsbase.mvp.model.QsModelPager;
 import com.sugar.grapecollege.R;
 import com.sugar.grapecollege.home.fragment.MainFragment;
+import com.sugar.grapecollege.test.fragment.TestHeaderViewFragment;
 import com.sugar.grapecollege.home.fragment.UserFragment;
 
 import butterknife.Bind;
@@ -26,20 +27,15 @@ public class HomeActivity extends QsViewPagerABActivity {
 
     @Override public QsModelPager[] getModelPagers() {
         QsModelPager modelPager1 = new QsModelPager();
-        modelPager1.fragment = UserFragment.getInstance();
+        modelPager1.fragment = MainFragment.getInstance();
         modelPager1.title = "title1";
         modelPager1.position = 0;
-
-        QsModelPager modelPager2 = new QsModelPager();
-        modelPager2.fragment = MainFragment.getInstance();
-        modelPager2.title = "title1";
-        modelPager2.position = 0;
 
         QsModelPager modelPager3 = new QsModelPager();
         modelPager3.fragment = UserFragment.getInstance();
         modelPager3.title = "title1";
-        modelPager3.position = 0;
-        return new QsModelPager[]{modelPager1, modelPager2, modelPager3};
+        modelPager3.position = 1;
+        return new QsModelPager[]{modelPager1,modelPager3};
     }
 
     @Override public int getTabItemLayout() {

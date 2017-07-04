@@ -11,7 +11,7 @@ import com.sugar.grapecollege.common.utils.CacheUtils;
 import com.sugar.grapecollege.home.fragment.MainFragment;
 import com.sugar.grapecollege.home.model.HomeConstants;
 import com.sugar.grapecollege.home.model.ModelHomeHeader;
-import com.sugar.grapecollege.product.model.ModelProduct;
+import com.sugar.grapecollege.product.model.ModelProductInfo;
 import com.sugar.grapecollege.product.model.ModelProductList;
 
 import java.util.ArrayList;
@@ -46,7 +46,7 @@ public class MainPresenter extends GrapeCollegePresenter<MainFragment> {
 //            ModelProductList fontList = http.requestRecommendFontListData(req);
             if (isSuccess(testData, true)) {
                 page++;
-//                getView().addData(ModelTransformUtils.transform(testData.list, 2));
+                getView().addData(testData.list);
                 paging(testData);
             }
         } else {
@@ -56,7 +56,7 @@ public class MainPresenter extends GrapeCollegePresenter<MainFragment> {
 //            ModelProductList fontList = http.requestRecommendFontListData(req);
             if (isSuccess(testData, true)) {
                 page = 1;
-//                getView().setData(ModelTransformUtils.transform(testData.list, 2));
+                getView().setData(testData.list);
                 paging(testData);
                 saveListDataToCache(testData);
             }
@@ -89,7 +89,7 @@ public class MainPresenter extends GrapeCollegePresenter<MainFragment> {
         productList.isLastPage = page >= 10;
         productList.list = new ArrayList<>(20);
         for (int i = 0; i < 20; i++) {
-            ModelProduct.ProductDetail detail = new ModelProduct.ProductDetail();
+            ModelProductInfo.ProductInfo detail = new ModelProductInfo.ProductInfo();
             detail.productName = "哈哈" + i;
             productList.list.add(detail);
         }
@@ -109,7 +109,7 @@ public class MainPresenter extends GrapeCollegePresenter<MainFragment> {
     private void setListCacheData() {
         ModelProductList dataFromCache = new CacheUtils().getObjectFromFile(HomeConstants.CACHE_MAIN_FONT_LIST, ModelProductList.class);
         if (isSuccess(dataFromCache, false)) {
-//            getView().setData(ModelTransformUtils.transform(dataFromCache.list, 2));
+            getView().setData(dataFromCache.list);
         }
     }
 }

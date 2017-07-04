@@ -12,5 +12,5 @@ import java.util.List;
 
 public class ModelProductList extends BaseModel {
 
-   public List<ModelProduct.ProductDetail> list;
+   public List<ModelProductInfo.ProductInfo> list;
 }
