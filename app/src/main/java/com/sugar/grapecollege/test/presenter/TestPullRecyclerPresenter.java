@@ -7,18 +7,19 @@ import com.qsmaxmin.qsbase.common.utils.QsHelper;
 import com.sugar.grapecollege.common.http.HomeHttp;
 import com.sugar.grapecollege.common.model.BaseModelReq;
 import com.sugar.grapecollege.common.presenter.GrapeCollegePresenter;
-import com.sugar.grapecollege.test.fragment.TestPullListFragment;
+import com.sugar.grapecollege.test.fragment.TestPullRecyclerFragment;
 import com.sugar.grapecollege.test.model.TestModel;
 
 import java.util.ArrayList;
 
 /**
  * @CreateBy qsmaxmin
- * @Date 2017/7/4 16:52
+ * @Date 2017/7/4 18:15
  * @Description
  */
 
-public class TestPullListPresenter extends GrapeCollegePresenter<TestPullListFragment> {
+public class TestPullRecyclerPresenter extends GrapeCollegePresenter<TestPullRecyclerFragment> {
+
     int page;
 
     @ThreadPoint public void requestListData(boolean isLoadingMore) {

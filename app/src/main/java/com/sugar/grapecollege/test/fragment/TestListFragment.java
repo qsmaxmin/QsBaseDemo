@@ -33,7 +33,7 @@ public class TestListFragment extends QsListFragment<GrapeCollegePresenter, Test
         model.list = new ArrayList<>(30);
         for (int i = 0; i < 30; i++) {
             TestModel.TestModelInfo detail = new TestModel.TestModelInfo();
-            detail.testName = "哈哈" + i;
+            detail.testName = getClass().getSimpleName() + "  " + i;
             model.list.add(detail);
         }
         return model;
@@ -41,5 +41,9 @@ public class TestListFragment extends QsListFragment<GrapeCollegePresenter, Test
 
     public static Fragment getInstance() {
         return new TestListFragment();
+    }
+
+    @Override public boolean isDelayData() {
+        return true;
     }
 }

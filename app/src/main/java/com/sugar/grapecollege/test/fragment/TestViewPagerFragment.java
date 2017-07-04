@@ -20,18 +20,18 @@ public class TestViewPagerFragment extends QsViewPagerFragment {
     @Override public QsModelPager[] getModelPagers() {
         QsModelPager modelPager1 = new QsModelPager();
         modelPager1.fragment = TestFragment.getInstance();
-        modelPager1.title = "title1";
+        modelPager1.title = "Fragment";
         modelPager1.position = 0;
 
         QsModelPager modelPager2 = new QsModelPager();
         modelPager2.fragment = TestListFragment.getInstance();
-        modelPager2.title = "title1";
-        modelPager2.position = 0;
+        modelPager2.title = "ListFragment";
+        modelPager2.position = 1;
 
         QsModelPager modelPager3 = new QsModelPager();
         modelPager3.fragment = TestPullListFragment.getInstance();
-        modelPager3.title = "title1";
-        modelPager3.position = 0;
+        modelPager3.title = "PullListFragment";
+        modelPager3.position = 2;
         return new QsModelPager[]{modelPager1, modelPager2, modelPager3};
     }
 

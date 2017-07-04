@@ -28,6 +28,6 @@ public class TestListAdapter extends QsListAdapterItem<TestModel.TestModelInfo> 
     }
 
     @Override public void bindData(TestModel.TestModelInfo testModelInfo, int i, int i1) {
-        tv_test.setText(String.valueOf(testModelInfo.testName + " I am ListView"));
+        tv_test.setText(String.valueOf(testModelInfo.testName + " -->>>> 我是ListView"));
     }
 }

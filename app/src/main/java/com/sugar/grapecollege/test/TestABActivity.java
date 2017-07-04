@@ -7,7 +7,7 @@ import android.widget.TextView;
 
 import com.qsmaxmin.qsbase.mvp.QsABActivity;
 import com.sugar.grapecollege.R;
-import com.sugar.grapecollege.test.fragment.TestListFragment;
+import com.sugar.grapecollege.test.fragment.TestPullRecyclerFragment;
 import com.sugar.grapecollege.test.fragment.TestViewPagerFragment;
 
 import butterknife.Bind;
@@ -28,7 +28,7 @@ public class TestABActivity extends QsABActivity {
 
     @Override public void initData(Bundle bundle) {
         tv_edit.setText("ViewPager");
-        commitFragment(TestListFragment.getInstance());
+        commitFragment(TestPullRecyclerFragment.getInstance());
     }
 
     @OnClick({R.id.tv_edit, R.id.view_back}) public void onItemViewClick(View view) {

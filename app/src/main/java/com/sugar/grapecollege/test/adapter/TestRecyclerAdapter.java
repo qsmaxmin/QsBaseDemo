@@ -29,6 +29,6 @@ public class TestRecyclerAdapter extends QsRecycleAdapterItem<TestModel.TestMode
     }
 
     @Override protected void onBindItemData(TestModel.TestModelInfo testModelInfo, int i, int i1) {
-        tv_test.setText(String.valueOf(testModelInfo.testName + " I am RecyclerView"));
+        tv_test.setText(String.valueOf(testModelInfo.testName + "---->>>> 我是RecyclerView"));
     }
 }
