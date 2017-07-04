@@ -70,6 +70,6 @@ dependencies {
     compile 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:1.1.6'
     compile 'com.joooonho:selectableroundedimageview:1.0.1'
 
-    compile 'com.github.qsmaxmin:QsBase:47eb9f302e'
+    compile 'com.github.qsmaxmin:QsBase:afc0cbf1ee'
 //    compile 'com.qsmaxmin.qsbase:base:1.0.0'
 }

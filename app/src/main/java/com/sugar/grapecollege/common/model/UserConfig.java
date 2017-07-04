@@ -2,13 +2,15 @@ package com.sugar.grapecollege.common.model;
 
 import android.text.TextUtils;
 
+import com.qsmaxmin.qsbase.common.config.QsProperties;
+
 
 /**
  * @CreateBy qsmaxmin
  * @Date 16/7/29
  * @Description 用户配置信息序列化
  */
-public class UserConfig {//extends J2WProperties
+public class UserConfig extends QsProperties {
     /**
      * 单例模式
      */
@@ -18,27 +20,25 @@ public class UserConfig {//extends J2WProperties
     }
 
     private UserConfig(String configName) {
-//        super(configName);
+        super(configName);
+    }
+
+    @Override public String initTag() {
+        return "UserConfig";
+    }
+
+    @Override public int initType() {
+        return QsProperties.OPEN_TYPE_DATA;
     }
 
     public static UserConfig getInstance() {
         if (USER_CONFIG == null) {
             synchronized (UserConfig.class) {
-                if (USER_CONFIG == null) {
-                    USER_CONFIG = new UserConfig("UserConfig" + "userId");//AppConfig.getInstance().userId
-                }
+                if (USER_CONFIG == null) USER_CONFIG = new UserConfig("UserConfig" + AppConfig.getInstance().userId);
             }
         }
         return USER_CONFIG;
     }
-
-//    @Override public String initTag() {
-//        return "UserConfig";
-//    }
-//
-//    @Override public int initType() {
-//        return J2WProperties.OPEN_TYPE_DATA;
-//    }
 
     private String userId;                // 用户Id
     private String userPhotoUrl;              // 用户头像
@@ -51,7 +51,7 @@ public class UserConfig {//extends J2WProperties
 
     public void setUserId(String userId) {
         this.userId = userId;
-//        super.commit();
+        super.commit();
     }
 
     public String getUserPhotoUrl() {
@@ -60,7 +60,7 @@ public class UserConfig {//extends J2WProperties
 
     public void setUserPhotoUrl(String userPhotoUrl) {
         this.userPhotoUrl = userPhotoUrl;
-//        super.commit();
+        super.commit();
     }
 
     public String getUserName() {
@@ -69,7 +69,7 @@ public class UserConfig {//extends J2WProperties
 
     public void setUserName(String userName) {
         this.userName = userName;
-//        super.commit();
+        super.commit();
     }
 
     public String getUserPhone() {
@@ -78,11 +78,12 @@ public class UserConfig {//extends J2WProperties
 
     public void setUserPhone(String userPhone) {
         this.userPhone = userPhone;
-//        super.commit();
+        super.commit();
     }
 
     public void logout() {
-        USER_CONFIG = null;//切记置空
+        clear();
+        USER_CONFIG = null;
     }
 
     public boolean isLogin() {
