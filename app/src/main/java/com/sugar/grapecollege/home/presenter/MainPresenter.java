@@ -105,7 +105,7 @@ public class MainPresenter extends GrapeCollegePresenter<MainFragment> {
 
     private void setListCacheData() {
         ModelProductList dataFromCache = QsHelper.getInstance().getCacheHelper().getObjectFromFile(HomeConstants.CACHE_MAIN_FONT_LIST, ModelProductList.class);
-        if (isSuccess(dataFromCache, false)) {
+        if (isSuccess(dataFromCache, false) && dataFromCache.list != null) {
             getView().setData(dataFromCache.list);
         }
     }

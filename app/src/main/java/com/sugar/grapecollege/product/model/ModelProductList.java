@@ -13,4 +13,8 @@ import java.util.List;
 public class ModelProductList extends BaseModel {
 
    public List<ModelProductInfo.ProductInfo> list;
+
+   @Override public String toString() {
+      return "ModelProductList{" + "list=" + list + '}';
+   }
 }

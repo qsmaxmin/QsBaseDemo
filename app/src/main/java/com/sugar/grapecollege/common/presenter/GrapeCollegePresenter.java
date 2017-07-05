@@ -2,6 +2,7 @@ package com.sugar.grapecollege.common.presenter;
 
 import com.qsmaxmin.qsbase.common.utils.QsHelper;
 import com.qsmaxmin.qsbase.common.widget.listview.LoadingFooter;
+import com.qsmaxmin.qsbase.common.widget.toast.QsToast;
 import com.qsmaxmin.qsbase.mvp.QsIView;
 import com.qsmaxmin.qsbase.mvp.fragment.QsIPullListFragment;
 import com.qsmaxmin.qsbase.mvp.fragment.QsIPullRecyclerFragment;
@@ -36,20 +37,15 @@ public abstract class GrapeCollegePresenter<V extends QsIView> extends QsPresent
                 } else if (qsIview instanceof QsIPullRecyclerFragment) {
                     ((QsIPullRecyclerFragment) qsIview).stopRefreshing();
                 }
-//                else if (qsIview instanceof J2WIPullHeaderViewpagerFragment) {
-//                    L.i("isSuccess  J2WIPullHeaderViewpagerFragment ");
-//                    J2WIPullHeaderViewpagerFragment pullHeaderViewpagerFragment = (J2WIPullHeaderViewpagerFragment) qsIview;
-//                    pullHeaderViewpagerFragment.setRefresh(false);
-//                }
                 if (qsIview.currentViewState() == QsConstants.VIEW_STATE_CONTENT) {
-//                    if (shouldToast) J2WToast.show(baseModel.msg);
+                    if (shouldToast) QsToast.show(baseModel.msg);
                 } else {
                     qsIview.showErrorView();
                 }
                 qsIview.loadingClose();
             }
         }
-        return true;
+        return false;
     }
 
     /**
@@ -61,6 +57,7 @@ public abstract class GrapeCollegePresenter<V extends QsIView> extends QsPresent
 
     /**
      * 分页
+     *
      * @param baseModel 分页数据持有
      */
     protected void paging(BaseModel baseModel) {
