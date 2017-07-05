@@ -4,7 +4,8 @@
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#00BEB4</color>
 
-    <color name="color_actionbar_background">#EEEFEF</color>
+    <color name="color_toolbar_bg">#00BEB4</color>
+    <color name="color_bg">#EAEBED</color>
 
     <!--black color-->
     <color name="color_black">#000000</color>
@@ -20,7 +21,6 @@
     <color name="color_gray_f">#F1F1F1</color>
 
     <color name="color_white">#FFFFFF</color>
-    <color name="color_bg">#EAEBED</color>
     <color name="color_red">#DE2B2B</color>
     <color name="color_blue_green">#00BEB4</color>
     <color name="transparent">#00000000</color>
