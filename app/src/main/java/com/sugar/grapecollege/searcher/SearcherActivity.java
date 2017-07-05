@@ -10,12 +10,12 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.qsmaxmin.qsbase.common.viewbind.annotation.Bind;
+import com.qsmaxmin.qsbase.common.viewbind.annotation.OnClick;
 import com.qsmaxmin.qsbase.mvp.QsABActivity;
 import com.sugar.grapecollege.R;
 import com.sugar.grapecollege.searcher.fragment.SearcherListFragment;
 
-import butterknife.Bind;
-import butterknife.OnClick;
 
 /**
  * @CreateBy qsmaxmin

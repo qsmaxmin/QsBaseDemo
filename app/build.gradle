@@ -1,6 +1,8 @@
 apply plugin: 'com.android.application'
-apply plugin: 'org.greenrobot.greendao' // apply plugin
+apply plugin: 'org.greenrobot.greendao'
 apply plugin: 'com.hujiang.android-aspectjx'
+apply plugin: 'com.jakewharton.butterknife'
+apply plugin: 'android-apt'
 
 android {
     compileSdkVersion 25
@@ -72,4 +74,6 @@ dependencies {
 
 //    compile 'com.github.qsmaxmin:QsBase:afc0cbf1ee'
     compile 'com.qsmaxmin.qsbase:base:1.0.0'
+
+    apt 'com.jakewharton:butterknife-compiler:8.6.0'
 }

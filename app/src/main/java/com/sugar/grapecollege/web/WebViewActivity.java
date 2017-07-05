@@ -5,14 +5,14 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.TextView;
 
+import com.qsmaxmin.qsbase.common.viewbind.annotation.Bind;
+import com.qsmaxmin.qsbase.common.viewbind.annotation.OnClick;
 import com.qsmaxmin.qsbase.mvp.QsABActivity;
 import com.qsmaxmin.qsbase.mvp.presenter.Presenter;
 import com.sugar.grapecollege.R;
 import com.sugar.grapecollege.web.fragment.WebFragment;
 import com.sugar.grapecollege.web.presenter.WebViewPresenter;
 
-import butterknife.Bind;
-import butterknife.OnClick;
 
 /**
  * @CreateBy qsmaxmin

@@ -4,11 +4,10 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.qsmaxmin.qsbase.common.viewbind.annotation.Bind;
 import com.qsmaxmin.qsbase.mvp.adapter.QsRecycleAdapterItem;
 import com.sugar.grapecollege.R;
 import com.sugar.grapecollege.test.model.TestModel;
-
-import butterknife.Bind;
 
 /**
  * @CreateBy qsmaxmin

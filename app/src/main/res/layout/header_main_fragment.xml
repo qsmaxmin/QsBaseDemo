@@ -34,6 +34,7 @@
         android:orientation="horizontal">
 
         <TextView
+            android:clickable="true"
             android:id="@+id/tv_left"
             android:layout_width="0dp"
             android:layout_height="match_parent"

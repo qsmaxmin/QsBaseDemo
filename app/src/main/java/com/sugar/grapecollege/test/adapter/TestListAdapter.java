@@ -3,12 +3,11 @@ package com.sugar.grapecollege.test.adapter;
 import android.view.View;
 import android.widget.TextView;
 
+import com.qsmaxmin.qsbase.common.utils.QsHelper;
+import com.qsmaxmin.qsbase.common.viewbind.annotation.Bind;
 import com.qsmaxmin.qsbase.mvp.adapter.QsListAdapterItem;
 import com.sugar.grapecollege.R;
 import com.sugar.grapecollege.test.model.TestModel;
-
-import butterknife.Bind;
-import butterknife.ButterKnife;
 
 /**
  * @CreateBy qsmaxmin
@@ -24,7 +23,7 @@ public class TestListAdapter extends QsListAdapterItem<TestModel.TestModelInfo> 
     }
 
     @Override public void init(View view) {
-        ButterKnife.bind(this, view);
+        QsHelper.getInstance().getViewBindHelper().bind(this,view);
     }
 
     @Override public void bindData(TestModel.TestModelInfo testModelInfo, int i, int i1) {

@@ -5,13 +5,13 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.TextView;
 
+import com.qsmaxmin.qsbase.common.viewbind.annotation.Bind;
+import com.qsmaxmin.qsbase.common.viewbind.annotation.OnClick;
 import com.qsmaxmin.qsbase.mvp.QsABActivity;
 import com.sugar.grapecollege.R;
 import com.sugar.grapecollege.test.fragment.TestPullRecyclerFragment;
 import com.sugar.grapecollege.test.fragment.TestViewPagerFragment;
 
-import butterknife.Bind;
-import butterknife.OnClick;
 
 /**
  * @CreateBy qsmaxmin
@@ -31,7 +31,7 @@ public class TestABActivity extends QsABActivity {
         commitFragment(TestPullRecyclerFragment.getInstance());
     }
 
-    @OnClick({R.id.tv_edit, R.id.view_back}) public void onItemViewClick(View view) {
+    @OnClick({R.id.tv_edit, R.id.view_back}) private void onItemViewClick(View view) {
         switch (view.getId()) {
             case R.id.tv_edit:
                 tv_edit.setVisibility(View.GONE);

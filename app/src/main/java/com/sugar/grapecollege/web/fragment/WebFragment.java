@@ -14,6 +14,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.qsmaxmin.qsbase.common.log.L;
+import com.qsmaxmin.qsbase.common.viewbind.annotation.Bind;
 import com.qsmaxmin.qsbase.mvp.fragment.QsFragment;
 import com.qsmaxmin.qsbase.mvp.presenter.Presenter;
 import com.sugar.grapecollege.R;
@@ -21,7 +22,6 @@ import com.sugar.grapecollege.common.widget.progress.ColorProgressBar;
 import com.sugar.grapecollege.web.model.WebConstants;
 import com.sugar.grapecollege.web.presenter.WebPresenter;
 
-import butterknife.Bind;
 
 /**
  * @CreateBy qsmaxmin
@@ -31,9 +31,9 @@ import butterknife.Bind;
 @Presenter(WebPresenter.class)
 public class WebFragment extends QsFragment<WebPresenter> implements DownloadListener {
 
-    @Bind(R.id.web_view) WebView          web_view;
+    @Bind(R.id.web_view)     WebView          web_view;
     @Bind(R.id.cpb_view) ColorProgressBar cpb_view;
-    private              String           mTitle;
+    private                  String           mTitle;
     private boolean timeOut = false;
 
     /**

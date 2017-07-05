@@ -4,25 +4,24 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.qsmaxmin.qsbase.common.viewbind.annotation.Bind;
 import com.qsmaxmin.qsbase.mvp.QsViewPagerABActivity;
 import com.qsmaxmin.qsbase.mvp.model.QsModelPager;
 import com.sugar.grapecollege.R;
 import com.sugar.grapecollege.home.fragment.MainFragment;
-import com.sugar.grapecollege.test.fragment.TestHeaderViewFragment;
 import com.sugar.grapecollege.home.fragment.UserFragment;
 
-import butterknife.Bind;
 
 public class HomeActivity extends QsViewPagerABActivity {
 
-    @Bind(R.id.tv_title) TextView tv_title;
+    @Bind(R.id.tv_title)   TextView tv_title;
 
     @Override public int actionbarLayoutId() {
         return R.layout.actionbar_title;
     }
 
     @Override public void initData(Bundle bundle) {
-
+        tv_title.setText("custom bind view");
     }
 
     @Override public QsModelPager[] getModelPagers() {
@@ -35,7 +34,7 @@ public class HomeActivity extends QsViewPagerABActivity {
         modelPager3.fragment = UserFragment.getInstance();
         modelPager3.title = "title1";
         modelPager3.position = 1;
-        return new QsModelPager[]{modelPager1,modelPager3};
+        return new QsModelPager[]{modelPager1, modelPager3};
     }
 
     @Override public int getTabItemLayout() {

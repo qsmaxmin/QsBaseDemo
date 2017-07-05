@@ -5,12 +5,12 @@ import android.support.v4.app.Fragment;
 import android.view.View;
 
 import com.qsmaxmin.qsbase.common.utils.QsHelper;
+import com.qsmaxmin.qsbase.common.viewbind.annotation.OnClick;
 import com.qsmaxmin.qsbase.mvp.fragment.QsFragment;
 import com.sugar.grapecollege.R;
 import com.sugar.grapecollege.account.AccountActivity;
 import com.sugar.grapecollege.common.dialog.CustomDialog;
 
-import butterknife.OnClick;
 
 /**
  * @CreateBy qsmaxmin
@@ -36,7 +36,7 @@ public class UserFragment extends QsFragment {
     @Override public void initData(Bundle savedInstanceState) {
     }
 
-    @OnClick({R.id.tv_download, R.id.tv_myfont, R.id.tv_law, R.id.ll_header}) public void onItemViewClick(View view) {
+    @OnClick({R.id.tv_download, R.id.tv_myfont, R.id.tv_law, R.id.ll_header}) private void onItemViewClick(View view) {
         switch (view.getId()) {
             case R.id.ll_header:
                 intent2Activity(AccountActivity.class);

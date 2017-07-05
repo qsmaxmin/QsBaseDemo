@@ -7,6 +7,7 @@ import android.view.View;
 import com.qsmaxmin.qsbase.common.aspect.ThreadPoint;
 import com.qsmaxmin.qsbase.common.aspect.ThreadType;
 import com.qsmaxmin.qsbase.common.log.L;
+import com.qsmaxmin.qsbase.common.viewbind.annotation.OnClick;
 import com.qsmaxmin.qsbase.mvp.adapter.QsListAdapterItem;
 import com.qsmaxmin.qsbase.mvp.presenter.Presenter;
 import com.sugar.grapecollege.R;
@@ -18,7 +19,6 @@ import com.sugar.grapecollege.product.model.ModelProductInfo;
 import com.sugar.grapecollege.test.TestABActivity;
 import com.sugar.grapecollege.test.TestActivity;
 
-import butterknife.OnClick;
 
 /**
  * @CreateBy qsmaxmin
@@ -58,7 +58,7 @@ public class MainFragment extends BasePullListFragment<MainPresenter, ModelProdu
         showContentView();
     }
 
-    @OnClick({R.id.tv_left, R.id.tv_right}) public void onItemViewClick(View view) {
+    @OnClick({R.id.tv_left, R.id.tv_right}) private void onItemViewClick(View view) {
         switch (view.getId()) {
             case R.id.tv_left:
                 intent2Activity(TestActivity.class);

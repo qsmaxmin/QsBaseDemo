@@ -5,11 +5,10 @@ import android.support.v4.app.Fragment;
 import android.widget.TextView;
 
 import com.qsmaxmin.qsbase.common.log.L;
+import com.qsmaxmin.qsbase.common.viewbind.annotation.Bind;
 import com.qsmaxmin.qsbase.mvp.fragment.QsHeaderViewpagerFragment;
 import com.qsmaxmin.qsbase.mvp.model.QsModelPager;
 import com.sugar.grapecollege.R;
-
-import butterknife.Bind;
 
 /**
  * @CreateBy qsmaxmin
