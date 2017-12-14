@@ -2,6 +2,7 @@ package com.sugar.grapecollege;
 
 import com.qsmaxmin.qsbase.QsApplication;
 import com.qsmaxmin.qsbase.common.http.HttpAdapter;
+import com.qsmaxmin.qsbase.common.http.HttpBuilder;
 import com.sugar.grapecollege.common.model.AppConstants;
 
 /**
@@ -26,11 +27,16 @@ public class GrapeApplication extends QsApplication {
         return true;
     }
 
-    @Override public void initHttpAdapter(HttpAdapter httpAdapter) {
-        httpAdapter.addHeader("Content-Type", "application/json");
-        httpAdapter.addHeader("os", AppConstants.APP_OS);
-        httpAdapter.addHeader("bundleId", AppConstants.PACKAGE_NAME);
+    /**
+     * 给http请求设置参数
+     */
+    @Override public void initHttpAdapter(HttpBuilder httpBuilder) {
+        httpBuilder.setTerminal("http://www.baidu.com");
+        httpBuilder.addHeader("Content-Type", "application/json");
+        httpBuilder.addHeader("os", AppConstants.APP_OS);
+        httpBuilder.addHeader("bundleId", AppConstants.PACKAGE_NAME);
     }
+
 
 
     /**

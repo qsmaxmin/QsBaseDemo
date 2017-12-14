@@ -18,4 +18,8 @@ public class SettingActivity extends QsABActivity {
 
     @Override public void initData(Bundle savedInstanceState) {
     }
+
+    @Override public boolean isTransparentStatusBar() {
+        return true;
+    }
 }

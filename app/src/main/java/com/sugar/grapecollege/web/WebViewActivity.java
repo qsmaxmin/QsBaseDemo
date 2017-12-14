@@ -8,7 +8,6 @@ import android.widget.TextView;
 import com.qsmaxmin.qsbase.common.viewbind.annotation.Bind;
 import com.qsmaxmin.qsbase.common.viewbind.annotation.OnClick;
 import com.qsmaxmin.qsbase.mvp.QsABActivity;
-import com.qsmaxmin.qsbase.mvp.presenter.Presenter;
 import com.sugar.grapecollege.R;
 import com.sugar.grapecollege.web.fragment.WebFragment;
 import com.sugar.grapecollege.web.presenter.WebViewPresenter;
@@ -19,7 +18,6 @@ import com.sugar.grapecollege.web.presenter.WebViewPresenter;
  * @Date 16/8/24 下午4:42
  * @Description 网页视图
  */
-@Presenter(WebViewPresenter.class)
 public class WebViewActivity extends QsABActivity<WebViewPresenter>  {
 
     @Bind(R.id.tv_title) TextView tv_title;//标题

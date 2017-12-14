@@ -99,4 +99,8 @@ public class SearcherActivity extends QsABActivity implements TextWatcher, TextV
         return (SearcherListFragment) getSupportFragmentManager().findFragmentByTag(SearcherListFragment.class.getSimpleName());
     }
 
+
+    @Override public boolean isTransparentStatusBar() {
+        return true;
+    }
 }

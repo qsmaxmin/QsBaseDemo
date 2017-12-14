@@ -4,6 +4,7 @@ import android.os.SystemClock;
 import android.text.TextUtils;
 
 import com.qsmaxmin.qsbase.common.aspect.ThreadPoint;
+import com.qsmaxmin.qsbase.common.aspect.ThreadType;
 import com.qsmaxmin.qsbase.common.log.L;
 import com.qsmaxmin.qsbase.common.utils.QsHelper;
 import com.sugar.grapecollege.common.http.SearcherHttp;
@@ -26,7 +27,7 @@ public class SearcherListPresenter extends GrapeCollegePresenter<SearcherListFra
 
     private int page;
 
-    @ThreadPoint public void requestSearcherData(String keyWord, boolean isLoadingMore) {
+    @ThreadPoint(ThreadType.HTTP) public void requestSearcherData(String keyWord, boolean isLoadingMore) {
         if (!TextUtils.isEmpty(keyWord)) {
             SearcherHttp searcherHttp = QsHelper.getInstance().getHttpHelper().create(SearcherHttp.class);
             ModelSearchReq req = new ModelSearchReq();

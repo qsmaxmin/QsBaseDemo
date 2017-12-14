@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import android.webkit.WebView;
 
 import com.qsmaxmin.qsbase.common.aspect.ThreadPoint;
+import com.qsmaxmin.qsbase.common.aspect.ThreadType;
 import com.qsmaxmin.qsbase.common.log.L;
 import com.qsmaxmin.qsbase.common.utils.QsHelper;
 import com.sugar.grapecollege.common.presenter.GrapeCollegePresenter;
@@ -23,7 +24,7 @@ public class WebPresenter extends GrapeCollegePresenter<WebFragment> {
     /**
      * 读取数据
      */
-    @ThreadPoint public void readData(Bundle bundle) {
+    @ThreadPoint(ThreadType.HTTP) public void readData(Bundle bundle) {
         if (bundle == null) {
             getView().activityFinish();
             return;

@@ -9,7 +9,6 @@ import com.qsmaxmin.qsbase.common.aspect.ThreadType;
 import com.qsmaxmin.qsbase.common.log.L;
 import com.qsmaxmin.qsbase.common.viewbind.annotation.OnClick;
 import com.qsmaxmin.qsbase.mvp.adapter.QsListAdapterItem;
-import com.qsmaxmin.qsbase.mvp.presenter.Presenter;
 import com.sugar.grapecollege.R;
 import com.sugar.grapecollege.common.fragment.BasePullListFragment;
 import com.sugar.grapecollege.home.adapter.MainListAdapterItem;
@@ -25,7 +24,6 @@ import com.sugar.grapecollege.test.TestActivity;
  * @Date 2017/4/27 15:58
  * @Description
  */
-@Presenter(MainPresenter.class)
 public class MainFragment extends BasePullListFragment<MainPresenter, ModelProductInfo.ProductInfo> {
 
     public static Fragment getInstance() {

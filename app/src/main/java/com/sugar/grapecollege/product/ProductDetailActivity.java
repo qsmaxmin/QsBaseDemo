@@ -20,4 +20,8 @@ public class ProductDetailActivity extends QsABActivity {
     @Override public void initData(Bundle bundle) {
 
     }
+
+    @Override public boolean isTransparentStatusBar() {
+        return true;
+    }
 }

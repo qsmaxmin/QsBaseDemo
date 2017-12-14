@@ -3,6 +3,7 @@ package com.sugar.grapecollege.test.presenter;
 import android.os.SystemClock;
 
 import com.qsmaxmin.qsbase.common.aspect.ThreadPoint;
+import com.qsmaxmin.qsbase.common.aspect.ThreadType;
 import com.qsmaxmin.qsbase.common.utils.QsHelper;
 import com.sugar.grapecollege.common.http.HomeHttp;
 import com.sugar.grapecollege.common.model.BaseModelReq;
@@ -22,7 +23,7 @@ public class TestPullRecyclerPresenter extends GrapeCollegePresenter<TestPullRec
 
     int page;
 
-    @ThreadPoint public void requestListData(boolean isLoadingMore) {
+    @ThreadPoint(ThreadType.HTTP) public void requestListData(boolean isLoadingMore) {
         SystemClock.sleep(1000);
         HomeHttp http = QsHelper.getInstance().getHttpHelper().create(HomeHttp.class);
         BaseModelReq req = new BaseModelReq();

@@ -141,7 +141,8 @@
     <dimen name="dp_403">403dp</dimen>
     <dimen name="dp_412">412dp</dimen>
     <dimen name="dp_461">461dp</dimen>
-
+    <dimen name="actionbar_size">50dp</dimen>
+    <dimen name="actionbar_top_padding">0dp</dimen>
 
 
 </resources>

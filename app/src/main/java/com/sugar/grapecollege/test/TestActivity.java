@@ -16,4 +16,8 @@ public class TestActivity extends QsActivity {
     @Override public void initData(Bundle bundle) {
         commitFragment(TestHeaderViewFragment.getInstance());
     }
+
+    @Override public boolean isTransparentStatusBar() {
+        return true;
+    }
 }

@@ -16,4 +16,7 @@ public class AccountActivity extends QsActivity {
         commitFragment(LoginFragment.getInstance());
     }
 
+    @Override public boolean isTransparentStatusBar() {
+        return true;
+    }
 }

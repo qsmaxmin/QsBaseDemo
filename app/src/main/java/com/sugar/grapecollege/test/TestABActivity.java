@@ -52,4 +52,8 @@ public class TestABActivity extends QsABActivity {
         }
         return super.onKeyDown(keyCode, event);
     }
+
+    @Override public boolean isTransparentStatusBar() {
+        return true;
+    }
 }

@@ -3,7 +3,6 @@ package com.sugar.grapecollege.searcher.fragment;
 import android.os.Bundle;
 
 import com.qsmaxmin.qsbase.mvp.adapter.QsListAdapterItem;
-import com.qsmaxmin.qsbase.mvp.presenter.Presenter;
 import com.sugar.grapecollege.common.fragment.BasePullListFragment;
 import com.sugar.grapecollege.product.model.ModelProductInfo;
 import com.sugar.grapecollege.searcher.adapter.SearcherAdapterItem;
@@ -16,7 +15,6 @@ import com.sugar.grapecollege.searcher.presenter.SearcherListPresenter;
  * @Date 2017/5/3 10:59
  * @Description
  */
-@Presenter(SearcherListPresenter.class)
 public class SearcherListFragment extends BasePullListFragment<SearcherListPresenter, ModelProductInfo.ProductInfo> {
 
     private String keyWord;

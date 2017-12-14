@@ -27,6 +27,10 @@ public class HomeActivity extends QsViewPagerABActivity {
         requestPermission();
     }
 
+    @Override public boolean isTransparentStatusBar() {
+        return true;
+    }
+
     /**
      * 因为要申请完权限通过后再初始化ViewPager
      * 所以返回null

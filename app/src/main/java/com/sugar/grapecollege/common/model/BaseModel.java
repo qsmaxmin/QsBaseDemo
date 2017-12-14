@@ -14,4 +14,16 @@ public class BaseModel extends QsModel {
     public String msg;
 
     public boolean isLastPage;
+
+    @Override public boolean isResponseOk() {
+        return code == 0;
+    }
+
+    @Override public String getMessage() {
+        return msg;
+    }
+
+    @Override public boolean isLastPage() {
+        return isLastPage;
+    }
 }

@@ -3,7 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="?actionBarSize"
+    android:layout_height="@dimen/actionbar_size"
+    android:paddingTop="@dimen/actionbar_top_padding"
     android:background="@color/color_toolbar_bg">
 
     <LinearLayout

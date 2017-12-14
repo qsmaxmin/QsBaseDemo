@@ -8,7 +8,6 @@ import android.widget.TextView;
 
 import com.qsmaxmin.qsbase.common.viewbind.annotation.Bind;
 import com.qsmaxmin.qsbase.mvp.adapter.QsRecycleAdapterItem;
-import com.qsmaxmin.qsbase.mvp.presenter.Presenter;
 import com.sugar.grapecollege.R;
 import com.sugar.grapecollege.common.fragment.BasePullRecyclerFragment;
 import com.sugar.grapecollege.test.adapter.TestRecyclerAdapter;
@@ -21,7 +20,6 @@ import com.sugar.grapecollege.test.presenter.TestPullRecyclerPresenter;
  * @Date 2017/7/4 18:14
  * @Description
  */
-@Presenter(TestPullRecyclerPresenter.class)
 public class TestPullRecyclerFragment extends BasePullRecyclerFragment<TestPullRecyclerPresenter, TestModel.TestModelInfo> {
 
     @Bind(R.id.tv_left) TextView tv_left;

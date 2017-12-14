@@ -1,0 +1,4 @@
+<resources>
+    <dimen name="actionbar_size">75dp</dimen>
+    <dimen name="actionbar_top_padding">25dp</dimen>
+</resources>
