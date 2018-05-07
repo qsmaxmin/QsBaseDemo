@@ -1,6 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'org.greenrobot.greendao'
-apply plugin: 'android-aspectjx'
+apply plugin: 'android-aspectjx'//QsBase Add
 
 android {
     compileSdkVersion 25
@@ -53,7 +53,6 @@ dependencies {
     compile 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:1.1.6'
     compile 'com.joooonho:selectableroundedimageview:1.0.1'
 
-    //noinspection GradleDependency
-    compile 'com.github.qsmaxmin:QsBase:-SNAPSHOT'
-//    compile 'com.qsmaxmin.qsbase:base:1.0.0'
+    //QsBase Add
+    compile('com.github.qsmaxmin:QsBase:3.5.2')
 }

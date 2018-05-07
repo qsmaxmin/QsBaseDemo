@@ -38,7 +38,7 @@ public class SearcherActivity extends QsABActivity implements TextWatcher, TextV
         commitFragment(SearcherListFragment.getInstance(getIntent().getExtras() == null ? new Bundle() : getIntent().getExtras()));
     }
 
-    @OnClick({R.id.tv_cancel, R.id.iv_clean}) public void onItemViewClick(View view) {
+    @OnClick({R.id.tv_cancel, R.id.iv_clean}) public void onViewClick(View view) {
         switch (view.getId()) {
             case R.id.tv_cancel:
                 activityFinish();

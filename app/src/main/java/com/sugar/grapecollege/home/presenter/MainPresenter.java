@@ -36,7 +36,7 @@ public class MainPresenter extends GrapeCollegePresenter<MainFragment> {
 
     @ThreadPoint(ThreadType.HTTP) public void requestListData(boolean isLoadingMore, boolean needCache) {
         if (needCache) setListCacheData();
-        HomeHttp http = QsHelper.getInstance().getHttpHelper().create(HomeHttp.class);
+        HomeHttp http = createHttpRequest(HomeHttp.class);
         BaseModelReq req = new BaseModelReq();
         if (isLoadingMore) {
             if (page < 1) return;

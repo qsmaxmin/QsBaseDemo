@@ -1,6 +1,7 @@
 package com.sugar.grapecollege.pay;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import com.qsmaxmin.qsbase.common.viewbind.annotation.Bind;
@@ -27,8 +28,8 @@ public class PayActivity extends QsABActivity {
         return false;
     }
 
-    @OnClick(R.id.ll_back) public void onItemViewClick() {
-        onBackPressed();
+    @OnClick(R.id.ll_back) @Override public void onViewClick(View view) {
+        super.onViewClick(view);
     }
 
     @Override public int actionbarLayoutId() {

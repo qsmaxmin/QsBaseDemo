@@ -56,7 +56,7 @@ public class MainFragment extends BasePullListFragment<MainPresenter, ModelProdu
         showContentView();
     }
 
-    @OnClick({R.id.tv_left, R.id.tv_right}) private void onItemViewClick(View view) {
+    @OnClick({R.id.tv_left, R.id.tv_right}) public void onViewClick(View view) {
         switch (view.getId()) {
             case R.id.tv_left:
                 intent2Activity(TestActivity.class);

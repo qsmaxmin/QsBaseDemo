@@ -25,7 +25,7 @@ public class TestPullRecyclerPresenter extends GrapeCollegePresenter<TestPullRec
 
     @ThreadPoint(ThreadType.HTTP) public void requestListData(boolean isLoadingMore) {
         SystemClock.sleep(1000);
-        HomeHttp http = QsHelper.getInstance().getHttpHelper().create(HomeHttp.class);
+        HomeHttp http = createHttpRequest(HomeHttp.class);
         BaseModelReq req = new BaseModelReq();
         if (isLoadingMore) {
             if (page < 1) return;

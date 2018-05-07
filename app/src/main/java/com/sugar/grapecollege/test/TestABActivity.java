@@ -31,7 +31,7 @@ public class TestABActivity extends QsABActivity {
         commitFragment(TestPullRecyclerFragment.getInstance());
     }
 
-    @OnClick({R.id.tv_edit, R.id.view_back}) private void onItemViewClick(View view) {
+    @OnClick({R.id.tv_edit, R.id.view_back}) public void onViewClick(View view) {
         switch (view.getId()) {
             case R.id.tv_edit:
                 tv_edit.setVisibility(View.GONE);

@@ -18,7 +18,7 @@ import com.sugar.grapecollege.web.presenter.WebViewPresenter;
  * @Date 16/8/24 下午4:42
  * @Description 网页视图
  */
-public class WebViewActivity extends QsABActivity<WebViewPresenter>  {
+public class WebViewActivity extends QsABActivity<WebViewPresenter> {
 
     @Bind(R.id.tv_title) TextView tv_title;//标题
 
@@ -50,7 +50,7 @@ public class WebViewActivity extends QsABActivity<WebViewPresenter>  {
     }
 
 
-    @OnClick({R.id.ll_back}) public void onMenuItemClick(View view) {
+    @OnClick({R.id.ll_back}) public void onViewClick(View view) {
         switch (view.getId()) {
             case R.id.ll_back:
                 applyBack();

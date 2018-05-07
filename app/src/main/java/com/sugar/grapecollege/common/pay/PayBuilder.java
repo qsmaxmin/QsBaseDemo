@@ -64,7 +64,7 @@ public class PayBuilder {
 
     private void requestOrder() {
         if (UserConfig.getInstance().isLogin()) {
-            PayHttp http = QsHelper.getInstance().getHttpHelper().create(PayHttp.class);
+            PayHttp http = QsHelper.getInstance().getHttpHelper().create(PayHttp.class, System.currentTimeMillis());
             ModelGenerateOrderReq modelReq = new ModelGenerateOrderReq();
             modelReq.searchMap.productId = fontId;
             modelReq.searchMap.channel = payChannel.index;

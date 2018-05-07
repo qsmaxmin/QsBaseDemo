@@ -36,7 +36,7 @@ public class UserFragment extends QsFragment {
     @Override public void initData(Bundle savedInstanceState) {
     }
 
-    @OnClick({R.id.tv_download, R.id.tv_myfont, R.id.tv_law, R.id.ll_header}) private void onItemViewClick(View view) {
+    @OnClick({R.id.tv_download, R.id.tv_myfont, R.id.tv_law, R.id.ll_header}) public void onViewClick(View view) {
         switch (view.getId()) {
             case R.id.ll_header:
                 intent2Activity(AccountActivity.class);

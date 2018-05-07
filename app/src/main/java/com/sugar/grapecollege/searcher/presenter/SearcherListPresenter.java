@@ -6,7 +6,6 @@ import android.text.TextUtils;
 import com.qsmaxmin.qsbase.common.aspect.ThreadPoint;
 import com.qsmaxmin.qsbase.common.aspect.ThreadType;
 import com.qsmaxmin.qsbase.common.log.L;
-import com.qsmaxmin.qsbase.common.utils.QsHelper;
 import com.sugar.grapecollege.common.http.SearcherHttp;
 import com.sugar.grapecollege.common.presenter.GrapeCollegePresenter;
 import com.sugar.grapecollege.product.model.ModelProductInfo;
@@ -29,7 +28,7 @@ public class SearcherListPresenter extends GrapeCollegePresenter<SearcherListFra
 
     @ThreadPoint(ThreadType.HTTP) public void requestSearcherData(String keyWord, boolean isLoadingMore) {
         if (!TextUtils.isEmpty(keyWord)) {
-            SearcherHttp searcherHttp = QsHelper.getInstance().getHttpHelper().create(SearcherHttp.class);
+            SearcherHttp searcherHttp = createHttpRequest(SearcherHttp.class);
             ModelSearchReq req = new ModelSearchReq();
             req.searchMap.searchStr = keyWord;
             if (isLoadingMore) {
