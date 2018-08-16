@@ -3,12 +3,12 @@ apply plugin: 'org.greenrobot.greendao'
 apply plugin: 'android-aspectjx'//QsBase Add
 
 android {
-    compileSdkVersion 25
+    compileSdkVersion 27
     buildToolsVersion '26.0.2'
     defaultConfig {
         applicationId "com.sugar.grapecollege"
         minSdkVersion 14
-        targetSdkVersion 25
+        targetSdkVersion 27
     }
     sourceSets {
         main {
@@ -42,17 +42,22 @@ android {
 
 }
 
+//AOP白名单，提高编译速度,
+aspectjx {
+    // Window环境：‘/’分割，MAC环境：‘.’分割
+    include 'com.qsmaxmin.qsbase', 'com/qsmaxmin/qsbase', 'com.sugar.grapecollege', 'com/sugar/grapecollege'
+}
+
 greendao {
     schemaVersion 1
 }
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'org.greenrobot:greendao:3.2.2'
     compile 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:1.1.6'
     compile 'com.joooonho:selectableroundedimageview:1.0.1'
 
     //QsBase Add
-    compile('com.github.qsmaxmin:QsBase:3.5.2')
+    compile 'com.github.qsmaxmin:QsBase:4.1.6'
 }

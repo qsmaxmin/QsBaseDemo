@@ -1,7 +1,6 @@
 package com.sugar.grapecollege.common.fragment;
 
 import com.qsmaxmin.qsbase.common.widget.ptr.PtrUIHandler;
-import com.qsmaxmin.qsbase.mvp.fragment.QsIPullListFragment;
 import com.qsmaxmin.qsbase.mvp.fragment.QsPullListFragment;
 import com.qsmaxmin.qsbase.mvp.presenter.QsPresenter;
 import com.sugar.grapecollege.common.widget.refreshHeader.BeautyCircleRefreshHeader;
@@ -11,7 +10,7 @@ import com.sugar.grapecollege.common.widget.refreshHeader.BeautyCircleRefreshHea
  * @Date 16/7/29
  * @Description 抽象类，重写了下拉刷新动画
  */
-public abstract class BasePullListFragment<T extends QsPresenter, D> extends QsPullListFragment<T, D> implements QsIPullListFragment<D> {
+public abstract class BasePullListFragment<T extends QsPresenter, D> extends QsPullListFragment<T, D>  {
 
     private BeautyCircleRefreshHeader refreshHeader;
 
