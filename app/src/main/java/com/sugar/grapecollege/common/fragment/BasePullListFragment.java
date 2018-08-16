@@ -23,4 +23,12 @@ public abstract class BasePullListFragment<T extends QsPresenter, D> extends QsP
         }
         return refreshHeader;
     }
+
+    /**
+     * 列表加载更多的触发方式
+     */
+    @Override protected int onLoadTriggerCondition() {
+        return LOAD_WHEN_SECOND_TO_LAST;
+//        return LOAD_WHEN_SCROLL_TO_BOTTOM;
+    }
 }
