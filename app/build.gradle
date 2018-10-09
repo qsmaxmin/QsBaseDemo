@@ -1,10 +1,12 @@
 apply plugin: 'com.android.application'
+//todo QsBase Add
 apply plugin: 'org.greenrobot.greendao'
-apply plugin: 'android-aspectjx'//QsBase Add
+apply plugin: 'android-aspectjx'
+apply plugin: 'com.qsmaxmin.plugin'
 
 android {
     compileSdkVersion 27
-    buildToolsVersion '26.0.2'
+    buildToolsVersion '26.0.3'
     defaultConfig {
         applicationId "com.sugar.grapecollege"
         minSdkVersion 14
@@ -54,10 +56,8 @@ greendao {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'org.greenrobot:greendao:3.2.2'
     compile 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:1.1.6'
-    compile 'com.joooonho:selectableroundedimageview:1.0.1'
 
-    //QsBase Add
-    compile 'com.github.qsmaxmin:QsBase:4.1.6'
+    //todo QsBase Add
+    compile 'com.github.qsmaxmin:QsBase:4.9.0'
 }

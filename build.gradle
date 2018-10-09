@@ -6,7 +6,7 @@ buildscript {
         mavenCentral()// apply plugin
 
         maven {
-            //QsBase Add
+            //todo QsBase Add
             url 'https://jitpack.io'
         }
         google()
@@ -15,12 +15,10 @@ buildscript {
         classpath 'com.android.tools.build:gradle:3.0.1'
         classpath 'org.greenrobot:greendao-gradle-plugin:3.2.2'
 
-        //QsBase Add
+        //todo QsBase Add
         classpath 'org.aspectj:aspectjtools:1.9.1'
         classpath 'com.github.qsmaxmin:gradle_plugin_android_aspectjx:2.0.1'
-
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
+        classpath 'com.github.qsmaxmin:QsPlugin:58843475f2'
     }
 }
 
@@ -28,7 +26,7 @@ allprojects {
     repositories {
         jcenter()
         maven {
-            //QsBase Add
+            //todo QsBase Add
             url 'https://jitpack.io'
         }
         google()

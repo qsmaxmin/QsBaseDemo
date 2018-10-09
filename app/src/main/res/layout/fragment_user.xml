@@ -31,12 +31,11 @@
                     android:orientation="vertical"
                     android:padding="@dimen/dp_10">
 
-                    <com.joooonho.SelectableRoundedImageView
+                    <ImageView
                         android:id="@+id/iv_header"
                         android:layout_width="@dimen/dp_50"
                         android:layout_height="@dimen/dp_50"
-                        android:src="@mipmap/ic_default_header"
-                        app:sriv_oval="true"/>
+                        android:src="@mipmap/ic_default_header"/>
 
                     <TextView
                         android:id="@+id/tv_name"
