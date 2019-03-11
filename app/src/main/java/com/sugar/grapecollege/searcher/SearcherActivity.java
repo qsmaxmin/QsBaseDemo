@@ -62,7 +62,7 @@ public class SearcherActivity extends QsABActivity implements TextWatcher, TextV
         }
     }
 
-    @Override public boolean onKeyDown(int keyCode, KeyEvent event) {
+    @Override public boolean onKeyDown(KeyEvent event,int keyCode) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             onBackPressed();
             return true;

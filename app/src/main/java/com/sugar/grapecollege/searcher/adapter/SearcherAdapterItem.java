@@ -24,10 +24,6 @@ public class SearcherAdapterItem extends QsListAdapterItem<ModelProductInfo.Prod
         return R.layout.item_product_list;
     }
 
-    @Override public void init(View view) {
-        QsHelper.getInstance().getViewBindHelper().bind(this, view);
-    }
-
     @Override public void bindData(ModelProductInfo.ProductInfo modelProduct, int i, int i1) {
         tv_name.setText(modelProduct.productName);
     }

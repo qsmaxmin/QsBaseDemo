@@ -44,7 +44,7 @@ public class TestABActivity extends QsABActivity {
         }
     }
 
-    @Override public boolean onKeyDown(int keyCode, KeyEvent event) {
+    @Override public boolean onKeyDown( KeyEvent event,int keyCode) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             tv_edit.setVisibility(View.VISIBLE);
             onBackPressed();

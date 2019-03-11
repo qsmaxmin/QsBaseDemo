@@ -58,7 +58,7 @@ public class WebViewActivity extends QsABActivity<WebViewPresenter> {
         }
     }
 
-    @Override public boolean onKeyDown(int keyCode, KeyEvent event) {
+    @Override public boolean onKeyDown(KeyEvent event, int keyCode) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             applyBack();
             return true;

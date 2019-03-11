@@ -22,10 +22,6 @@ public class TestListAdapter extends QsListAdapterItem<TestModel.TestModelInfo> 
         return R.layout.item_test_list;
     }
 
-    @Override public void init(View view) {
-        QsHelper.getInstance().getViewBindHelper().bind(this,view);
-    }
-
     @Override public void bindData(TestModel.TestModelInfo testModelInfo, int i, int i1) {
         tv_test.setText(String.valueOf(testModelInfo.testName + " -->>>> 我是ListView"));
     }

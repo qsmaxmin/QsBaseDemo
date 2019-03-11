@@ -16,19 +16,12 @@ public class UserConfig extends QsProperties {
      */
     private volatile static UserConfig USER_CONFIG;
 
-    private UserConfig() {
-    }
-
     private UserConfig(String configName) {
         super(configName);
     }
 
     @Override public String initTag() {
         return "UserConfig";
-    }
-
-    @Override public int initType() {
-        return QsProperties.OPEN_TYPE_DATA;
     }
 
     public static UserConfig getInstance() {

@@ -17,17 +17,11 @@ public class AppConfig extends QsProperties {
         return "AppConfig";
     }
 
-    @Override public int initType() {
-        return QsProperties.OPEN_TYPE_DATA;
-    }
 
     private static AppConfig APP_CONFIG = new AppConfig("AppConfig");
 
     public static AppConfig getInstance() {
         return APP_CONFIG;
-    }
-
-    private AppConfig() {
     }
 
     private AppConfig(String configName) {

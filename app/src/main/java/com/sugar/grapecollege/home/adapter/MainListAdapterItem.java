@@ -24,10 +24,6 @@ public class MainListAdapterItem extends QsListAdapterItem<ModelProductInfo.Prod
         return R.layout.item_product_list;
     }
 
-    @Override public void init(View view) {
-        QsHelper.getInstance().getViewBindHelper().bind(this, view);
-    }
-
     @Override public void bindData(ModelProductInfo.ProductInfo info, int i, int i1) {
         tv_name.setText(info.productName);
     }
