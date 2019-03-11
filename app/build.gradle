@@ -13,7 +13,7 @@ android {
     }
     sourceSets {
         main {
-            java.srcDirs = ['src/main/java', 'src/main/aidl']
+            java.srcDirs = ['src/main/java']
         }
     }
 
@@ -43,9 +43,9 @@ android {
 
 }
 
-//AOP编译白名单，提高编译速度及避免不必要的错误
+//todo QsBase Add, AOP编译白名单，提高编译速度及避免不必要的错误
 aspectjx {
-    include 'com.qsmaxmin.qsbase','com.sugar.grapecollege'
+    include 'com.qsmaxmin.qsbase', 'com.sugar.grapecollege'
 }
 
 greendao {
