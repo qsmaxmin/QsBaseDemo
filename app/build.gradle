@@ -1,8 +1,7 @@
 apply plugin: 'com.android.application'
-//todo QsBase Add
 apply plugin: 'org.greenrobot.greendao'
+//todo QsBase Add
 apply plugin: 'android-aspectjx'
-apply plugin: 'com.qsmaxmin.plugin'
 
 android {
     compileSdkVersion 27
@@ -44,10 +43,9 @@ android {
 
 }
 
-//AOP白名单，提高编译速度,
+//AOP编译白名单，提高编译速度及避免不必要的错误
 aspectjx {
-    // Window环境：‘/’分割，MAC环境：‘.’分割
-    include 'com.qsmaxmin.qsbase', 'com/qsmaxmin/qsbase', 'com.sugar.grapecollege', 'com/sugar/grapecollege'
+    include 'com.qsmaxmin.qsbase','com.sugar.grapecollege'
 }
 
 greendao {
@@ -59,5 +57,7 @@ dependencies {
     compile 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:1.1.6'
 
     //todo QsBase Add
-    compile 'com.github.qsmaxmin:QsBase:4.9.0'
+    compile 'com.github.qsmaxmin:QsBase:5.4.0'
 }
+
+

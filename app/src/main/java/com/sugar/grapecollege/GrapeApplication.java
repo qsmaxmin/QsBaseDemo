@@ -3,6 +3,7 @@ package com.sugar.grapecollege;
 import com.qsmaxmin.qsbase.QsApplication;
 import com.qsmaxmin.qsbase.common.http.HttpAdapter;
 import com.qsmaxmin.qsbase.common.http.HttpBuilder;
+import com.qsmaxmin.qsbase.common.http.QsHttpCallback;
 import com.sugar.grapecollege.common.model.AppConstants;
 
 /**
@@ -15,8 +16,6 @@ public class GrapeApplication extends QsApplication {
 
     @Override public void onCreate() {
         super.onCreate();
-//        DownloadHelper.getInstance().init(this, DownloadConstants.MAX_DOWNLOAD_COUNT);
-
         /*内存泄漏检测工具*/
 //        if (!LeakCanary.isInAnalyzerProcess(this)) {
 //            LeakCanary.install(this);
@@ -27,17 +26,9 @@ public class GrapeApplication extends QsApplication {
         return true;
     }
 
-    /**
-     * 给http请求设置参数
-     */
-    @Override public void initHttpAdapter(HttpBuilder httpBuilder) {
-        httpBuilder.setTerminal("http://www.baidu.com");
-        httpBuilder.addHeader("Content-Type", "application/json");
-        httpBuilder.addHeader("os", AppConstants.APP_OS);
-        httpBuilder.addHeader("bundleId", AppConstants.PACKAGE_NAME);
+    @Override public QsHttpCallback registerGlobalHttpListener() {
+        return super.registerGlobalHttpListener();
     }
-
-
 
     /**
      * 页面为空的布局

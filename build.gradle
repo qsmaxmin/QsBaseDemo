@@ -17,8 +17,7 @@ buildscript {
 
         //todo QsBase Add
         classpath 'org.aspectj:aspectjtools:1.9.1'
-        classpath 'com.github.qsmaxmin:gradle_plugin_android_aspectjx:2.0.1'
-        classpath 'com.github.qsmaxmin:QsPlugin:58843475f2'
+        classpath 'com.github.qsmaxmin:gradle_plugin_android_aspectjx:2.0.4'
     }
 }
 
@@ -36,3 +35,4 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
