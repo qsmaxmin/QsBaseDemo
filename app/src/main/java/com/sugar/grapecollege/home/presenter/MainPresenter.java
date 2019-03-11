@@ -25,10 +25,13 @@ import java.util.ArrayList;
 public class MainPresenter extends GrapeCollegePresenter<MainFragment> {
     private int page;
 
+    /**
+     * 注解ThreadPoint(ThreadType.HTTP)的作用是将该方法放入Http线程中执行
+     */
     @ThreadPoint(ThreadType.HTTP) public void requestBannerData() {
 //        setHeaderCacheData();
         L.i(initTag(), "requestBannerData 当前线程:" + Thread.currentThread().getName());
-//        HomeHttp homeHttp = QsHelper.initRestAdapter().create(HomeHttp.class);
+//        HomeHttp homeHttp = createHttpRequest(HomeHttp.class);
 //        ModelHomeHeader header = homeHttp.requestHomeHeaderData(new BaseModelReq());
         ModelHomeHeader header = getTestHeaderData();
         getView().updateHeader(header);
