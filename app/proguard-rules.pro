@@ -85,59 +85,67 @@
 
 
 ###################################  FounderBase框架  ############################################
--keep class j2w.team.** { *; }
--dontwarn j2w.team.*
+-keep class com.qsmaxmin.qsbase** { *; }
+-dontwarn com.qsmaxmin.qsbase.*
+
 #View注入
 -keep class * extends java.lang.annotation.Annotation { *; }
-#picasso
--dontwarn com.squareup.okhttp.**
 
-#butterknife
--keep class butterknife.** { *; }
--dontwarn butterknife.internal.**
--keep class **$$ViewBinder { *; }
--keepclasseswithmembernames class * {
-    @butterknife.* <fields>;
-}
--keepclasseswithmembernames class * {
-    @butterknife.* <methods>;
-}
+#okhttp
+-dontwarn okio.**
+-dontwarn okhttp3.**
+-dontwarn in.srain.cube.**
+-keep class in.srain.cube.**{*;}
+-keep class okhttp3.**{*;}
 
-#okio
--dontwarn okio.
--dontwarn in.srain.cube.
--keep class in.srain.cube.**
+-dontwarn javax.annotation.**
+-dontwarn org.conscrypt.**
+-keepnames class okhttp3.internal.publicsuffix.PublicSuffixDatabase
+
 #EventBus
 -keep class de.greenrobot.event.** {*;}
 -keepclassmembers class ** {
      public void onEvent*(**);
         void onEvent*(**);
 }
--keepclassmembers class * extends j2w.team.common.event.J2WEvent {*;}
--keepclassmembers class $ extends j2w.team.common.event.J2WEvent {*;}
 
 #GSON
 -keep class sun.misc.Unsafe { *; }
 -keep class com.google.gson.examples.android.model. { *; }
-#AVAX
--dontwarn javax.annotation.
--keep class javax.annotation.
--dontwarn javax.inject.
--keep class javax.inject.
+
+#JAVAX
+-dontwarn javax.annotation.*
+-keep class javax.annotation.**{*;}
+-dontwarn javax.inject.*
+-keep class javax.inject.**{*;}
 
 #model防止混淆
--keepclassmembers class * extends j2w.team.mvp.model.J2WModel {*;}
--keepclassmembers class $ extends j2w.team.mvp.model.J2WModel {*;}
--keepclassmembers class * extends com.sugar.fontstore.common.model.BaseModel {*;}
--keepclassmembers class * extends com.sugar.fontstore.common.model.BaseModelReq {*;}
--keepclassmembers class * extends com.sugar.fontstore.common.model.** {
-   *;
-   public static class *;
+-keepclassmembers class * extends com.qsmaxmin.qsbase.common.model.QsModel {*;}
+-keepclassmembers class $ extends com.qsmaxmin.qsbase.common.model.QsModel {*;}
+-keepclassmembers class * extends com.font.common.http.model.BaseModelReq {*;}
+-keepclassmembers class $ extends com.font.common.http.model.BaseModelReq {*;}
+-keepclassmembers class * extends com.font.common.http.model.BaseModel {*;}
+-keepclassmembers class $ extends com.font.common.http.model.BaseModel {*;}
+-keepclassmembers class * extends com.qsmaxmin.qsbase.mvp.adapter.QsListAdapterItem {*;}
+-keepclassmembers class $ extends com.qsmaxmin.qsbase.mvp.adapter.QsListAdapterItem {*;}
+-keepclassmembers class * extends com.qsmaxmin.qsbase.common.viewbind.AnnotationExecutor {*;}
+
+#Presenter防止混淆
+-keepclassmembers class * extends com.qsmaxmin.qsbase.mvp.presenter.QsPresenter {*;}
+
+#Config防止混淆
+-keepclassmembers class * extends com.qsmaxmin.qsbase.common.config.QsProperties{*;}
+
+#Glide防止混淆
+-keep class * extends com.bumptech.glide.module.AppGlideModule{*;}
+-keep class * extends com.bumptech.glide.module.LibraryGlideModule{*;}
+-keep class com.bumptech.glide.GeneratedAppGlideModuleImpl{*;}
+-keep class * implements com.bumptech.glide.module.GlideModule
+-keep public enum com.bumptech.glide.load.ImageHeaderParser$** {
+  **[] $VALUES;
+  public *;
 }
--keepclassmembers class com.sugar.fontstore.common.greendao.model.**{
- *;
-   public static class *;
-}
+-dontwarn com.bumptech.glide.load.resource.bitmap.VideoDecoder
 
 #############################  友盟统计混淆  ####################################
 -keepclassmembers class * {
