@@ -15,7 +15,6 @@ import com.sugar.grapecollege.home.fragment.UserFragment;
 
 
 public class HomeActivity extends QsViewPagerABActivity {
-
     @Bind(R.id.tv_title) TextView tv_title;
 
     @Override public int actionbarLayoutId() {
