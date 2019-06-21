@@ -84,7 +84,7 @@
 -keepclassmembers class * implements java.io.Serializable {*;}
 
 
-###################################  FounderBase框架  ############################################
+###################################  QsBase框架  ############################################
 -keep class com.qsmaxmin.qsbase** { *; }
 -dontwarn com.qsmaxmin.qsbase.*
 
