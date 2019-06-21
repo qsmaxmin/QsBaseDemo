@@ -120,15 +120,17 @@
 -keep class javax.inject.**{*;}
 
 #model防止混淆
--keepclassmembers class * extends com.qsmaxmin.qsbase.common.model.QsModel {*;}
--keepclassmembers class $ extends com.qsmaxmin.qsbase.common.model.QsModel {*;}
--keepclassmembers class * extends com.font.common.http.model.BaseModelReq {*;}
--keepclassmembers class $ extends com.font.common.http.model.BaseModelReq {*;}
--keepclassmembers class * extends com.font.common.http.model.BaseModel {*;}
--keepclassmembers class $ extends com.font.common.http.model.BaseModel {*;}
--keepclassmembers class * extends com.qsmaxmin.qsbase.mvp.adapter.QsListAdapterItem {*;}
--keepclassmembers class $ extends com.qsmaxmin.qsbase.mvp.adapter.QsListAdapterItem {*;}
--keepclassmembers class * extends com.qsmaxmin.qsbase.common.viewbind.AnnotationExecutor {*;}
+-keep class * extends com.qsmaxmin.qsbase.common.model.QsModel {*;}
+-keep class $ extends com.qsmaxmin.qsbase.common.model.QsModel {*;}
+-keep class * extends com.font.common.http.model.BaseModelReq {*;}
+-keep class $ extends com.font.common.http.model.BaseModelReq {*;}
+-keep class * extends com.font.common.http.model.BaseModel {*;}
+-keep class $ extends com.font.common.http.model.BaseModel {*;}
+-keep class * extends com.qsmaxmin.qsbase.mvp.adapter.QsListAdapterItem {*;}
+-keep class $ extends com.qsmaxmin.qsbase.mvp.adapter.QsListAdapterItem {*;}
+-keep class * extends com.qsmaxmin.qsbase.mvp.adapter.QsRecycleAdapterItem {*;}
+-keep class $ extends com.qsmaxmin.qsbase.mvp.adapter.QsRecycleAdapterItem {*;}
+-keep class * extends com.qsmaxmin.qsbase.common.viewbind.AnnotationExecutor{*;}
 
 #Presenter防止混淆
 -keepclassmembers class * extends com.qsmaxmin.qsbase.mvp.presenter.QsPresenter {*;}

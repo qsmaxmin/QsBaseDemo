@@ -1,9 +1,7 @@
 package com.sugar.grapecollege.home.adapter;
 
-import android.view.View;
 import android.widget.TextView;
 
-import com.qsmaxmin.qsbase.common.utils.QsHelper;
 import com.qsmaxmin.qsbase.common.viewbind.annotation.Bind;
 import com.qsmaxmin.qsbase.mvp.adapter.QsListAdapterItem;
 import com.sugar.grapecollege.R;
