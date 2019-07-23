@@ -45,9 +45,6 @@ public class HomeActivity extends QsViewPagerABActivity {
         float testFloat = AppConfig.getInstance().testFloat;
         double testDouble = AppConfig.getInstance().testDouble;
         boolean testBoolean = AppConfig.getInstance().testBoolean;
-        ModelSearch testObject = AppConfig.getInstance().testObject;
-        List<ModelSearch> testObjectList = AppConfig.getInstance().testObjectList;
-        Map<String, ModelSearch> testObjectMap = AppConfig.getInstance().testObjectMap;
 
         L.i(initTag(), "testString = " + testString);
         L.i(initTag(), "testInt = " + testInt);
@@ -58,9 +55,6 @@ public class HomeActivity extends QsViewPagerABActivity {
         L.i(initTag(), "testFloat = " + testFloat);
         L.i(initTag(), "testDouble = " + testDouble);
         L.i(initTag(), "testBoolean = " + testBoolean);
-        L.i(initTag(), "testObject = " + testObject);
-        L.i(initTag(), "testObjectList = " + testObjectList);
-        L.i(initTag(), "testObjectMap = " + testObjectMap);
 
         AppConfig.getInstance().testString = "hello world~";
         AppConfig.getInstance().testInt = 1;
@@ -79,16 +73,6 @@ public class HomeActivity extends QsViewPagerABActivity {
             product.name = "product " + i;
             modelSearch.responseData.add(product);
         }
-        AppConfig.getInstance().testObject = modelSearch;
-
-
-        ArrayList<ModelSearch> list = new ArrayList<>();
-        list.add(modelSearch);
-        AppConfig.getInstance().testObjectList = list;
-
-        HashMap<String, ModelSearch> hashMap = new HashMap<>();
-        hashMap.put("my key", modelSearch);
-        AppConfig.getInstance().testObjectMap = hashMap;
 
         AppConfig.getInstance().commit();
     }
