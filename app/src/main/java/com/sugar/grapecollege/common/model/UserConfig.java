@@ -27,7 +27,7 @@ public class UserConfig extends QsProperties {
     public static UserConfig getInstance() {
         if (USER_CONFIG == null) {
             synchronized (UserConfig.class) {
-                if (USER_CONFIG == null) USER_CONFIG = new UserConfig("UserConfig" + AppConfig.getInstance().userId);
+                if (USER_CONFIG == null) USER_CONFIG = new UserConfig("UserConfig" + AppConfig.getInstance().testString);
             }
         }
         return USER_CONFIG;

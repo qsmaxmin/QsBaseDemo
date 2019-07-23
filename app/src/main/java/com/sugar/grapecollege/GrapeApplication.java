@@ -3,11 +3,7 @@ package com.sugar.grapecollege;
 import android.support.annotation.Keep;
 
 import com.qsmaxmin.qsbase.QsApplication;
-import com.qsmaxmin.qsbase.common.http.HttpAdapter;
-import com.qsmaxmin.qsbase.common.http.HttpBuilder;
 import com.qsmaxmin.qsbase.common.http.QsHttpCallback;
-import com.qsmaxmin.qsbase.common.utils.QsHelper;
-import com.sugar.grapecollege.common.model.AppConstants;
 
 /**
  * @CreateBy qsmaxmin
@@ -19,7 +15,6 @@ public class GrapeApplication extends QsApplication {
 
     @Override public void onCreate() {
         super.onCreate();
-        QsHelper.getInstance().enableFastBindView();
         /*内存泄漏检测工具*/
 //        if (!LeakCanary.isInAnalyzerProcess(this)) {
 //            LeakCanary.install(this);

@@ -122,21 +122,17 @@
 #model防止混淆
 -keep class * extends com.qsmaxmin.qsbase.common.model.QsModel {*;}
 -keep class $ extends com.qsmaxmin.qsbase.common.model.QsModel {*;}
--keep class * extends com.font.common.http.model.BaseModelReq {*;}
--keep class $ extends com.font.common.http.model.BaseModelReq {*;}
--keep class * extends com.font.common.http.model.BaseModel {*;}
--keep class $ extends com.font.common.http.model.BaseModel {*;}
 -keep class * extends com.qsmaxmin.qsbase.mvp.adapter.QsListAdapterItem {*;}
 -keep class $ extends com.qsmaxmin.qsbase.mvp.adapter.QsListAdapterItem {*;}
 -keep class * extends com.qsmaxmin.qsbase.mvp.adapter.QsRecycleAdapterItem {*;}
 -keep class $ extends com.qsmaxmin.qsbase.mvp.adapter.QsRecycleAdapterItem {*;}
--keep class * extends com.qsmaxmin.qsbase.common.viewbind.AnnotationExecutor{*;}
+-keep class * extends com.qsmaxmin.qsbase.common.viewbind.AnnotationExecutor {*;}
 
 #Presenter防止混淆
--keepclassmembers class * extends com.qsmaxmin.qsbase.mvp.presenter.QsPresenter {*;}
+-keep class * extends com.qsmaxmin.qsbase.mvp.presenter.QsPresenter {*;}
 
 #Config防止混淆
--keepclassmembers class * extends com.qsmaxmin.qsbase.common.config.QsProperties{*;}
+-keep class * extends com.qsmaxmin.qsbase.common.config.QsProperties{*;}
 
 #Glide防止混淆
 -keep class * extends com.bumptech.glide.module.AppGlideModule{*;}

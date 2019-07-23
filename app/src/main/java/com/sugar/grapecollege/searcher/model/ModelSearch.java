@@ -12,9 +12,21 @@ import java.util.ArrayList;
 
 public class ModelSearch extends BaseModel {
 
-    ArrayList<ModelProduct> responseData;
+    public ArrayList<ModelProduct> responseData;
 
     public static class ModelProduct {
         public String name;
+
+        @Override public String toString() {
+            return "ModelProduct{" +
+                    "name='" + name + '\'' +
+                    '}';
+        }
+    }
+
+    @Override public String toString() {
+        return "ModelSearch{" +
+                "responseData=" + responseData +
+                '}';
     }
 }
