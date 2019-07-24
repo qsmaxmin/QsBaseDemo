@@ -48,7 +48,7 @@ android {
 
 }
 
-//todo QsBase Add, AOP编译白名单，提高编译速度及避免不必要的错误
+//todo QsBase Add, AOP编译白名单，提高编译速度及避免不必要的错误，其中com.qsmaxmin.qsbase是框架包名（不变），第二个替换成你当前的项目包名
 aspectjx {
     include 'com.qsmaxmin.qsbase', 'com.sugar.grapecollege'
 }

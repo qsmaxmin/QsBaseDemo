@@ -17,9 +17,6 @@ import com.sugar.grapecollege.home.fragment.UserFragment;
 import com.sugar.grapecollege.searcher.model.ModelSearch;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 
 public class HomeActivity extends QsViewPagerABActivity {
