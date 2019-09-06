@@ -4,8 +4,6 @@ import android.os.Build;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 
-import com.sugar.grapecollege.common.utils.CommonUtils;
-
 /**
  * @CreateBy qsmaxmin
  * @Date 2017/2/7 14:41
@@ -16,7 +14,7 @@ public class TranslatePageTransformer implements ViewPager.PageTransformer {
     private float DISTANCE_Y;
 
     public TranslatePageTransformer() {
-        this(CommonUtils.dp2px(10));
+        this(30);
     }
 
     public TranslatePageTransformer(float distance) {

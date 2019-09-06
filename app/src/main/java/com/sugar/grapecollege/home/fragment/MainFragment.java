@@ -1,7 +1,6 @@
 package com.sugar.grapecollege.home.fragment;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.View;
 
 import com.qsmaxmin.qsbase.common.aspect.ThreadPoint;
@@ -10,11 +9,11 @@ import com.qsmaxmin.qsbase.common.log.L;
 import com.qsmaxmin.qsbase.common.viewbind.annotation.OnClick;
 import com.qsmaxmin.qsbase.mvp.adapter.QsListAdapterItem;
 import com.sugar.grapecollege.R;
-import com.sugar.grapecollege.common.fragment.BasePullListFragment;
+import com.sugar.grapecollege.common.base.fragment.BasePullListFragment;
+import com.sugar.grapecollege.common.http.resp.ModelHomeHeader;
+import com.sugar.grapecollege.common.http.resp.ModelProductInfo;
 import com.sugar.grapecollege.home.adapter.MainListAdapterItem;
-import com.sugar.grapecollege.home.model.ModelHomeHeader;
 import com.sugar.grapecollege.home.presenter.MainPresenter;
-import com.sugar.grapecollege.product.model.ModelProductInfo;
 import com.sugar.grapecollege.test.TestABActivity;
 import com.sugar.grapecollege.test.TestActivity;
 
@@ -25,10 +24,6 @@ import com.sugar.grapecollege.test.TestActivity;
  * @Description
  */
 public class MainFragment extends BasePullListFragment<MainPresenter, ModelProductInfo.ProductInfo> {
-
-    public static Fragment getInstance() {
-        return new MainFragment();
-    }
 
     @Override public int getHeaderLayout() {
         return R.layout.header_main_fragment;

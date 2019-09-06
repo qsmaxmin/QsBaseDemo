@@ -5,8 +5,6 @@ import android.os.Environment;
 
 import com.qsmaxmin.qsbase.common.utils.QsHelper;
 import com.sugar.grapecollege.R;
-import com.sugar.grapecollege.common.utils.CommonUtils;
-import com.sugar.grapecollege.common.utils.NetworkUtils;
 
 
 /**
@@ -28,14 +26,6 @@ public class AppConstants {
      * 客户端 代号
      */
     public static final String APP_CODE         = "sugarFont";
-    /**
-     * 客户端 版本号
-     */
-    public static final String CLIENT_VERSION   = CommonUtils.getAppVersion();
-    /**
-     * 设备唯一标示
-     */
-    public static final String IMEI             = NetworkUtils.getDeviceIMEI();
     /**
      * 设备系统版本号
      */

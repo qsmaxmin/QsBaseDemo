@@ -1,6 +1,7 @@
 package com.sugar.grapecollege.home;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -8,30 +9,31 @@ import android.widget.TextView;
 import com.qsmaxmin.qsbase.common.aspect.Permission;
 import com.qsmaxmin.qsbase.common.log.L;
 import com.qsmaxmin.qsbase.common.viewbind.annotation.Bind;
-import com.qsmaxmin.qsbase.mvp.QsViewPagerABActivity;
 import com.qsmaxmin.qsbase.mvp.model.QsModelPager;
 import com.sugar.grapecollege.R;
+import com.sugar.grapecollege.common.base.BaseViewPagerABActivity;
 import com.sugar.grapecollege.common.model.AppConfig;
 import com.sugar.grapecollege.home.fragment.MainFragment;
 import com.sugar.grapecollege.home.fragment.UserFragment;
-import com.sugar.grapecollege.searcher.model.ModelSearch;
-
-import java.util.ArrayList;
 
 
-public class HomeActivity extends QsViewPagerABActivity {
+public class HomeActivity extends BaseViewPagerABActivity {
     @Bind(R.id.tv_title) TextView tv_title;
 
     @Override public int actionbarLayoutId() {
         return R.layout.actionbar_title;
     }
 
+    @SuppressLint("SetTextI18n")
     @Override public void initData(Bundle bundle) {
         tv_title.setText("custom bind view");
         requestPermission();
         testAppConfig();
     }
 
+    /**
+     * 测试数据序列化
+     */
     private void testAppConfig() {
         String testString = AppConfig.getInstance().testString;
         int testInt = AppConfig.getInstance().testInt;
@@ -62,15 +64,6 @@ public class HomeActivity extends QsViewPagerABActivity {
         AppConfig.getInstance().testFloat = 6.6f;
         AppConfig.getInstance().testDouble = 7.7d;
         AppConfig.getInstance().testBoolean = true;
-
-        ModelSearch modelSearch = new ModelSearch();
-        modelSearch.responseData = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
-            ModelSearch.ModelProduct product = new ModelSearch.ModelProduct();
-            product.name = "product " + i;
-            modelSearch.responseData.add(product);
-        }
-
         AppConfig.getInstance().commit();
     }
 
@@ -83,28 +76,18 @@ public class HomeActivity extends QsViewPagerABActivity {
      * 所以返回null
      */
     @Override public QsModelPager[] getModelPagers() {
-//        QsModelPager modelPager1 = new QsModelPager();
-//        modelPager1.fragment = MainFragment.getInstance();
-//        modelPager1.title = "title1";
-//        modelPager1.position = 0;
-//
-//        QsModelPager modelPager3 = new QsModelPager();
-//        modelPager3.fragment = UserFragment.getInstance();
-//        modelPager3.title = "title1";
-//        modelPager3.position = 1;
-//        return new QsModelPager[]{modelPager1, modelPager3};
         return null;
     }
 
     @Permission({Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_PHONE_STATE})
     public void requestPermission() {
         QsModelPager modelPager1 = new QsModelPager();
-        modelPager1.fragment = MainFragment.getInstance();
+        modelPager1.fragment = new MainFragment();
         modelPager1.title = "title1";
         modelPager1.position = 0;
 
         QsModelPager modelPager3 = new QsModelPager();
-        modelPager3.fragment = UserFragment.getInstance();
+        modelPager3.fragment = new UserFragment();
         modelPager3.title = "title1";
         modelPager3.position = 1;
 
@@ -116,7 +99,7 @@ public class HomeActivity extends QsViewPagerABActivity {
     }
 
     @Override public void initTab(View view, QsModelPager qsModelPager) {
-        TextView tv_tab = (TextView) view.findViewById(R.id.tv_tab);
+        TextView tv_tab = view.findViewById(R.id.tv_tab);
         tv_tab.setText(qsModelPager.title);
     }
 

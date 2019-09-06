@@ -9,6 +9,7 @@ import com.qsmaxmin.qsbase.common.viewbind.annotation.Bind;
 import com.qsmaxmin.qsbase.mvp.fragment.QsHeaderViewpagerFragment;
 import com.qsmaxmin.qsbase.mvp.model.QsModelPager;
 import com.sugar.grapecollege.R;
+import com.sugar.grapecollege.common.base.fragment.BaseHeaderViewpagerFragment;
 
 /**
  * @CreateBy qsmaxmin
@@ -16,7 +17,7 @@ import com.sugar.grapecollege.R;
  * @Description
  */
 
-public class TestHeaderViewFragment extends QsHeaderViewpagerFragment {
+public class TestHeaderViewFragment extends BaseHeaderViewpagerFragment {
     @Bind(R.id.tv_left) TextView tv_left;
 
     public static Fragment getInstance() {

@@ -7,8 +7,8 @@ import android.widget.TextView;
 
 import com.qsmaxmin.qsbase.common.viewbind.annotation.Bind;
 import com.qsmaxmin.qsbase.common.viewbind.annotation.OnClick;
-import com.qsmaxmin.qsbase.mvp.QsABActivity;
 import com.sugar.grapecollege.R;
+import com.sugar.grapecollege.common.base.BaseABActivity;
 import com.sugar.grapecollege.test.fragment.TestPullRecyclerFragment;
 import com.sugar.grapecollege.test.fragment.TestViewPagerFragment;
 
@@ -19,7 +19,7 @@ import com.sugar.grapecollege.test.fragment.TestViewPagerFragment;
  * @Description
  */
 
-public class TestABActivity extends QsABActivity {
+public class TestABActivity extends BaseABActivity {
     @Bind(R.id.tv_edit) TextView tv_edit;
 
     @Override public int actionbarLayoutId() {

@@ -3,7 +3,6 @@ package com.sugar.grapecollege.common.model;
 
 import com.qsmaxmin.qsbase.common.config.Property;
 import com.qsmaxmin.qsbase.common.config.QsProperties;
-import com.sugar.grapecollege.searcher.model.ModelSearch;
 
 /**
  * @CreateBy qsmaxmin
@@ -29,15 +28,14 @@ public class AppConfig extends QsProperties {
         super(configName);
     }
 
-    @Property public String      testString;
-    @Property public int         testInt;
-    @Property public short       testShort;
-    @Property public byte        testByte;
-    @Property public char        testChar;
-    @Property public long        testLong;
-    @Property public float       testFloat;
-    @Property public double      testDouble;
-    @Property public boolean     testBoolean;
-    @Property public ModelSearch testObject;
+    @Property public String  testString;
+    @Property public int     testInt;
+    @Property public short   testShort;
+    @Property public byte    testByte;
+    @Property public char    testChar;
+    @Property public long    testLong;
+    @Property public float   testFloat;
+    @Property public double  testDouble;
+    @Property public boolean testBoolean;
 
 }

@@ -1,11 +1,13 @@
 package com.sugar.grapecollege.test.fragment;
 
 import android.os.Bundle;
+import android.support.design.internal.BaselineLayout;
 import android.support.v4.app.Fragment;
 
 import com.qsmaxmin.qsbase.mvp.adapter.QsListAdapterItem;
 import com.qsmaxmin.qsbase.mvp.fragment.QsListFragment;
-import com.sugar.grapecollege.common.presenter.GrapeCollegePresenter;
+import com.sugar.grapecollege.common.base.fragment.BaseListFragment;
+import com.sugar.grapecollege.common.base.presenter.GrapeCollegePresenter;
 import com.sugar.grapecollege.test.adapter.TestListAdapter;
 import com.sugar.grapecollege.test.model.TestModel;
 
@@ -17,7 +19,7 @@ import java.util.ArrayList;
  * @Description
  */
 
-public class TestListFragment extends QsListFragment<GrapeCollegePresenter, TestModel.TestModelInfo> {
+public class TestListFragment extends BaseListFragment<GrapeCollegePresenter, TestModel.TestModelInfo> {
 
     @Override public QsListAdapterItem<TestModel.TestModelInfo> getListAdapterItem(int i) {
         return new TestListAdapter();

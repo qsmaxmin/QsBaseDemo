@@ -4,9 +4,9 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
 import com.qsmaxmin.qsbase.mvp.adapter.QsListAdapterItem;
-import com.qsmaxmin.qsbase.mvp.fragment.QsListFragment;
 import com.sugar.grapecollege.R;
-import com.sugar.grapecollege.common.presenter.GrapeCollegePresenter;
+import com.sugar.grapecollege.common.base.fragment.BaseListFragment;
+import com.sugar.grapecollege.common.base.presenter.GrapeCollegePresenter;
 import com.sugar.grapecollege.test.adapter.TestListAdapter;
 import com.sugar.grapecollege.test.model.TestModel;
 
@@ -18,7 +18,7 @@ import java.util.ArrayList;
  * @Description
  */
 
-public class TestHeaderVPListFragment extends QsListFragment<GrapeCollegePresenter, TestModel.TestModelInfo> {
+public class TestHeaderVPListFragment extends BaseListFragment<GrapeCollegePresenter, TestModel.TestModelInfo> {
 
     /**
      * 适配HeaderViewPager，必须使用InnerListView

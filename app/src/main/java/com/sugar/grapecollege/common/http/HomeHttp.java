@@ -2,9 +2,8 @@ package com.sugar.grapecollege.common.http;
 
 import com.qsmaxmin.qsbase.common.aspect.Body;
 import com.qsmaxmin.qsbase.common.aspect.POST;
-import com.sugar.grapecollege.common.model.BaseModelReq;
-import com.sugar.grapecollege.home.model.ModelHomeHeader;
-import com.sugar.grapecollege.product.model.ModelProductList;
+import com.sugar.grapecollege.common.http.resp.ModelProductList;
+import com.sugar.grapecollege.common.http.resp.ModelHomeHeader;
 
 /**
  * @CreateBy qsmaxmin

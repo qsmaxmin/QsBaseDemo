@@ -4,10 +4,9 @@ import android.os.SystemClock;
 
 import com.qsmaxmin.qsbase.common.aspect.ThreadPoint;
 import com.qsmaxmin.qsbase.common.aspect.ThreadType;
-import com.qsmaxmin.qsbase.common.utils.QsHelper;
+import com.sugar.grapecollege.common.http.BaseModelReq;
 import com.sugar.grapecollege.common.http.HomeHttp;
-import com.sugar.grapecollege.common.model.BaseModelReq;
-import com.sugar.grapecollege.common.presenter.GrapeCollegePresenter;
+import com.sugar.grapecollege.common.base.presenter.GrapeCollegePresenter;
 import com.sugar.grapecollege.test.fragment.TestPullListFragment;
 import com.sugar.grapecollege.test.model.TestModel;
 

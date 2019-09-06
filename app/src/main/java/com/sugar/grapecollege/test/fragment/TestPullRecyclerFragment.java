@@ -9,7 +9,7 @@ import android.widget.TextView;
 import com.qsmaxmin.qsbase.common.viewbind.annotation.Bind;
 import com.qsmaxmin.qsbase.mvp.adapter.QsRecycleAdapterItem;
 import com.sugar.grapecollege.R;
-import com.sugar.grapecollege.common.fragment.BasePullRecyclerFragment;
+import com.sugar.grapecollege.common.base.fragment.BasePullRecyclerFragment;
 import com.sugar.grapecollege.test.adapter.TestRecyclerAdapter;
 import com.sugar.grapecollege.test.model.TestModel;
 import com.sugar.grapecollege.test.presenter.TestPullRecyclerPresenter;

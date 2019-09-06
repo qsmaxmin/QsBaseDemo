@@ -1,6 +1,6 @@
 package com.sugar.grapecollege.test.model;
 
-import com.sugar.grapecollege.common.model.BaseModel;
+import com.sugar.grapecollege.common.http.BaseModel;
 
 import java.util.List;
 
@@ -12,6 +12,7 @@ import java.util.List;
 
 public class TestModel extends BaseModel {
     public List<TestModelInfo> list;
+
 
     public static class TestModelInfo {
         public String testName;

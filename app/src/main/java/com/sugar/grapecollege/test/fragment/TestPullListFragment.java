@@ -7,7 +7,7 @@ import android.widget.AdapterView;
 
 import com.qsmaxmin.qsbase.common.log.L;
 import com.qsmaxmin.qsbase.mvp.adapter.QsListAdapterItem;
-import com.sugar.grapecollege.common.fragment.BasePullListFragment;
+import com.sugar.grapecollege.common.base.fragment.BasePullListFragment;
 import com.sugar.grapecollege.test.adapter.TestListAdapter;
 import com.sugar.grapecollege.test.model.TestModel;
 import com.sugar.grapecollege.test.presenter.TestPullListPresenter;

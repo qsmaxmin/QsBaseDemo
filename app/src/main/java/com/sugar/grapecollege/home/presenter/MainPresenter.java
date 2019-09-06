@@ -4,14 +4,14 @@ import com.qsmaxmin.qsbase.common.aspect.ThreadPoint;
 import com.qsmaxmin.qsbase.common.aspect.ThreadType;
 import com.qsmaxmin.qsbase.common.log.L;
 import com.qsmaxmin.qsbase.common.utils.QsHelper;
+import com.sugar.grapecollege.common.http.BaseModelReq;
 import com.sugar.grapecollege.common.http.HomeHttp;
-import com.sugar.grapecollege.common.model.BaseModelReq;
-import com.sugar.grapecollege.common.presenter.GrapeCollegePresenter;
+import com.sugar.grapecollege.common.http.resp.ModelHomeHeader;
+import com.sugar.grapecollege.common.http.resp.ModelProductInfo;
+import com.sugar.grapecollege.common.http.resp.ModelProductList;
+import com.sugar.grapecollege.common.base.presenter.GrapeCollegePresenter;
 import com.sugar.grapecollege.home.fragment.MainFragment;
 import com.sugar.grapecollege.home.model.HomeConstants;
-import com.sugar.grapecollege.home.model.ModelHomeHeader;
-import com.sugar.grapecollege.product.model.ModelProductInfo;
-import com.sugar.grapecollege.product.model.ModelProductList;
 
 import java.util.ArrayList;
 

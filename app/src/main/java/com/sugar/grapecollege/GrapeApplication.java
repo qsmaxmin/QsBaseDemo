@@ -4,6 +4,7 @@ import android.support.annotation.Keep;
 
 import com.qsmaxmin.qsbase.QsApplication;
 import com.qsmaxmin.qsbase.common.http.QsHttpCallback;
+import com.sugar.grapecollege.common.http.CustomHttpCallback;
 
 /**
  * @CreateBy qsmaxmin
@@ -15,18 +16,17 @@ public class GrapeApplication extends QsApplication {
 
     @Override public void onCreate() {
         super.onCreate();
-        /*内存泄漏检测工具*/
-//        if (!LeakCanary.isInAnalyzerProcess(this)) {
-//            LeakCanary.install(this);
-//        }
     }
 
     @Override public boolean isLogOpen() {
         return true;
     }
 
+    /**
+     * http全局回调监听
+     */
     @Override public QsHttpCallback registerGlobalHttpListener() {
-        return super.registerGlobalHttpListener();
+        return new CustomHttpCallback();
     }
 
     /**

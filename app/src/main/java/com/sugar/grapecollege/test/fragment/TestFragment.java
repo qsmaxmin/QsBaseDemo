@@ -3,8 +3,8 @@ package com.sugar.grapecollege.test.fragment;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
-import com.qsmaxmin.qsbase.mvp.fragment.QsFragment;
 import com.sugar.grapecollege.R;
+import com.sugar.grapecollege.common.base.fragment.BaseFragment;
 
 /**
  * @CreateBy qsmaxmin
@@ -12,7 +12,7 @@ import com.sugar.grapecollege.R;
  * @Description
  */
 
-public class TestFragment extends QsFragment {
+public class TestFragment extends BaseFragment {
 
     public static Fragment getInstance() {
         return new TestFragment();

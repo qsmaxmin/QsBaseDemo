@@ -2,7 +2,7 @@ package com.sugar.grapecollege.test;
 
 import android.os.Bundle;
 
-import com.qsmaxmin.qsbase.mvp.QsActivity;
+import com.sugar.grapecollege.common.base.BaseActivity;
 import com.sugar.grapecollege.test.fragment.TestHeaderViewFragment;
 
 /**
@@ -11,7 +11,7 @@ import com.sugar.grapecollege.test.fragment.TestHeaderViewFragment;
  * @Description
  */
 
-public class TestActivity extends QsActivity {
+public class TestActivity extends BaseActivity {
 
     @Override public void initData(Bundle bundle) {
         commitFragment(TestHeaderViewFragment.getInstance());
