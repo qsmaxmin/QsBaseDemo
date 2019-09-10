@@ -10,12 +10,15 @@ import com.qsmaxmin.qsbase.common.viewbind.annotation.OnClick;
 import com.qsmaxmin.qsbase.mvp.adapter.QsListAdapterItem;
 import com.sugar.grapecollege.R;
 import com.sugar.grapecollege.common.base.fragment.BasePullListFragment;
+import com.sugar.grapecollege.common.event.ApplicationEvent;
 import com.sugar.grapecollege.common.http.resp.ModelHomeHeader;
 import com.sugar.grapecollege.common.http.resp.ModelProductInfo;
 import com.sugar.grapecollege.home.adapter.MainListAdapterItem;
 import com.sugar.grapecollege.home.presenter.MainPresenter;
 import com.sugar.grapecollege.test.TestABActivity;
 import com.sugar.grapecollege.test.TestActivity;
+
+import org.greenrobot.eventbus.Subscribe;
 
 
 /**
@@ -62,4 +65,17 @@ public class MainFragment extends BasePullListFragment<MainPresenter, ModelProdu
         }
     }
 
+    /**
+     * eventBus事件接收
+     */
+    @Subscribe public void onEvent(ApplicationEvent.TestClickEvent event) {
+        intent2Activity(TestActivity.class);
+    }
+
+    /**
+     * 打开eventBus
+     */
+    @Override public boolean isOpenEventBus() {
+        return true;
+    }
 }

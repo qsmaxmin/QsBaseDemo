@@ -99,15 +99,15 @@ public class MainPresenter extends GrapeCollegePresenter<MainFragment> {
     }
 
     private void saveHeaderDataToCache(ModelHomeHeader header) {
-        QsHelper.getInstance().getCacheHelper().saveObject2File(header, HomeConstants.CACHE_MAIN_HEADER);
+        QsHelper.getCacheHelper().saveObject2File(header, HomeConstants.CACHE_MAIN_HEADER);
     }
 
     private void saveListDataToCache(ModelProductList list) {
-        QsHelper.getInstance().getCacheHelper().saveObject2File(list, HomeConstants.CACHE_MAIN_FONT_LIST);
+        QsHelper.getCacheHelper().saveObject2File(list, HomeConstants.CACHE_MAIN_FONT_LIST);
     }
 
     private void setListCacheData() {
-        ModelProductList dataFromCache = QsHelper.getInstance().getCacheHelper().getObjectFromFile(HomeConstants.CACHE_MAIN_FONT_LIST, ModelProductList.class);
+        ModelProductList dataFromCache = QsHelper.getCacheHelper().getObjectFromFile(HomeConstants.CACHE_MAIN_FONT_LIST, ModelProductList.class);
         if (isSuccess(dataFromCache, false) && dataFromCache.list != null) {
             getView().setData(dataFromCache.list);
         }

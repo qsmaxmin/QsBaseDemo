@@ -6,4 +6,7 @@ package com.sugar.grapecollege.common.event;
  * @Description 应用内通信事件
  */
 public class ApplicationEvent {
+
+    public static class TestClickEvent {
+    }
 }

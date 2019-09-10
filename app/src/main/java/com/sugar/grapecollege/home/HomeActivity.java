@@ -49,7 +49,7 @@ public class HomeActivity extends BaseViewPagerABActivity {
         L.i(initTag(), "testInt = " + testInt);
         L.i(initTag(), "testShort = " + testShort);
         L.i(initTag(), "testByte = " + testByte);
-        L.i(initTag(), "testChar = " + testChar);
+        L.i(initTag(), "testChar = " + (int)testChar);
         L.i(initTag(), "testLong = " + testLong);
         L.i(initTag(), "testFloat = " + testFloat);
         L.i(initTag(), "testDouble = " + testDouble);
@@ -91,7 +91,7 @@ public class HomeActivity extends BaseViewPagerABActivity {
         modelPager3.title = "title1";
         modelPager3.position = 1;
 
-        initViewPager(new QsModelPager[]{modelPager1, modelPager3}, 3);
+        initViewPager(new QsModelPager[]{modelPager1, modelPager3}, 1);
     }
 
     @Override public int getTabItemLayout() {

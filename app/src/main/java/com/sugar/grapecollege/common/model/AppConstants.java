@@ -17,7 +17,7 @@ public class AppConstants {
     /**
      * 包名
      */
-    public static final String PACKAGE_NAME     = QsHelper.getInstance().getApplication().getPackageName();
+    public static final String PACKAGE_NAME     = QsHelper.getApplication().getPackageName();
     /**
      * 客户端适用于系统 android
      */
@@ -41,7 +41,7 @@ public class AppConstants {
     /**
      * App在SD卡中的父目录
      */
-    public static final String ROOT_SDCARD_PATH = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + "/" + QsHelper.getInstance().getApplication().getString(R.string.app_name);
+    public static final String ROOT_SDCARD_PATH = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + "/" + QsHelper.getApplication().getString(R.string.app_name);
     /**
      * 统一下载路径(App升级，应用下载的root工具等)
      */

@@ -1,14 +1,15 @@
 package com.sugar.grapecollege.home.fragment;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.View;
 
 import com.qsmaxmin.qsbase.common.utils.QsHelper;
 import com.qsmaxmin.qsbase.common.viewbind.annotation.OnClick;
+import com.qsmaxmin.qsbase.common.widget.toast.QsToast;
 import com.qsmaxmin.qsbase.mvp.fragment.QsFragment;
 import com.sugar.grapecollege.R;
 import com.sugar.grapecollege.common.dialog.CustomDialog;
+import com.sugar.grapecollege.common.event.ApplicationEvent;
 
 
 /**
@@ -33,9 +34,11 @@ public class UserFragment extends QsFragment {
     @OnClick({R.id.tv_download, R.id.tv_myfont, R.id.tv_law, R.id.ll_header}) public void onViewClick(View view) {
         switch (view.getId()) {
             case R.id.ll_header:
+                QsToast.show("测试eventBus");
+                QsHelper.eventPost(new ApplicationEvent.TestClickEvent());
                 break;
             case R.id.tv_myfont:
-                QsHelper.getInstance().commitDialogFragment(new CustomDialog());
+                QsHelper.commitDialogFragment(new CustomDialog());
                 break;
             case R.id.tv_download:
                 break;

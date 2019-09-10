@@ -60,11 +60,11 @@ greendao {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     //todo QsBase Add
-    implementation 'com.github.qsmaxmin:QsBase:6.0.6'
-    annotationProcessor 'com.github.qsmaxmin:QsPlugin:6.0.6'
+//    implementation 'com.github.qsmaxmin:QsBase:6.0.6'
+//    annotationProcessor 'com.github.qsmaxmin:QsPlugin:6.0.6'
 
-//    implementation('com.qsmaxmin.qsbase:QsBase:9.9.9')//local test
-//    annotationProcessor("com.qsmaxmin.qsbase:QsPlugin:9.9.9")//local test
+    implementation('com.qsmaxmin.qsbase:QsBase:9.9.9')//local test
+    annotationProcessor("com.qsmaxmin.qsbase:QsPlugin:9.9.9")//local test
 }
 
 
