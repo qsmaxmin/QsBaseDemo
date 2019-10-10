@@ -15,6 +15,7 @@ import com.sugar.grapecollege.common.base.BaseViewPagerABActivity;
 import com.sugar.grapecollege.common.model.AppConfig;
 import com.sugar.grapecollege.home.fragment.MainFragment;
 import com.sugar.grapecollege.home.fragment.UserFragment;
+import com.sugar.grapecollege.home.model.HomeConstants;
 
 
 public class HomeActivity extends BaseViewPagerABActivity {
@@ -91,7 +92,7 @@ public class HomeActivity extends BaseViewPagerABActivity {
         modelPager3.title = "title1";
         modelPager3.position = 1;
         Bundle bundle = new Bundle();
-        bundle.putString("BK_HELLO", "hello...");
+        bundle.putString(HomeConstants.BK_TEST, "hello...");
         modelPager3.fragment.setArguments(bundle);
 
         initViewPager(new QsModelPager[]{modelPager1, modelPager3}, 1);

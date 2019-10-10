@@ -14,6 +14,7 @@ import com.qsmaxmin.qsbase.mvp.fragment.QsFragment;
 import com.sugar.grapecollege.R;
 import com.sugar.grapecollege.common.dialog.CustomDialog;
 import com.sugar.grapecollege.common.event.ApplicationEvent;
+import com.sugar.grapecollege.home.model.HomeConstants;
 
 
 /**
@@ -23,8 +24,8 @@ import com.sugar.grapecollege.common.event.ApplicationEvent;
  */
 
 public class UserFragment extends QsFragment {
-    @Bind(R.id.tv_name)     TextView tv_name;
-    @BindBundle("BK_HELLO") String   testBindBundle;
+    @Bind(R.id.tv_name)                TextView tv_name;
+    @BindBundle(HomeConstants.BK_TEST) String   testBindBundle;
 
     @Override public int layoutId() {
         return R.layout.fragment_user;
