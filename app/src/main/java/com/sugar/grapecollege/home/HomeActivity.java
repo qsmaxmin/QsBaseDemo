@@ -49,7 +49,7 @@ public class HomeActivity extends BaseViewPagerABActivity {
         L.i(initTag(), "testInt = " + testInt);
         L.i(initTag(), "testShort = " + testShort);
         L.i(initTag(), "testByte = " + testByte);
-        L.i(initTag(), "testChar = " + (int)testChar);
+        L.i(initTag(), "testChar = " + (int) testChar);
         L.i(initTag(), "testLong = " + testLong);
         L.i(initTag(), "testFloat = " + testFloat);
         L.i(initTag(), "testDouble = " + testDouble);
@@ -90,6 +90,9 @@ public class HomeActivity extends BaseViewPagerABActivity {
         modelPager3.fragment = new UserFragment();
         modelPager3.title = "title1";
         modelPager3.position = 1;
+        Bundle bundle = new Bundle();
+        bundle.putString("BK_HELLO", "hello...");
+        modelPager3.fragment.setArguments(bundle);
 
         initViewPager(new QsModelPager[]{modelPager1, modelPager3}, 1);
     }
