@@ -24,10 +24,11 @@ import com.sugar.grapecollege.home.model.HomeConstants;
  */
 
 public class UserFragment extends QsFragment {
-    @Bind(R.id.tv_name)                TextView tv_name;
-    @Bind(R.id.tv_download)            TextView tv_download;
-    @Bind(R.id.tv_law)                 TextView tv_law;
-    @BindBundle(HomeConstants.BK_TEST) String   testBindBundle;
+    @Bind(R.id.tv_name)                 TextView tv_name;
+    @Bind(R.id.tv_download)             TextView tv_download;
+    @Bind(R.id.tv_law)                  TextView tv_law;
+    @BindBundle(HomeConstants.BK_TEST)  String   testBindBundle;
+    @BindBundle(HomeConstants.BK_TEST2) int      testBindBundle2;
 
     @Override public int layoutId() {
         return R.layout.fragment_user;
@@ -38,8 +39,9 @@ public class UserFragment extends QsFragment {
     }
 
     @Override public void initData(Bundle savedInstanceState) {
-        L.i(initTag(), "initData.......testBindBundle:" + testBindBundle);
-        tv_name.setText("AAAAAAA");
+        tv_name.setText(testBindBundle);
+        L.i(initTag(), "initData......testBindBundle:" + testBindBundle);
+        L.i(initTag(), "initData......testBindBundle2:" + testBindBundle2);
     }
 
     @OnClick({R.id.tv_download, R.id.tv_myfont, R.id.ll_header}) public void onViewClick(View view) {
