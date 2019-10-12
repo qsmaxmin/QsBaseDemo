@@ -25,6 +25,8 @@ import com.sugar.grapecollege.home.model.HomeConstants;
 
 public class UserFragment extends QsFragment {
     @Bind(R.id.tv_name)                TextView tv_name;
+    @Bind(R.id.tv_download)            TextView tv_download;
+    @Bind(R.id.tv_law)                 TextView tv_law;
     @BindBundle(HomeConstants.BK_TEST) String   testBindBundle;
 
     @Override public int layoutId() {
@@ -40,7 +42,7 @@ public class UserFragment extends QsFragment {
         tv_name.setText("AAAAAAA");
     }
 
-    @OnClick({R.id.tv_download, R.id.tv_myfont, R.id.tv_law, R.id.ll_header}) public void onViewClick(View view) {
+    @OnClick({R.id.tv_download, R.id.tv_myfont, R.id.ll_header}) public void onViewClick(View view) {
         switch (view.getId()) {
             case R.id.ll_header:
                 QsToast.show("测试eventBus");
@@ -51,9 +53,11 @@ public class UserFragment extends QsFragment {
                 break;
             case R.id.tv_download:
                 break;
-            case R.id.tv_law:
-                break;
         }
+    }
+
+    @OnClick({R.id.tv_download, R.id.tv_name, R.id.tv_law, R.id.tv_myfont,}) public void onClick(View view) {
+
     }
 
     @Override public boolean isOpenViewState() {
