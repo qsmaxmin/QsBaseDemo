@@ -3,6 +3,7 @@ package com.sugar.grapecollege.home;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
@@ -40,33 +41,34 @@ public class HomeActivity extends BaseViewPagerABActivity {
      */
     private void testAppConfig() {
         L.i(initTag(), "testString = " + AppConfig.getInstance().toString());
+        if (TextUtils.isEmpty(AppConfig.getInstance().testString)) {
+            AppConfig.getInstance().testString = "hello world~";
+            AppConfig.getInstance().testInt = 1;
+            AppConfig.getInstance().testShort = 2;
+            AppConfig.getInstance().testByte = 3;
+            AppConfig.getInstance().testChar = 4;
+            AppConfig.getInstance().testLong = 5;
+            AppConfig.getInstance().testFloat = 6.6f;
+            AppConfig.getInstance().testDouble = 7.7d;
+            AppConfig.getInstance().testBoolean = true;
 
-        AppConfig.getInstance().testString = "hello world~";
-        AppConfig.getInstance().testInt = 1;
-        AppConfig.getInstance().testShort = 2;
-        AppConfig.getInstance().testByte = 3;
-        AppConfig.getInstance().testChar = 4;
-        AppConfig.getInstance().testLong = 5;
-        AppConfig.getInstance().testFloat = 6.6f;
-        AppConfig.getInstance().testDouble = 7.7d;
-        AppConfig.getInstance().testBoolean = true;
+            AppConfig.getInstance().testInteger_ = 11;
+            AppConfig.getInstance().testShort_ = 22;
+            AppConfig.getInstance().testByte_ = 33;
+            AppConfig.getInstance().testChar_ = 44;
+            AppConfig.getInstance().testLong_ = 55L;
+            AppConfig.getInstance().testFloat_ = 66.6f;
+            AppConfig.getInstance().testDouble_ = 77.7d;
+            AppConfig.getInstance().testBoolean_ = true;
 
-        AppConfig.getInstance().testInteger_ = 11;
-        AppConfig.getInstance().testShort_ = 22;
-        AppConfig.getInstance().testByte_ = 33;
-        AppConfig.getInstance().testChar_ = 44;
-        AppConfig.getInstance().testLong_ = 55L;
-        AppConfig.getInstance().testFloat_ = 66.6f;
-        AppConfig.getInstance().testDouble_ = 77.7d;
-        AppConfig.getInstance().testBoolean_ = true;
+            TestModel testModel = new TestModel();
+            testModel.sss = "sssssssssss";
+            AppConfig.getInstance().testModel = testModel;
 
-        TestModel testModel = new TestModel();
-        testModel.sss = "sssssssssss";
-        AppConfig.getInstance().testModel = testModel;
-
-        AppConfig.getInstance().testMap = new HashMap<>();
-        AppConfig.getInstance().testMap.put("key_0", "abcdefg");
-        AppConfig.getInstance().commit();
+            AppConfig.getInstance().testMap = new HashMap<>();
+            AppConfig.getInstance().testMap.put("key_0", "abcdefg");
+            AppConfig.getInstance().commit();
+        }
     }
 
     @Override public boolean isTransparentStatusBar() {
