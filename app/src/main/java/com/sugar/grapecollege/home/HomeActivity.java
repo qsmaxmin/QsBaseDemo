@@ -13,6 +13,7 @@ import com.qsmaxmin.qsbase.mvp.model.QsModelPager;
 import com.sugar.grapecollege.R;
 import com.sugar.grapecollege.common.base.BaseViewPagerABActivity;
 import com.sugar.grapecollege.common.model.AppConfig;
+import com.sugar.grapecollege.common.model.TestModel;
 import com.sugar.grapecollege.home.fragment.MainFragment;
 import com.sugar.grapecollege.home.fragment.UserFragment;
 import com.sugar.grapecollege.home.model.HomeConstants;
@@ -36,25 +37,7 @@ public class HomeActivity extends BaseViewPagerABActivity {
      * 测试数据序列化
      */
     private void testAppConfig() {
-        String testString = AppConfig.getInstance().testString;
-        int testInt = AppConfig.getInstance().testInt;
-        short testShort = AppConfig.getInstance().testShort;
-        byte testByte = AppConfig.getInstance().testByte;
-        char testChar = AppConfig.getInstance().testChar;
-        long testLong = AppConfig.getInstance().testLong;
-        float testFloat = AppConfig.getInstance().testFloat;
-        double testDouble = AppConfig.getInstance().testDouble;
-        boolean testBoolean = AppConfig.getInstance().testBoolean;
-
-        L.i(initTag(), "testString = " + testString);
-        L.i(initTag(), "testInt = " + testInt);
-        L.i(initTag(), "testShort = " + testShort);
-        L.i(initTag(), "testByte = " + testByte);
-        L.i(initTag(), "testChar = " + (int) testChar);
-        L.i(initTag(), "testLong = " + testLong);
-        L.i(initTag(), "testFloat = " + testFloat);
-        L.i(initTag(), "testDouble = " + testDouble);
-        L.i(initTag(), "testBoolean = " + testBoolean);
+        L.i(initTag(), "testString = " + AppConfig.getInstance().toString());
 
         AppConfig.getInstance().testString = "hello world~";
         AppConfig.getInstance().testInt = 1;
@@ -65,6 +48,19 @@ public class HomeActivity extends BaseViewPagerABActivity {
         AppConfig.getInstance().testFloat = 6.6f;
         AppConfig.getInstance().testDouble = 7.7d;
         AppConfig.getInstance().testBoolean = true;
+
+        AppConfig.getInstance().testInteger_ = 11;
+        AppConfig.getInstance().testShort_ = 22;
+        AppConfig.getInstance().testByte_ = 33;
+        AppConfig.getInstance().testChar_ = 44;
+        AppConfig.getInstance().testLong_ = 55L;
+        AppConfig.getInstance().testFloat_ = 66.6f;
+        AppConfig.getInstance().testDouble_ = 77.7d;
+        AppConfig.getInstance().testBoolean_ = true;
+
+        TestModel testModel = new TestModel();
+        testModel.sss = "sssssssssss";
+        AppConfig.getInstance().testModel = testModel;
         AppConfig.getInstance().commit();
     }
 
@@ -80,7 +76,7 @@ public class HomeActivity extends BaseViewPagerABActivity {
         return null;
     }
 
-    @Permission({Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_PHONE_STATE})
+    @Permission({Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_PHONE_STATE, Manifest.permission.CAMERA})
     public void requestPermission() {
         QsModelPager modelPager1 = new QsModelPager();
         modelPager1.fragment = new MainFragment();
