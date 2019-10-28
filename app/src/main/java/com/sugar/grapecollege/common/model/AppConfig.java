@@ -12,20 +12,18 @@ import java.util.HashMap;
  * @Description 应用配置存储类-可存万物
  */
 public class AppConfig extends QsProperties {
+    private static AppConfig APP_CONFIG = new AppConfig("AppConfig");
+
     /**
      * 单例模式
      */
-    @Override public String initTag() {
-        return "AppConfig";
-    }
-
-
-    private static AppConfig APP_CONFIG = new AppConfig("AppConfig");
-
     public static AppConfig getInstance() {
         return APP_CONFIG;
     }
 
+    /**
+     * @param configName 数据唯一key
+     */
     private AppConfig(String configName) {
         super(configName);
     }
