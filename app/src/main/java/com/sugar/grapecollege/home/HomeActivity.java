@@ -38,6 +38,7 @@ public class HomeActivity extends BaseViewPagerABActivity {
 
     /**
      * 测试数据序列化
+     * 基于SharedPreferences存储，使用APT生成代码，方便，直观，高效
      */
     private void testAppConfig() {
         L.i(initTag(), "testString = " + AppConfig.getInstance().toString());
