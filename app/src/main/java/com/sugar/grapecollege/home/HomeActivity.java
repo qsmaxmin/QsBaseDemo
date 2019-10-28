@@ -18,6 +18,8 @@ import com.sugar.grapecollege.home.fragment.MainFragment;
 import com.sugar.grapecollege.home.fragment.UserFragment;
 import com.sugar.grapecollege.home.model.HomeConstants;
 
+import java.util.HashMap;
+
 
 public class HomeActivity extends BaseViewPagerABActivity {
     @Bind(R.id.tv_title) TextView tv_title;
@@ -61,6 +63,9 @@ public class HomeActivity extends BaseViewPagerABActivity {
         TestModel testModel = new TestModel();
         testModel.sss = "sssssssssss";
         AppConfig.getInstance().testModel = testModel;
+
+        AppConfig.getInstance().testMap = new HashMap<>();
+        AppConfig.getInstance().testMap.put("key_0", "abcdefg");
         AppConfig.getInstance().commit();
     }
 

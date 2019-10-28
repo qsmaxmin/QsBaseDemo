@@ -27,9 +27,9 @@ allprojects {
         mavenCentral()// apply plugin
         google()
         jcenter()
-        maven { url 'https://jitpack.io' }//QsBase Add
-//        maven { url "file:///E:/git/QsBase/base/Users/repository" }//local test
-//        maven { url "file:///E:/git/QsPlugin/app/Users/repository" }//local test
+//        maven { url 'https://jitpack.io' }//QsBase Add
+        maven { url "file:///E:/git/QsBase/base/Users/repository" }//local test
+        maven { url "file:///E:/git/QsPlugin/app/Users/repository" }//local test
     }
 }
 

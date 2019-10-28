@@ -4,10 +4,12 @@ package com.sugar.grapecollege.common.model;
 import com.qsmaxmin.qsbase.common.config.Property;
 import com.qsmaxmin.qsbase.common.config.QsProperties;
 
+import java.util.HashMap;
+
 /**
  * @CreateBy qsmaxmin
  * @Date 16/7/29
- * @Description 应用配置管理类
+ * @Description 应用配置存储类-可存万物
  */
 public class AppConfig extends QsProperties {
     /**
@@ -28,24 +30,25 @@ public class AppConfig extends QsProperties {
         super(configName);
     }
 
-    @Property public String    testString;
-    @Property public int       testInt;
-    @Property public short     testShort;
-    @Property public byte      testByte;
-    @Property public char      testChar;
-    @Property public long      testLong;
-    @Property public float     testFloat;
-    @Property public double    testDouble;
-    @Property public boolean   testBoolean;
-    @Property public Short     testShort_;
-    @Property public Integer   testInteger_;
-    @Property public Byte      testByte_;
-    @Property public Character testChar_;
-    @Property public Long      testLong_;
-    @Property public Float     testFloat_;
-    @Property public Double    testDouble_;
-    @Property public Boolean   testBoolean_;
-    @Property public TestModel testModel;
+    @Property public String                  testString;
+    @Property public int                     testInt;
+    @Property public short                   testShort;
+    @Property public byte                    testByte;
+    @Property public char                    testChar;
+    @Property public long                    testLong;
+    @Property public float                   testFloat;
+    @Property public double                  testDouble;
+    @Property public boolean                 testBoolean;
+    @Property public Short                   testShort_;
+    @Property public Integer                 testInteger_;
+    @Property public Byte                    testByte_;
+    @Property public Character               testChar_;
+    @Property public Long                    testLong_;
+    @Property public Float                   testFloat_;
+    @Property public Double                  testDouble_;
+    @Property public Boolean                 testBoolean_;
+    @Property public TestModel               testModel;
+    @Property public HashMap<String, String> testMap;
 
     @Override public String toString() {
         return "AppConfig{" +
@@ -67,6 +70,7 @@ public class AppConfig extends QsProperties {
                 ", \ntestDouble_=" + testDouble_ +
                 ", \ntestBoolean_=" + testBoolean_ +
                 ", \ntestModel=" + testModel +
+                ", \ntestMap=" + (testMap == null ? "null" : testMap.toString()) +
                 '}';
     }
 }
