@@ -1,7 +1,6 @@
 package com.sugar.grapecollege.test.fragment;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.View;
 import android.widget.AdapterView;
 
@@ -11,6 +10,8 @@ import com.sugar.grapecollege.common.base.fragment.BasePullListFragment;
 import com.sugar.grapecollege.test.adapter.TestListAdapter;
 import com.sugar.grapecollege.test.model.TestModel;
 import com.sugar.grapecollege.test.presenter.TestPullListPresenter;
+
+import androidx.fragment.app.Fragment;
 
 /**
  * @CreateBy qsmaxmin

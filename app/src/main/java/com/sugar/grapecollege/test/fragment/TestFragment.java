@@ -1,10 +1,11 @@
 package com.sugar.grapecollege.test.fragment;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 
 import com.sugar.grapecollege.R;
 import com.sugar.grapecollege.common.base.fragment.BaseFragment;
+
+import androidx.fragment.app.Fragment;
 
 /**
  * @CreateBy qsmaxmin

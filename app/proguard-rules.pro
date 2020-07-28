@@ -119,20 +119,9 @@
 -dontwarn javax.inject.*
 -keep class javax.inject.**{*;}
 
-#model防止混淆
--keep class * extends com.qsmaxmin.qsbase.common.model.QsModel {*;}
--keep class $ extends com.qsmaxmin.qsbase.common.model.QsModel {*;}
--keep class * extends com.qsmaxmin.qsbase.mvp.adapter.QsListAdapterItem {*;}
--keep class $ extends com.qsmaxmin.qsbase.mvp.adapter.QsListAdapterItem {*;}
--keep class * extends com.qsmaxmin.qsbase.mvp.adapter.QsRecycleAdapterItem {*;}
--keep class $ extends com.qsmaxmin.qsbase.mvp.adapter.QsRecycleAdapterItem {*;}
--keep class * extends com.qsmaxmin.qsbase.common.viewbind.AnnotationExecutor {*;}
-
-#Presenter防止混淆
--keep class * extends com.qsmaxmin.qsbase.mvp.presenter.QsPresenter {*;}
-
-#Config防止混淆
--keep class * extends com.qsmaxmin.qsbase.common.config.QsProperties{*;}
+#框架部分实现类防止混淆
+-keep class * extends com.qsmaxmin.qsbase.common.model.QsNotProguard {*;}
+-keep class $ extends com.qsmaxmin.qsbase.common.model.QsNotProguard {*;}
 
 #Glide防止混淆
 -keep class * extends com.bumptech.glide.module.AppGlideModule{*;}

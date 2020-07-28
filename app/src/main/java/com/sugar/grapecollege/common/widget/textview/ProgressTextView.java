@@ -5,10 +5,9 @@ import android.graphics.Canvas;
 import android.graphics.LinearGradient;
 import android.graphics.Shader;
 import android.os.Looper;
-import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
 
-import com.qsmaxmin.qsbase.common.log.L;
+import androidx.appcompat.widget.AppCompatTextView;
 
 /**
  * @CreateBy qsmaxmin

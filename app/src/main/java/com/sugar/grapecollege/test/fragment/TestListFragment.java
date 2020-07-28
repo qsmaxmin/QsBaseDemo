@@ -1,7 +1,6 @@
 package com.sugar.grapecollege.test.fragment;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 
 import com.google.gson.Gson;
 import com.qsmaxmin.qsbase.common.utils.QsHelper;
@@ -13,6 +12,7 @@ import com.sugar.grapecollege.test.model.TestModel;
 
 import java.util.ArrayList;
 
+import androidx.fragment.app.Fragment;
 import okhttp3.OkHttpClient;
 
 /**

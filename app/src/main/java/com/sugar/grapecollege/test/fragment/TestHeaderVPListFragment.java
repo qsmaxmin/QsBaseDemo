@@ -1,7 +1,6 @@
 package com.sugar.grapecollege.test.fragment;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 
 import com.qsmaxmin.qsbase.mvp.adapter.QsListAdapterItem;
 import com.sugar.grapecollege.R;
@@ -11,6 +10,8 @@ import com.sugar.grapecollege.test.adapter.TestListAdapter;
 import com.sugar.grapecollege.test.model.TestModel;
 
 import java.util.ArrayList;
+
+import androidx.fragment.app.Fragment;
 
 /**
  * @CreateBy qsmaxmin

@@ -8,12 +8,13 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.graphics.Shader;
 import android.os.Looper;
-import android.support.annotation.Nullable;
-import android.support.v4.graphics.ColorUtils;
 import android.util.AttributeSet;
 import android.view.View;
 
 import com.sugar.grapecollege.R;
+
+import androidx.annotation.Nullable;
+import androidx.core.graphics.ColorUtils;
 
 /**
  * @CreateBy qsmaxmin

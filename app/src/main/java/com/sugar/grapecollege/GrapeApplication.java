@@ -1,9 +1,9 @@
 package com.sugar.grapecollege;
 
-import android.support.annotation.Keep;
 
 import com.qsmaxmin.qsbase.QsApplication;
 import com.qsmaxmin.qsbase.common.http.QsHttpCallback;
+import com.qsmaxmin.qsbase.common.utils.ImageHelper;
 import com.sugar.grapecollege.common.http.CustomHttpCallback;
 
 /**
@@ -11,7 +11,6 @@ import com.sugar.grapecollege.common.http.CustomHttpCallback;
  * @Date 2017/4/25 11:25
  * @Description
  */
-@Keep
 public class GrapeApplication extends QsApplication {
 
     @Override public void onCreate() {
@@ -27,6 +26,13 @@ public class GrapeApplication extends QsApplication {
      */
     @Override public QsHttpCallback registerGlobalHttpListener() {
         return new CustomHttpCallback();
+    }
+
+    /**
+     * 图片加载全局回调
+     */
+    @Override public void onCommonLoadImage(ImageHelper.Builder builder) {
+        super.onCommonLoadImage(builder);
     }
 
     /**

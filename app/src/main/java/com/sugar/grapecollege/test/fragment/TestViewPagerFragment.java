@@ -1,9 +1,9 @@
 package com.sugar.grapecollege.test.fragment;
 
-import android.support.v4.app.Fragment;
-
 import com.qsmaxmin.qsbase.mvp.fragment.QsViewPagerFragment;
 import com.qsmaxmin.qsbase.mvp.model.QsModelPager;
+
+import androidx.fragment.app.Fragment;
 
 /**
  * @CreateBy qsmaxmin

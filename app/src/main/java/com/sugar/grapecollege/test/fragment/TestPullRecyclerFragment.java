@@ -1,7 +1,6 @@
 package com.sugar.grapecollege.test.fragment;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -12,6 +11,8 @@ import com.sugar.grapecollege.R;
 import com.sugar.grapecollege.common.base.fragment.BasePullRecyclerFragment;
 import com.sugar.grapecollege.test.model.TestModel;
 import com.sugar.grapecollege.test.presenter.TestPullRecyclerPresenter;
+
+import androidx.fragment.app.Fragment;
 
 
 /**

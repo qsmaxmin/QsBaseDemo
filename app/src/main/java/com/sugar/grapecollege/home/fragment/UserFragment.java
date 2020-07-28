@@ -34,10 +34,6 @@ public class UserFragment extends QsFragment {
         return R.layout.fragment_user;
     }
 
-    @Override public void onActionBar() {
-        setActivityTitle("mine");
-    }
-
     @Override public void initData(Bundle savedInstanceState) {
         tv_name.setText(testBindBundle);
         L.i(initTag(), "initData......testBindBundle:" + testBindBundle);

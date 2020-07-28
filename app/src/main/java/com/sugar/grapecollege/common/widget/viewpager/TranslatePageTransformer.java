@@ -1,8 +1,9 @@
 package com.sugar.grapecollege.common.widget.viewpager;
 
 import android.os.Build;
-import android.support.v4.view.ViewPager;
 import android.view.View;
+
+import androidx.viewpager.widget.ViewPager;
 
 /**
  * @CreateBy qsmaxmin
