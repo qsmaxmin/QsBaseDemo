@@ -2,8 +2,8 @@ package com.sugar.grapecollege.test.presenter;
 
 import android.os.SystemClock;
 
-import com.qsmaxmin.qsbase.common.aspect.ThreadPoint;
-import com.qsmaxmin.qsbase.common.aspect.ThreadType;
+import com.qsmaxmin.annotation.thread.ThreadPoint;
+import com.qsmaxmin.annotation.thread.ThreadType;
 import com.sugar.grapecollege.common.http.BaseModelReq;
 import com.sugar.grapecollege.common.http.HomeHttp;
 import com.sugar.grapecollege.common.base.presenter.GrapeCollegePresenter;

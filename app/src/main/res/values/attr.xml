@@ -12,6 +12,7 @@
         <attr name="weightDefault" format="float"/>
         <attr name="android:gravity"/>
     </declare-styleable>
+
     <declare-styleable name="FlowLayout_LayoutParams">
         <attr name="layout_newLine" format="boolean"/>
         <attr name="layout_weight" format="float"/>
@@ -25,6 +26,10 @@
         <attr name="cpb_backgroundColor" format="color"/>
         <attr name="cpb_radius" format="dimension"/>
         <attr name="cpb_strokeWidth" format="dimension"/>
+    </declare-styleable>
+
+    <declare-styleable name="PhotoView">
+        <attr name="dimensionRatio" format="string" />
     </declare-styleable>
 
 </resources>

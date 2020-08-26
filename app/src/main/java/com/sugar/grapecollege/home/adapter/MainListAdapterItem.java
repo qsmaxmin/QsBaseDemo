@@ -2,7 +2,7 @@ package com.sugar.grapecollege.home.adapter;
 
 import android.widget.TextView;
 
-import com.qsmaxmin.qsbase.common.viewbind.annotation.Bind;
+import com.qsmaxmin.annotation.bind.Bind;
 import com.qsmaxmin.qsbase.mvp.adapter.QsListAdapterItem;
 import com.sugar.grapecollege.R;
 import com.sugar.grapecollege.common.http.resp.ModelProductInfo;

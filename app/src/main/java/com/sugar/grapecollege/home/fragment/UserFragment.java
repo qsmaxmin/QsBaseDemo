@@ -4,11 +4,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.qsmaxmin.annotation.bind.Bind;
+import com.qsmaxmin.annotation.bind.BindBundle;
+import com.qsmaxmin.annotation.bind.OnClick;
 import com.qsmaxmin.qsbase.common.log.L;
 import com.qsmaxmin.qsbase.common.utils.QsHelper;
-import com.qsmaxmin.qsbase.common.viewbind.annotation.Bind;
-import com.qsmaxmin.qsbase.common.viewbind.annotation.BindBundle;
-import com.qsmaxmin.qsbase.common.viewbind.annotation.OnClick;
 import com.qsmaxmin.qsbase.common.widget.toast.QsToast;
 import com.qsmaxmin.qsbase.mvp.fragment.QsFragment;
 import com.sugar.grapecollege.R;

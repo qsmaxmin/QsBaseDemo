@@ -1,7 +1,6 @@
 apply plugin: 'com.android.application'
-apply plugin: 'org.greenrobot.greendao'
 //todo QsBase Add
-apply plugin: 'android-aspectjx'
+apply plugin: 'com.qsmaxmin.plugin'
 
 android {
     compileSdkVersion 28
@@ -45,23 +44,8 @@ android {
     }
 }
 
-//todo QsBase Add, AOP编译白名单，提高编译速度及避免不必要的错误，其中com.qsmaxmin.qsbase是框架包名（不变），第二个替换成你当前的项目包名
-aspectjx {
-    include 'com.qsmaxmin.qsbase', 'com.sugar.grapecollege'
-}
-
-greendao {
-    schemaVersion 1
-}
-
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    //todo QsBase Add, 分别是框架和插件依赖，这两个必须同时存在且版本号一致
-    implementation 'com.github.qsmaxmin:QsBase:9.0.4'
-    annotationProcessor 'com.github.qsmaxmin:QsPlugin:9.0.4'
-
-//    implementation('com.qsmaxmin.qsbase:QsBase:9.9.9')//local test
-//    annotationProcessor("com.qsmaxmin.qsann:QsPlugin:9.9.9")//local test
 }
 
 

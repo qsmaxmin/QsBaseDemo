@@ -5,8 +5,8 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.TextView;
 
-import com.qsmaxmin.qsbase.common.viewbind.annotation.Bind;
-import com.qsmaxmin.qsbase.common.viewbind.annotation.OnClick;
+import com.qsmaxmin.annotation.bind.Bind;
+import com.qsmaxmin.annotation.bind.OnClick;
 import com.sugar.grapecollege.R;
 import com.sugar.grapecollege.common.base.BaseActivity;
 import com.sugar.grapecollege.test.fragment.TestPullRecyclerFragment;

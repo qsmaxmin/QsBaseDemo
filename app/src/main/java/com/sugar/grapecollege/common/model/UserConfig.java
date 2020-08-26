@@ -2,7 +2,8 @@ package com.sugar.grapecollege.common.model;
 
 import android.text.TextUtils;
 
-import com.qsmaxmin.qsbase.common.config.QsProperties;
+import com.qsmaxmin.annotation.properties.AutoProperty;
+import com.qsmaxmin.qsbase.plugin.property.QsProperties;
 
 
 /**
@@ -10,6 +11,7 @@ import com.qsmaxmin.qsbase.common.config.QsProperties;
  * @Date 16/7/29
  * @Description 用户配置信息序列化
  */
+@AutoProperty
 public class UserConfig extends QsProperties {
     /**
      * 单例模式

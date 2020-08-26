@@ -3,10 +3,11 @@ package com.sugar.grapecollege.home.fragment;
 import android.os.Bundle;
 import android.view.View;
 
-import com.qsmaxmin.qsbase.common.aspect.ThreadPoint;
-import com.qsmaxmin.qsbase.common.aspect.ThreadType;
+import com.qsmaxmin.annotation.bind.OnClick;
+import com.qsmaxmin.annotation.event.Subscribe;
+import com.qsmaxmin.annotation.thread.ThreadPoint;
+import com.qsmaxmin.annotation.thread.ThreadType;
 import com.qsmaxmin.qsbase.common.log.L;
-import com.qsmaxmin.qsbase.common.viewbind.annotation.OnClick;
 import com.qsmaxmin.qsbase.mvp.adapter.QsListAdapterItem;
 import com.qsmaxmin.qsbase.mvp.presenter.Presenter;
 import com.sugar.grapecollege.R;
@@ -18,8 +19,6 @@ import com.sugar.grapecollege.home.adapter.MainListAdapterItem;
 import com.sugar.grapecollege.home.presenter.MainPresenter;
 import com.sugar.grapecollege.test.TestABActivity;
 import com.sugar.grapecollege.test.TestActivity;
-
-import org.greenrobot.eventbus.Subscribe;
 
 
 /**

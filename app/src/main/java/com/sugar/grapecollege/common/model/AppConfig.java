@@ -1,8 +1,9 @@
 package com.sugar.grapecollege.common.model;
 
 
-import com.qsmaxmin.qsbase.common.config.Property;
-import com.qsmaxmin.qsbase.common.config.QsProperties;
+import com.qsmaxmin.annotation.properties.AutoProperty;
+import com.qsmaxmin.annotation.properties.Property;
+import com.qsmaxmin.qsbase.plugin.property.QsProperties;
 
 import java.util.HashMap;
 
@@ -11,6 +12,7 @@ import java.util.HashMap;
  * @Date 16/7/29
  * @Description 应用配置存储类-可存万物
  */
+@AutoProperty
 public class AppConfig extends QsProperties {
     private static AppConfig APP_CONFIG = new AppConfig("AppConfig");
 
@@ -28,8 +30,8 @@ public class AppConfig extends QsProperties {
         super(configName);
     }
 
-    @Property public String                  testString;
-    @Property public int                     testInt;
+    @Property public String testString;
+    @Property public int    testInt;
     @Property public short                   testShort;
     @Property public byte                    testByte;
     @Property public char                    testChar;

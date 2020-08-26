@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.qsmaxmin.qsbase.common.log.L;
-import com.qsmaxmin.qsbase.common.viewbind.annotation.Bind;
+import com.qsmaxmin.annotation.bind.Bind;
 import com.qsmaxmin.qsbase.mvp.model.QsModelPager;
 import com.sugar.grapecollege.R;
 import com.sugar.grapecollege.common.base.fragment.BaseHeaderViewpagerFragment;

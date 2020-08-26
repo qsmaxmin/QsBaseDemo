@@ -2,7 +2,7 @@ package com.sugar.grapecollege.common.dialog;
 
 import android.view.View;
 
-import com.qsmaxmin.qsbase.common.viewbind.annotation.OnClick;
+import com.qsmaxmin.annotation.bind.OnClick;
 import com.qsmaxmin.qsbase.common.widget.dialog.QsDialogFragment;
 import com.sugar.grapecollege.R;
 

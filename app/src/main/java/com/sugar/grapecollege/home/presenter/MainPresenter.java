@@ -1,7 +1,7 @@
 package com.sugar.grapecollege.home.presenter;
 
-import com.qsmaxmin.qsbase.common.aspect.ThreadPoint;
-import com.qsmaxmin.qsbase.common.aspect.ThreadType;
+import com.qsmaxmin.annotation.thread.ThreadPoint;
+import com.qsmaxmin.annotation.thread.ThreadType;
 import com.qsmaxmin.qsbase.common.log.L;
 import com.qsmaxmin.qsbase.common.utils.QsHelper;
 import com.sugar.grapecollege.common.http.BaseModelReq;
