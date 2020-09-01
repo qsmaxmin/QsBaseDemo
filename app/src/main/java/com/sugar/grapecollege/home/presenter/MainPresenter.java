@@ -32,7 +32,7 @@ public class MainPresenter extends GrapeCollegePresenter<MainFragment> {
 //        setHeaderCacheData();
         L.i(initTag(), "requestBannerData 当前线程:" + Thread.currentThread().getName());
 //        HomeHttp homeHttp = createHttpRequest(HomeHttp.class);
-//        ModelHomeHeader header = homeHttp.requestHomeHeaderData(new BaseModelReq());
+//        ModelHomeHeader header = homeHttp.requestHomeHeaderData("123456");
         ModelHomeHeader header = getTestHeaderData();
         getView().updateHeader(header);
     }
