@@ -9,6 +9,6 @@ import com.qsmaxmin.qsbase.mvp.presenter.QsPresenter;
  * @Description 如果需要，可以重写父类方法
  */
 
-public abstract class GrapeCollegePresenter<V extends QsIView> extends QsPresenter<V> {
+public class GrapeCollegePresenter<V extends QsIView> extends QsPresenter<V> {
 
 }
