@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.qsmaxmin.annotation.bind.Bind;
+import com.qsmaxmin.annotation.presenter.Presenter;
 import com.qsmaxmin.qsbase.mvp.adapter.QsRecycleAdapterItem;
 import com.sugar.grapecollege.R;
 import com.sugar.grapecollege.common.base.fragment.BasePullRecyclerFragment;
@@ -20,6 +21,7 @@ import androidx.fragment.app.Fragment;
  * @Date 2017/7/4 18:14
  * @Description
  */
+@Presenter(TestPullRecyclerPresenter.class)
 public class TestPullRecyclerFragment extends BasePullRecyclerFragment<TestPullRecyclerPresenter, TestModel.TestModelInfo> {
 
     @Bind(R.id.tv_left) TextView tv_left;

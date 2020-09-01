@@ -2,6 +2,7 @@ package com.sugar.grapecollege.test.fragment;
 
 import android.os.Bundle;
 
+import com.qsmaxmin.annotation.presenter.Presenter;
 import com.qsmaxmin.qsbase.mvp.adapter.QsListAdapterItem;
 import com.sugar.grapecollege.R;
 import com.sugar.grapecollege.common.base.fragment.BaseListFragment;
@@ -18,7 +19,7 @@ import androidx.fragment.app.Fragment;
  * @Date 2017/7/4 16:37
  * @Description
  */
-
+@Presenter(GrapeCollegePresenter.class)
 public class TestHeaderVPListFragment extends BaseListFragment<GrapeCollegePresenter, TestModel.TestModelInfo> {
 
     /**

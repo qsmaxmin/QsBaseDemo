@@ -5,11 +5,11 @@ import android.view.View;
 
 import com.qsmaxmin.annotation.bind.OnClick;
 import com.qsmaxmin.annotation.event.Subscribe;
+import com.qsmaxmin.annotation.presenter.Presenter;
 import com.qsmaxmin.annotation.thread.ThreadPoint;
 import com.qsmaxmin.annotation.thread.ThreadType;
 import com.qsmaxmin.qsbase.common.log.L;
 import com.qsmaxmin.qsbase.mvp.adapter.QsListAdapterItem;
-import com.qsmaxmin.qsbase.mvp.presenter.Presenter;
 import com.sugar.grapecollege.R;
 import com.sugar.grapecollege.common.base.fragment.BasePullListFragment;
 import com.sugar.grapecollege.common.event.ApplicationEvent;

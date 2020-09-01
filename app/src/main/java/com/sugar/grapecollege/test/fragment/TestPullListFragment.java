@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 
+import com.qsmaxmin.annotation.presenter.Presenter;
 import com.qsmaxmin.qsbase.common.log.L;
 import com.qsmaxmin.qsbase.mvp.adapter.QsListAdapterItem;
 import com.sugar.grapecollege.common.base.fragment.BasePullListFragment;
@@ -18,6 +19,7 @@ import androidx.fragment.app.Fragment;
  * @Date 2017/7/4 16:50
  * @Description
  */
+@Presenter(TestPullListPresenter.class)
 public class TestPullListFragment extends BasePullListFragment<TestPullListPresenter, TestModel.TestModelInfo> {
 
     @Override public void onRefresh() {

@@ -3,6 +3,7 @@ package com.sugar.grapecollege.test.fragment;
 import android.os.Bundle;
 
 import com.google.gson.Gson;
+import com.qsmaxmin.annotation.presenter.Presenter;
 import com.qsmaxmin.qsbase.common.utils.QsHelper;
 import com.qsmaxmin.qsbase.mvp.adapter.QsListAdapterItem;
 import com.sugar.grapecollege.common.base.fragment.BaseListFragment;
@@ -20,6 +21,7 @@ import okhttp3.OkHttpClient;
  * @Date 2017/7/4 16:37
  * @Description
  */
+@Presenter(GrapeCollegePresenter.class)
 public class TestListFragment extends BaseListFragment<GrapeCollegePresenter, TestModel.TestModelInfo> {
 
     @Override public QsListAdapterItem<TestModel.TestModelInfo> getListAdapterItem(int i) {
