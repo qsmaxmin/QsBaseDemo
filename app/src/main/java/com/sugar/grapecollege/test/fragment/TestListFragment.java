@@ -2,9 +2,7 @@ package com.sugar.grapecollege.test.fragment;
 
 import android.os.Bundle;
 
-import com.google.gson.Gson;
 import com.qsmaxmin.annotation.presenter.Presenter;
-import com.qsmaxmin.qsbase.common.utils.QsHelper;
 import com.qsmaxmin.qsbase.mvp.adapter.QsListAdapterItem;
 import com.sugar.grapecollege.common.base.fragment.BaseListFragment;
 import com.sugar.grapecollege.common.base.presenter.GrapeCollegePresenter;
@@ -14,7 +12,6 @@ import com.sugar.grapecollege.test.model.TestModel;
 import java.util.ArrayList;
 
 import androidx.fragment.app.Fragment;
-import okhttp3.OkHttpClient;
 
 /**
  * @CreateBy qsmaxmin
@@ -41,17 +38,10 @@ public class TestListFragment extends BaseListFragment<GrapeCollegePresenter, Te
             detail.testName = getClass().getSimpleName() + "  " + i;
             model.list.add(detail);
         }
-
-        Gson gson = new Gson();
-        OkHttpClient httpClient = QsHelper.getHttpHelper().getHttpClient();
         return model;
     }
 
     public static Fragment getInstance() {
         return new TestListFragment();
-    }
-
-    @Override public boolean isDelayData() {
-        return true;
     }
 }
