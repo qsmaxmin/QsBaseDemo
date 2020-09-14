@@ -5,7 +5,6 @@ import android.view.View;
 import android.widget.AdapterView;
 
 import com.qsmaxmin.annotation.presenter.Presenter;
-import com.qsmaxmin.qsbase.common.log.L;
 import com.qsmaxmin.qsbase.mvp.adapter.QsListAdapterItem;
 import com.sugar.grapecollege.common.base.fragment.BasePullListFragment;
 import com.sugar.grapecollege.test.adapter.TestListAdapter;
@@ -44,7 +43,6 @@ public class TestPullListFragment extends BasePullListFragment<TestPullListPrese
 
     @Override public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         super.onItemClick(parent, view, position, id);
-        L.i("----------->>>", "position:" + position);
     }
 
     @Override public boolean isDelayData() {

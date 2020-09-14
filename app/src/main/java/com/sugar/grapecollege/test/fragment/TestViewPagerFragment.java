@@ -1,5 +1,7 @@
 package com.sugar.grapecollege.test.fragment;
 
+import android.os.Bundle;
+
 import com.qsmaxmin.qsbase.mvp.fragment.QsViewPagerFragment;
 import com.qsmaxmin.qsbase.mvp.model.QsModelPager;
 
@@ -35,6 +37,10 @@ public class TestViewPagerFragment extends QsViewPagerFragment {
         return new QsModelPager[]{modelPager1, modelPager2, modelPager3};
     }
 
+
+    @Override public void initData(Bundle savedInstanceState) {
+
+    }
 
     @Override public boolean isOpenViewState() {
         return false;

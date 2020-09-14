@@ -3,8 +3,8 @@ package com.sugar.grapecollege.test.fragment;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import com.qsmaxmin.qsbase.common.log.L;
 import com.qsmaxmin.annotation.bind.Bind;
+import com.qsmaxmin.qsbase.common.log.L;
 import com.qsmaxmin.qsbase.mvp.model.QsModelPager;
 import com.sugar.grapecollege.R;
 import com.sugar.grapecollege.common.base.fragment.BaseHeaderViewpagerFragment;
@@ -30,12 +30,12 @@ public class TestHeaderViewFragment extends BaseHeaderViewpagerFragment {
 
     @Override public QsModelPager[] getModelPagers() {
         QsModelPager modelPager1 = new QsModelPager();
-        modelPager1.fragment = TestHeaderVPListFragment.getInstance();
+        modelPager1.fragment = TestListFragment.getInstance();
         modelPager1.title = "title1";
         modelPager1.position = 0;
 
         QsModelPager modelPager2 = new QsModelPager();
-        modelPager2.fragment = TestHeaderVPListFragment.getInstance();
+        modelPager2.fragment = TestPullListFragment.getInstance();
         modelPager2.title = "title1";
         modelPager2.position = 0;
         return new QsModelPager[]{modelPager1, modelPager2};
