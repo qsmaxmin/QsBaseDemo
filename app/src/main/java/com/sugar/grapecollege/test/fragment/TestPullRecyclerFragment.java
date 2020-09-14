@@ -2,11 +2,14 @@ package com.sugar.grapecollege.test.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.qsmaxmin.annotation.bind.Bind;
+import com.qsmaxmin.annotation.bind.OnClick;
 import com.qsmaxmin.annotation.presenter.Presenter;
+import com.qsmaxmin.qsbase.common.widget.toast.QsToast;
 import com.qsmaxmin.qsbase.mvp.adapter.QsRecycleAdapterItem;
 import com.sugar.grapecollege.R;
 import com.sugar.grapecollege.common.base.fragment.BasePullRecyclerFragment;
@@ -51,9 +54,10 @@ public class TestPullRecyclerFragment extends BasePullRecyclerFragment<TestPullR
         getPresenter().requestListData(false);
     }
 
-    class TestRecyclerAdapter extends QsRecycleAdapterItem<TestModel.TestModelInfo> {
+    static class TestRecyclerAdapter extends QsRecycleAdapterItem<TestModel.TestModelInfo> {
 
-        @Bind(R.id.tv_test) TextView tv_test;
+        @Bind(R.id.tv_test) TextView                tv_test;
+        private             TestModel.TestModelInfo mData;
 
         TestRecyclerAdapter(LayoutInflater inflater, ViewGroup parent) {
             super(inflater, parent);
@@ -64,7 +68,13 @@ public class TestPullRecyclerFragment extends BasePullRecyclerFragment<TestPullR
         }
 
         @Override protected void onBindItemData(TestModel.TestModelInfo testModelInfo, int i, int i1) {
+            this.mData = testModelInfo;
             tv_test.setText(String.valueOf(testModelInfo.testName + "---->>>> 我是RecyclerView"));
+        }
+
+        @OnClick({R.id.tv_test})
+        @Override public void onViewClick(View view) {
+            QsToast.show(mData.testName);
         }
     }
 }
