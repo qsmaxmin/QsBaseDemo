@@ -73,10 +73,4 @@ public class MainFragment extends BasePullListFragment<MainPresenter, ModelProdu
         intent2Activity(TestActivity.class);
     }
 
-    /**
-     * 打开eventBus
-     */
-    @Override public boolean isOpenEventBus() {
-        return true;
-    }
 }

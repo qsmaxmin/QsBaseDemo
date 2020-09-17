@@ -3,13 +3,13 @@ package com.sugar.grapecollege.home.presenter;
 import com.qsmaxmin.annotation.thread.ThreadPoint;
 import com.qsmaxmin.annotation.thread.ThreadType;
 import com.qsmaxmin.qsbase.common.log.L;
-import com.qsmaxmin.qsbase.common.utils.QsHelper;
+import com.qsmaxmin.qsbase.common.utils.CacheHelper;
+import com.sugar.grapecollege.common.base.presenter.GrapeCollegePresenter;
 import com.sugar.grapecollege.common.http.BaseModelReq;
 import com.sugar.grapecollege.common.http.HomeHttp;
 import com.sugar.grapecollege.common.http.resp.ModelHomeHeader;
 import com.sugar.grapecollege.common.http.resp.ModelProductInfo;
 import com.sugar.grapecollege.common.http.resp.ModelProductList;
-import com.sugar.grapecollege.common.base.presenter.GrapeCollegePresenter;
 import com.sugar.grapecollege.home.fragment.MainFragment;
 import com.sugar.grapecollege.home.model.HomeConstants;
 
@@ -99,15 +99,15 @@ public class MainPresenter extends GrapeCollegePresenter<MainFragment> {
     }
 
     private void saveHeaderDataToCache(ModelHomeHeader header) {
-        QsHelper.getCacheHelper().saveObject2File(header, HomeConstants.CACHE_MAIN_HEADER);
+        CacheHelper.saveObject2File(header, HomeConstants.CACHE_MAIN_HEADER);
     }
 
     private void saveListDataToCache(ModelProductList list) {
-        QsHelper.getCacheHelper().saveObject2File(list, HomeConstants.CACHE_MAIN_FONT_LIST);
+        CacheHelper.saveObject2File(list, HomeConstants.CACHE_MAIN_FONT_LIST);
     }
 
     private void setListCacheData() {
-        ModelProductList dataFromCache = QsHelper.getCacheHelper().getObjectFromFile(HomeConstants.CACHE_MAIN_FONT_LIST, ModelProductList.class);
+        ModelProductList dataFromCache = CacheHelper.getObjectFromFile(HomeConstants.CACHE_MAIN_FONT_LIST, ModelProductList.class);
         if (isSuccess(dataFromCache, false) && dataFromCache.list != null) {
             getView().setData(dataFromCache.list);
         }
