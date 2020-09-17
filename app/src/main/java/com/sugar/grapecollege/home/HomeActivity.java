@@ -16,12 +16,11 @@ import com.qsmaxmin.qsbase.mvp.model.QsModelPager;
 import com.sugar.grapecollege.R;
 import com.sugar.grapecollege.common.base.BaseViewPagerActivity;
 import com.sugar.grapecollege.common.model.AppConfig;
-import com.sugar.grapecollege.common.model.TestModel;
 import com.sugar.grapecollege.home.fragment.MainFragment;
 import com.sugar.grapecollege.home.fragment.UserFragment;
 import com.sugar.grapecollege.home.model.HomeConstants;
 
-import java.util.HashMap;
+import java.util.HashSet;
 
 
 public class HomeActivity extends BaseViewPagerActivity {
@@ -47,29 +46,18 @@ public class HomeActivity extends BaseViewPagerActivity {
         if (TextUtils.isEmpty(AppConfig.getInstance().testString)) {
             AppConfig.getInstance().testString = "hello world~";
             AppConfig.getInstance().testInt = 1;
-            AppConfig.getInstance().testShort = 2;
-            AppConfig.getInstance().testByte = 3;
-            AppConfig.getInstance().testChar = 4;
             AppConfig.getInstance().testLong = 5;
             AppConfig.getInstance().testFloat = 6.6f;
-            AppConfig.getInstance().testDouble = 7.7d;
             AppConfig.getInstance().testBoolean = true;
 
             AppConfig.getInstance().testInteger_ = 11;
-            AppConfig.getInstance().testShort_ = 22;
-            AppConfig.getInstance().testByte_ = 33;
-            AppConfig.getInstance().testChar_ = 44;
             AppConfig.getInstance().testLong_ = 55L;
             AppConfig.getInstance().testFloat_ = 66.6f;
-            AppConfig.getInstance().testDouble_ = 77.7d;
             AppConfig.getInstance().testBoolean_ = true;
 
-            TestModel testModel = new TestModel();
-            testModel.sss = "sssssssssss";
-            AppConfig.getInstance().testModel = testModel;
-
-            AppConfig.getInstance().testMap = new HashMap<>();
-            AppConfig.getInstance().testMap.put("key_0", "abcdefg");
+            AppConfig.getInstance().testSet = new HashSet<>();
+            AppConfig.getInstance().testSet.add("1111111");
+            AppConfig.getInstance().testSet.add("2222222");
             AppConfig.getInstance().commit();
         }
     }
