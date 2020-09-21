@@ -78,12 +78,12 @@ public class HomeActivity extends BaseViewPagerActivity {
     public void requestPermission() {
         QsModelPager modelPager1 = new QsModelPager();
         modelPager1.fragment = new MainFragment();
-        modelPager1.title = "title0";
+        modelPager1.title = "首页";
         modelPager1.position = 0;
 
         QsModelPager modelPager3 = new QsModelPager();
         modelPager3.fragment = new UserFragment();
-        modelPager3.title = "title1";
+        modelPager3.title = "我的";
         modelPager3.position = 1;
         Bundle bundle = new Bundle();
         bundle.putString(HomeConstants.BK_TEST, "hello...");
@@ -93,7 +93,7 @@ public class HomeActivity extends BaseViewPagerActivity {
     }
 
     @Override public int getTabItemLayout() {
-        return 0;
+        return R.layout.item_home_tab;
     }
 
     @Override public void initTabItem(View tabItem, QsModelPager modelPager) {
@@ -106,7 +106,11 @@ public class HomeActivity extends BaseViewPagerActivity {
         super.initTab(tabStrip);
         tabStrip.setTextColor(Color.GRAY);
         tabStrip.setSelectedTextColor(Color.RED);
-        tabStrip.setIndicatorHeight(3);
+
+        tabStrip.setIndicatorColor(Color.RED);
+        tabStrip.setIndicatorWidth(100);
+        tabStrip.setIndicatorHeight(10);
+
         tabStrip.setShouldExpand(true);
         //......
     }
