@@ -1,6 +1,6 @@
 package com.sugar.grapecollege.common.base.fragment;
 
-import com.qsmaxmin.qsbase.common.widget.ptr.PtrFrameLayout;
+import com.qsmaxmin.qsbase.common.widget.ptr.PtrUIHandler;
 import com.qsmaxmin.qsbase.mvp.fragment.QsPullListFragment;
 import com.qsmaxmin.qsbase.mvp.presenter.QsPresenter;
 import com.sugar.grapecollege.R;
@@ -12,12 +12,11 @@ import com.sugar.grapecollege.R;
  */
 public abstract class BasePullListFragment<T extends QsPresenter, D> extends QsPullListFragment<T, D> {
 
-
     /**
      * 重写可以自定义刷新头
      */
-    @Override public PtrFrameLayout getPtrFrameLayout() {
-        return super.getPtrFrameLayout();
+    @Override public PtrUIHandler getPtrUIHandlerView() {
+        return super.getPtrUIHandlerView();
     }
 
     /**
