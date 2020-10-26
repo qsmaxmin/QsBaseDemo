@@ -107,7 +107,7 @@ public class HomeActivity extends BaseViewPagerActivity {
         tabStrip.setTextColor(Color.GRAY);
         tabStrip.setSelectedTextColor(Color.RED);
 
-        tabStrip.setIndicatorColor(Color.TRANSPARENT);
+        tabStrip.setIndicatorColor(Color.RED);
         tabStrip.setIndicatorWidth(100);
         tabStrip.setIndicatorHeight(10);
 
