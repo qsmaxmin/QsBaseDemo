@@ -1,8 +1,12 @@
 package com.sugar.grapecollege.common.model;
 
+import android.content.Context;
+import android.provider.Settings;
 import android.text.TextUtils;
 
 import com.qsmaxmin.annotation.properties.AutoProperty;
+import com.qsmaxmin.annotation.properties.Property;
+import com.qsmaxmin.qsbase.common.utils.QsHelper;
 import com.qsmaxmin.qsbase.plugin.property.QsProperties;
 
 
@@ -13,9 +17,6 @@ import com.qsmaxmin.qsbase.plugin.property.QsProperties;
  */
 @AutoProperty
 public class UserConfig extends QsProperties {
-    /**
-     * 单例模式
-     */
     private volatile static UserConfig USER_CONFIG;
 
     private UserConfig(String configName) {
@@ -26,62 +27,40 @@ public class UserConfig extends QsProperties {
         return "UserConfig";
     }
 
+    private static String getAndroidId(Context context) {
+        return Settings.System.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
+    }
+
     public static UserConfig getInstance() {
         if (USER_CONFIG == null) {
             synchronized (UserConfig.class) {
-                if (USER_CONFIG == null) USER_CONFIG = new UserConfig("UserConfig" + AppConfig.getInstance().testString);
+                if (USER_CONFIG == null) {
+                    String androidId = getAndroidId(QsHelper.getApplication());
+                    USER_CONFIG = new UserConfig("UserConfig_" + androidId);
+                    USER_CONFIG.userId = androidId;
+                }
             }
         }
         return USER_CONFIG;
     }
 
-    private String userId;                // 用户Id
-    private String userPhotoUrl;              // 用户头像
-    private String userName;              // 用户昵称
-    private String userPhone;              // 用户手机号
+    @Property public String userId;
+    @Property public String userName;
 
-    public String getUserId() {
-        return userId;
+    public static void login(String userName) {
+        getInstance().userName = userName;
+        getInstance().commit();
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
-        super.commit();
-    }
-
-    public String getUserPhotoUrl() {
-        return userPhotoUrl;
-    }
-
-    public void setUserPhotoUrl(String userPhotoUrl) {
-        this.userPhotoUrl = userPhotoUrl;
-        super.commit();
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-        super.commit();
-    }
-
-    public String getUserPhone() {
-        return userPhone;
-    }
-
-    public void setUserPhone(String userPhone) {
-        this.userPhone = userPhone;
-        super.commit();
-    }
-
-    public void logout() {
-        clear();
-        USER_CONFIG = null;
+    public static void logout() {
+        if (USER_CONFIG != null) {
+            USER_CONFIG.userName = null;
+            USER_CONFIG.commit();
+            USER_CONFIG = null;
+        }
     }
 
     public boolean isLogin() {
-        return (!TextUtils.isEmpty(userId));
+        return (!TextUtils.isEmpty(userName));
     }
 }

@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.sugar.grapecollege"
     android:versionCode="1"
     android:versionName="1.0.0.000001">
 
     <!-- SD卡读写 -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <!-- 访问网络 -->
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     <!-- 网络状态 -->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <!--wifi 状态-->
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <!--手机状态-->
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:name="com.sugar.grapecollege.GrapeApplication"
@@ -37,19 +36,27 @@
             android:screenOrientation="portrait"
             android:theme="@style/SugarTheme">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
         <activity
             android:name=".test.TestABActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/SugarTheme"/>
+            android:theme="@style/SugarTheme" />
         <activity
             android:name=".test.TestActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/SugarTheme"/>
+            android:theme="@style/SugarTheme" />
+        <activity
+            android:name=".user.UserHomeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/SugarTheme" />
+        <activity
+            android:name=".user.LoginActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/SugarTheme" />
     </application>
 </manifest>

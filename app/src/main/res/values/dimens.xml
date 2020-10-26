@@ -11,7 +11,7 @@
     <dimen name="font_size_four">14sp</dimen>
     <dimen name="font_size_five">15sp</dimen>
     <dimen name="font_size_six">16sp</dimen>
-    <dimen name="font_size_title">15sp</dimen>
+    <dimen name="font_size_title">16sp</dimen>
 
     <!-- 距离-->
     <dimen name="dp_1">1dp</dimen>

@@ -4,17 +4,21 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.qsmaxmin.annotation.aspect.QsAspect;
 import com.qsmaxmin.annotation.bind.Bind;
 import com.qsmaxmin.annotation.bind.BindBundle;
 import com.qsmaxmin.annotation.bind.OnClick;
+import com.qsmaxmin.annotation.event.Subscribe;
 import com.qsmaxmin.qsbase.common.log.L;
 import com.qsmaxmin.qsbase.common.utils.QsHelper;
-import com.qsmaxmin.qsbase.common.widget.toast.QsToast;
 import com.qsmaxmin.qsbase.mvp.fragment.QsFragment;
 import com.sugar.grapecollege.R;
+import com.sugar.grapecollege.common.aspect.LoginAspect;
 import com.sugar.grapecollege.common.dialog.CustomDialog;
-import com.sugar.grapecollege.common.event.ApplicationEvent;
+import com.sugar.grapecollege.common.event.UserEvent;
+import com.sugar.grapecollege.common.model.UserConfig;
 import com.sugar.grapecollege.home.model.HomeConstants;
+import com.sugar.grapecollege.user.UserHomeActivity;
 
 
 /**
@@ -35,7 +39,11 @@ public class UserFragment extends QsFragment {
     }
 
     @Override public void initData(Bundle savedInstanceState) {
-        tv_name.setText(testBindBundle);
+        if (UserConfig.getInstance().isLogin()) {
+            tv_name.setText(UserConfig.getInstance().userName);
+        } else {
+            tv_name.setText("点击登录");
+        }
         L.i(initTag(), "initData......testBindBundle:" + testBindBundle);
         L.i(initTag(), "initData......testBindBundle2:" + testBindBundle2);
     }
@@ -43,8 +51,7 @@ public class UserFragment extends QsFragment {
     @OnClick({R.id.tv_download, R.id.tv_myfont, R.id.ll_header}) public void onViewClick(View view) {
         switch (view.getId()) {
             case R.id.ll_header:
-                QsToast.show("测试eventBus");
-                QsHelper.eventPost(new ApplicationEvent.TestClickEvent());
+                goUserCenterBeforeLogin();
                 break;
             case R.id.tv_myfont:
                 QsHelper.commitDialogFragment(new CustomDialog());
@@ -54,8 +61,19 @@ public class UserFragment extends QsFragment {
         }
     }
 
-    @OnClick({R.id.tv_download, R.id.tv_name, R.id.tv_law, R.id.tv_myfont,}) public void onClick(View view) {
+    @QsAspect(LoginAspect.class)
+    private void goUserCenterBeforeLogin() {
+        intent2Activity(UserHomeActivity.class);
+    }
 
+    @Subscribe
+    public void onEvent(UserEvent.OnLogin event) {
+        tv_name.setText(UserConfig.getInstance().userName);
+    }
+
+    @Subscribe
+    public void onEvent(UserEvent.OnLogout event) {
+        tv_name.setText("点击登录");
     }
 
     @Override public boolean isOpenViewState() {

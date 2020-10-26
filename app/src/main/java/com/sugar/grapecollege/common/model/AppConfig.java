@@ -7,6 +7,8 @@ import com.qsmaxmin.qsbase.plugin.property.QsProperties;
 
 import java.util.Set;
 
+import androidx.annotation.NonNull;
+
 /**
  * @CreateBy qsmaxmin
  * @Date 16/7/29
@@ -41,7 +43,7 @@ public class AppConfig extends QsProperties {
     @Property public Boolean     testBoolean_;
     @Property public Set<String> testSet;
 
-    @Override public String toString() {
+    @Override @NonNull public String toString() {
         return "AppConfig{" +
                 "\ntestString='" + testString + '\'' +
                 ", \ntestInt=" + testInt +
