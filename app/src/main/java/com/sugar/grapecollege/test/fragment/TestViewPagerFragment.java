@@ -45,4 +45,12 @@ public class TestViewPagerFragment extends QsViewPagerFragment {
     @Override public boolean isOpenViewState() {
         return false;
     }
+
+    @Override public void onBackPressed() {
+        super.onBackPressed();
+    }
+
+    @Override public boolean interceptBackPressed() {
+        return true;
+    }
 }

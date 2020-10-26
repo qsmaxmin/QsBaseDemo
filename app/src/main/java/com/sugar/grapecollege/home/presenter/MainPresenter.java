@@ -1,9 +1,13 @@
 package com.sugar.grapecollege.home.presenter;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+
 import com.qsmaxmin.annotation.thread.ThreadPoint;
 import com.qsmaxmin.annotation.thread.ThreadType;
 import com.qsmaxmin.qsbase.common.log.L;
 import com.qsmaxmin.qsbase.common.utils.CacheHelper;
+import com.sugar.grapecollege.R;
 import com.sugar.grapecollege.common.base.presenter.GrapeCollegePresenter;
 import com.sugar.grapecollege.common.http.BaseModelReq;
 import com.sugar.grapecollege.common.http.HomeHttp;
@@ -29,7 +33,6 @@ public class MainPresenter extends GrapeCollegePresenter<MainFragment> {
      * 注解ThreadPoint(ThreadType.HTTP)的作用是将该方法放入Http线程中执行
      */
     @ThreadPoint(ThreadType.HTTP) public void requestBannerData() {
-//        setHeaderCacheData();
         L.i(initTag(), "requestBannerData 当前线程:" + Thread.currentThread().getName());
 //        HomeHttp homeHttp = createHttpRequest(HomeHttp.class);
 //        ModelHomeHeader header = homeHttp.requestHomeHeaderData("123456");
@@ -68,19 +71,13 @@ public class MainPresenter extends GrapeCollegePresenter<MainFragment> {
     private ModelHomeHeader getTestHeaderData() {
         ModelHomeHeader header = new ModelHomeHeader();
         header.code = 0;
-        header.responseData = new ArrayList<>(5);
-
-        ArrayList<String> urls = new ArrayList<>();
-        urls.add("http://image.tianjimedia.com/uploadImages/2015/204/22/YMG9CAUWUM15.jpg");
-        urls.add("http://image.tianjimedia.com/uploadImages/2015/204/24/Q3NSQD2094FO.jpg");
-        urls.add("http://image.tianjimedia.com/uploadImages/2015/204/28/73NL5CN350LB.jpg");
-        urls.add("http://image.tianjimedia.com/uploadImages/2015/204/25/WC9015475YJ9.jpg");
-        urls.add("http://img01.taopic.com/150605/267832-1506050R10761.jpg");
-
-        for (String url : urls) {
-            ModelHomeHeader.ResponseDataModel dataModel = new ModelHomeHeader.ResponseDataModel();
-            dataModel.picUrl = url;
-            header.responseData.add(dataModel);
+        header.data = new ArrayList<>(5);
+        if(getContext()!=null){
+            Bitmap bitmap = BitmapFactory.decodeResource(getContext().getResources(), R.mipmap.ic_launcher);
+            header.data.add(bitmap);
+            header.data.add(bitmap);
+            header.data.add(bitmap);
+            header.data.add(bitmap);
         }
         return header;
     }

@@ -3,12 +3,18 @@ package com.sugar.grapecollege.home.fragment;
 import android.os.Bundle;
 import android.view.View;
 
+import com.qsmaxmin.annotation.bind.Bind;
 import com.qsmaxmin.annotation.bind.OnClick;
 import com.qsmaxmin.annotation.event.Subscribe;
 import com.qsmaxmin.annotation.presenter.Presenter;
 import com.qsmaxmin.annotation.thread.ThreadPoint;
 import com.qsmaxmin.annotation.thread.ThreadType;
 import com.qsmaxmin.qsbase.common.log.L;
+import com.qsmaxmin.qsbase.common.widget.toast.QsToast;
+import com.qsmaxmin.qsbase.common.widget.viewpager.PagerSlidingTabStrip;
+import com.qsmaxmin.qsbase.common.widget.viewpager.autoscroll.AutoScrollViewPager;
+import com.qsmaxmin.qsbase.common.widget.viewpager.autoscroll.CirclePageIndicator;
+import com.qsmaxmin.qsbase.common.widget.viewpager.autoscroll.InfinitePagerAdapter;
 import com.qsmaxmin.qsbase.mvp.adapter.QsListAdapterItem;
 import com.sugar.grapecollege.R;
 import com.sugar.grapecollege.common.base.fragment.BasePullListFragment;
@@ -28,6 +34,8 @@ import com.sugar.grapecollege.test.TestActivity;
  */
 @Presenter(MainPresenter.class)
 public class MainFragment extends BasePullListFragment<MainPresenter, ModelProductInfo.ProductInfo> {
+    @Bind(R.id.banner)       AutoScrollViewPager banner;
+    @Bind(R.id.page_indicator) CirclePageIndicator page_indicator;
 
     @Override public int getHeaderLayout() {
         return R.layout.header_main_fragment;
@@ -50,12 +58,34 @@ public class MainFragment extends BasePullListFragment<MainPresenter, ModelProdu
         getPresenter().requestListData(false, true);
     }
 
-    @ThreadPoint(ThreadType.MAIN) public void updateHeader(ModelHomeHeader header) {
+    @ThreadPoint(ThreadType.MAIN)
+    public void updateHeader(ModelHomeHeader header) {
         L.i(initTag(), "updateHeader 当前线程:" + Thread.currentThread().getName());
+
+        InfinitePagerAdapter adapter = new InfinitePagerAdapter();
+        adapter.setOnPageClickListener(new InfinitePagerAdapter.OnPageClickListener() {
+            @Override public void onPageClick(int position) {
+                QsToast.show("click:"+position);
+            }
+        });
+        adapter.setData(header.data);
+        banner.setAdapter(adapter);
+        page_indicator.setViewPager(banner);
         showContentView();
     }
 
-    @OnClick({R.id.tv_left, R.id.tv_right}) public void onViewClick(View view) {
+    @Override public void onResume() {
+        super.onResume();
+        banner.startAutoScroll();
+    }
+
+    @Override public void onPause() {
+        super.onPause();
+        banner.stopAutoScroll();
+    }
+
+    @OnClick({R.id.tv_left, R.id.tv_right})
+    public void onViewClick(View view) {
         switch (view.getId()) {
             case R.id.tv_left:
                 intent2Activity(TestActivity.class);

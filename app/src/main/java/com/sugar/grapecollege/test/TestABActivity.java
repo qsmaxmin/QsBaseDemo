@@ -35,7 +35,7 @@ public class TestABActivity extends BaseActivity {
         switch (view.getId()) {
             case R.id.tv_edit:
                 tv_edit.setVisibility(View.GONE);
-                commitBackStackFragment(TestViewPagerFragment.getInstance());
+                commitFragment(TestViewPagerFragment.getInstance());
                 break;
             case R.id.view_back:
                 tv_edit.setVisibility(View.VISIBLE);

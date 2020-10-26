@@ -1,5 +1,7 @@
 package com.sugar.grapecollege.common.http.resp;
 
+import android.graphics.Bitmap;
+
 import com.qsmaxmin.qsbase.common.model.QsModel;
 import com.sugar.grapecollege.common.http.BaseModel;
 
@@ -12,15 +14,5 @@ import java.util.List;
  */
 
 public class ModelHomeHeader extends BaseModel {
-
-    public List<ResponseDataModel> responseData;
-
-    public List<ResponseDataModel> data;
-
-    public static class ResponseDataModel extends QsModel {
-        public String picUrl;
-        public String bannerType;
-        public String bannerValue;
-        public String bannerName;
-    }
+    public List<Bitmap> data;
 }
