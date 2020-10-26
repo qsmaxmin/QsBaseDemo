@@ -41,6 +41,10 @@ public class TestHeaderViewFragment extends BaseHeaderViewpagerFragment {
         return new QsModelPager[]{modelPager1, modelPager2};
     }
 
+    @Override public boolean isCustomTabView() {
+        return false;
+    }
+
     @Override public void initData(Bundle savedInstanceState) {
         L.i(initTag(), "+++++++>>> " + tv_left);
     }

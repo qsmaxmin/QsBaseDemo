@@ -5,13 +5,13 @@ import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
 import android.widget.TextView;
 
 import com.qsmaxmin.annotation.bind.Bind;
 import com.qsmaxmin.annotation.permission.Permission;
 import com.qsmaxmin.qsbase.common.log.L;
 import com.qsmaxmin.qsbase.common.widget.viewpager.PagerSlidingTabStrip;
+import com.qsmaxmin.qsbase.mvp.adapter.QsTabAdapterItem;
 import com.qsmaxmin.qsbase.mvp.model.QsModelPager;
 import com.sugar.grapecollege.R;
 import com.sugar.grapecollege.common.base.BaseViewPagerActivity;
@@ -20,11 +20,13 @@ import com.sugar.grapecollege.home.fragment.MainFragment;
 import com.sugar.grapecollege.home.fragment.UserFragment;
 import com.sugar.grapecollege.home.model.HomeConstants;
 
+import java.util.HashMap;
 import java.util.HashSet;
 
 
 public class HomeActivity extends BaseViewPagerActivity {
-    @Bind(R.id.tv_title) TextView tv_title;
+    @Bind(R.id.tv_title) TextView                    tv_title;
+    private              HashMap<Integer, TabHolder> tabHolders = new HashMap<>();
 
     @Override public int actionbarLayoutId() {
         return R.layout.actionbar_title;
@@ -92,26 +94,39 @@ public class HomeActivity extends BaseViewPagerActivity {
         initViewPager(new QsModelPager[]{modelPager1, modelPager3}, 1);
     }
 
-    @Override public int getTabItemLayout() {
-        return R.layout.item_home_tab;
-    }
-
-    @Override public void initTabItem(View tabItem, QsModelPager modelPager) {
-        TextView tv_tab = tabItem.findViewById(R.id.tv_tab);
-        tv_tab.setText(modelPager.title);
-
+    @Override public QsTabAdapterItem createTabAdapterItem(int position) {
+        return new TabHolder(position);
     }
 
     @Override public void initTab(PagerSlidingTabStrip tabStrip) {
         super.initTab(tabStrip);
-        tabStrip.setTextColor(Color.GRAY);
-        tabStrip.setSelectedTextColor(Color.RED);
-
-        tabStrip.setIndicatorColor(Color.RED);
-        tabStrip.setIndicatorWidth(100);
-        tabStrip.setIndicatorHeight(10);
-
+        tabStrip.setIndicatorHeight(0);
         tabStrip.setShouldExpand(true);
         //......
+    }
+
+    @Override public boolean isCustomTabView() {
+        return true;
+    }
+
+    private static class TabHolder extends QsTabAdapterItem {
+        @Bind(R.id.tv_tab) TextView tv_tab;
+
+        public TabHolder(int position) {
+            super(position);
+        }
+
+        @Override public int tabItemLayoutId() {
+            return R.layout.item_home_tab;
+        }
+
+        @Override public void bindData(QsModelPager[] pager, int position) {
+            tv_tab.setText(pager[position].title);
+            onPageSelectChanged(position == 0);
+        }
+
+        @Override public void onPageSelectChanged(boolean selected) {
+            tv_tab.setTextColor(selected ? Color.GREEN : Color.GRAY);
+        }
     }
 }
