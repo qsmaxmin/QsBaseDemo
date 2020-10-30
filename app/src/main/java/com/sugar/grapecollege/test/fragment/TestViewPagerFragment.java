@@ -19,7 +19,7 @@ public class TestViewPagerFragment extends QsViewPagerFragment {
         return new TestViewPagerFragment();
     }
 
-    @Override public QsModelPager[] getModelPagers() {
+    @Override public QsModelPager[] createModelPagers() {
         QsModelPager modelPager1 = new QsModelPager();
         modelPager1.fragment = TestFragment.getInstance();
         modelPager1.title = "Fragment";
@@ -37,12 +37,8 @@ public class TestViewPagerFragment extends QsViewPagerFragment {
         return new QsModelPager[]{modelPager1, modelPager2, modelPager3};
     }
 
-    @Override public boolean isCustomTabView() {
-        return false;
-    }
-
     @Override public void initData(Bundle savedInstanceState) {
-
+        //custom your logic
     }
 
     @Override public boolean isOpenViewState() {

@@ -2,7 +2,6 @@ package com.sugar.grapecollege.home;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.TextView;
@@ -16,17 +15,16 @@ import com.qsmaxmin.qsbase.mvp.model.QsModelPager;
 import com.sugar.grapecollege.R;
 import com.sugar.grapecollege.common.base.BaseViewPagerActivity;
 import com.sugar.grapecollege.common.model.AppConfig;
+import com.sugar.grapecollege.home.adapter.HomeTabAdapterItem;
 import com.sugar.grapecollege.home.fragment.MainFragment;
 import com.sugar.grapecollege.home.fragment.UserFragment;
 import com.sugar.grapecollege.home.model.HomeConstants;
 
-import java.util.HashMap;
 import java.util.HashSet;
 
 
 public class HomeActivity extends BaseViewPagerActivity {
-    @Bind(R.id.tv_title) TextView                    tv_title;
-    private              HashMap<Integer, TabHolder> tabHolders = new HashMap<>();
+    @Bind(R.id.tv_title) TextView tv_title;
 
     @Override public int actionbarLayoutId() {
         return R.layout.actionbar_title;
@@ -35,7 +33,7 @@ public class HomeActivity extends BaseViewPagerActivity {
     @SuppressLint("SetTextI18n")
     @Override public void initData(Bundle bundle) {
         tv_title.setText("custom bind view");
-        requestPermission();
+        checkPermissionThenInit();
         testAppConfig();
     }
 
@@ -69,15 +67,17 @@ public class HomeActivity extends BaseViewPagerActivity {
     }
 
     /**
-     * 因为要申请完权限通过后再初始化ViewPager
+     * 因为要申请权限，申请通过后再初始化ViewPager
      * 所以返回null
+     *
+     * @see #initViewPager(QsModelPager[])
      */
-    @Override public QsModelPager[] getModelPagers() {
+    @Override public QsModelPager[] createModelPagers() {
         return null;
     }
 
     @Permission({Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_PHONE_STATE, Manifest.permission.CAMERA})
-    public void requestPermission() {
+    public void checkPermissionThenInit() {
         QsModelPager modelPager1 = new QsModelPager();
         modelPager1.fragment = new MainFragment();
         modelPager1.title = "首页";
@@ -94,10 +94,17 @@ public class HomeActivity extends BaseViewPagerActivity {
         initViewPager(new QsModelPager[]{modelPager1, modelPager3}, 1);
     }
 
+    /**
+     * 自定义tab item UI
+     * 如果返回null，则使用默认样式
+     */
     @Override public QsTabAdapterItem createTabAdapterItem(int position) {
-        return new TabHolder(position);
+        return new HomeTabAdapterItem(position);
     }
 
+    /**
+     * 初始化tab样式
+     */
     @Override public void initTab(PagerSlidingTabStrip tabStrip) {
         super.initTab(tabStrip);
         tabStrip.setIndicatorHeight(0);
@@ -105,28 +112,4 @@ public class HomeActivity extends BaseViewPagerActivity {
         //......
     }
 
-    @Override public boolean isCustomTabView() {
-        return true;
-    }
-
-    private static class TabHolder extends QsTabAdapterItem {
-        @Bind(R.id.tv_tab) TextView tv_tab;
-
-        public TabHolder(int position) {
-            super(position);
-        }
-
-        @Override public int tabItemLayoutId() {
-            return R.layout.item_home_tab;
-        }
-
-        @Override public void bindData(QsModelPager[] pager, int position) {
-            tv_tab.setText(pager[position].title);
-            onPageSelectChanged(position == 0);
-        }
-
-        @Override public void onPageSelectChanged(boolean selected) {
-            tv_tab.setTextColor(selected ? Color.GREEN : Color.GRAY);
-        }
-    }
 }

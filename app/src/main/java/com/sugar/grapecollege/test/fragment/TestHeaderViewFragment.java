@@ -28,7 +28,7 @@ public class TestHeaderViewFragment extends BaseHeaderViewpagerFragment {
         return R.layout.header_main_fragment;
     }
 
-    @Override public QsModelPager[] getModelPagers() {
+    @Override public QsModelPager[] createModelPagers() {
         QsModelPager modelPager1 = new QsModelPager();
         modelPager1.fragment = TestListFragment.getInstance();
         modelPager1.title = "title1";
@@ -39,10 +39,6 @@ public class TestHeaderViewFragment extends BaseHeaderViewpagerFragment {
         modelPager2.title = "title1";
         modelPager2.position = 0;
         return new QsModelPager[]{modelPager1, modelPager2};
-    }
-
-    @Override public boolean isCustomTabView() {
-        return false;
     }
 
     @Override public void initData(Bundle savedInstanceState) {
