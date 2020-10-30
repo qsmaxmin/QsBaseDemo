@@ -51,7 +51,7 @@ public class UserFragment extends QsFragment {
     @OnClick({R.id.tv_download, R.id.tv_myfont, R.id.ll_header}) public void onViewClick(View view) {
         switch (view.getId()) {
             case R.id.ll_header:
-                goUserCenterBeforeLogin();
+                goUserCenterBeforeLogin("这是参数");
                 break;
             case R.id.tv_myfont:
                 QsHelper.commitDialogFragment(new CustomDialog());
@@ -61,8 +61,8 @@ public class UserFragment extends QsFragment {
         }
     }
 
-    @QsAspect(LoginAspect.class)
-    private void goUserCenterBeforeLogin() {
+    @QsAspect(value = LoginAspect.class, tag = "从UserFragment来的")
+    private void goUserCenterBeforeLogin(String test) {
         intent2Activity(UserHomeActivity.class);
     }
 
