@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">GrapeCollege</string>
+    <string name="app_name">QsBaseDemo</string>
     <string name="http_error_msg">网络异常</string>
     <string name="network_error_msg">网络异常</string>
     <string name="unexpected_error_msg">未知错误</string>

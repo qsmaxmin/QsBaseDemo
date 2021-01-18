@@ -1,6 +1,7 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
+    ext.kotlin_version = '1.4.30-M1'
     repositories {
         mavenCentral()
         google()
@@ -13,7 +14,8 @@ buildscript {
         classpath 'com.android.tools.build:gradle:3.6.3'
 
         //todo QsBase Add
-        classpath 'com.github.qsmaxmin:QsTransform:10.10.6'
+        classpath 'com.github.qsmaxmin:QsTransform:10.10.7'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
 
