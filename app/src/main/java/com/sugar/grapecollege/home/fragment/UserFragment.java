@@ -1,24 +1,27 @@
 package com.sugar.grapecollege.home.fragment;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.TextView;
+import android.view.ViewGroup;
 
 import com.qsmaxmin.annotation.aspect.QsAspect;
-import com.qsmaxmin.annotation.bind.Bind;
 import com.qsmaxmin.annotation.bind.BindBundle;
 import com.qsmaxmin.annotation.bind.OnClick;
 import com.qsmaxmin.annotation.event.Subscribe;
 import com.qsmaxmin.qsbase.common.log.L;
-import com.qsmaxmin.qsbase.common.utils.QsHelper;
-import com.qsmaxmin.qsbase.mvp.fragment.QsFragment;
 import com.sugar.grapecollege.R;
 import com.sugar.grapecollege.common.aspect.LoginAspect;
+import com.sugar.grapecollege.common.base.fragment.BaseFragment;
 import com.sugar.grapecollege.common.dialog.CustomDialog;
 import com.sugar.grapecollege.common.event.UserEvent;
 import com.sugar.grapecollege.common.model.UserConfig;
+import com.sugar.grapecollege.databinding.FragmentUserBinding;
 import com.sugar.grapecollege.home.model.HomeConstants;
 import com.sugar.grapecollege.user.UserHomeActivity;
+
+import androidx.annotation.NonNull;
+import androidx.databinding.DataBindingUtil;
 
 
 /**
@@ -27,37 +30,35 @@ import com.sugar.grapecollege.user.UserHomeActivity;
  * @Description
  */
 
-public class UserFragment extends QsFragment {
-    @Bind(R.id.tv_name)                 TextView tv_name;
-    @Bind(R.id.tv_download)             TextView tv_download;
-    @Bind(R.id.tv_law)                  TextView tv_law;
-    @BindBundle(HomeConstants.BK_TEST)  String   testBindBundle;
-    @BindBundle(HomeConstants.BK_TEST2) int      testBindBundle2;
+public class UserFragment extends BaseFragment {
+    @BindBundle(HomeConstants.BK_TEST)  String              testBindBundle;
+    @BindBundle(HomeConstants.BK_TEST2) int                 testBindBundle2;
+    private                             FragmentUserBinding binding;
 
-    @Override public int layoutId() {
-        return R.layout.fragment_user;
+
+    @Override public View onCreateContentView(@NonNull LayoutInflater inflater, @NonNull ViewGroup parent) {
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_user, parent, true);
+        binding.setOwner(this);
+        return binding.getRoot();
     }
 
     @Override public void initData(Bundle savedInstanceState) {
         if (UserConfig.getInstance().isLogin()) {
-            tv_name.setText(UserConfig.getInstance().userName);
+            binding.tvName.setText(UserConfig.getInstance().userName);
         } else {
-            tv_name.setText("点击登录");
+            binding.tvName.setText("点击登录");
         }
         L.i(initTag(), "initData......testBindBundle:" + testBindBundle);
         L.i(initTag(), "initData......testBindBundle2:" + testBindBundle2);
     }
 
-    @OnClick({R.id.tv_download, R.id.tv_myfont, R.id.ll_header}) public void onViewClick(View view) {
-        switch (view.getId()) {
-            case R.id.ll_header:
-                goUserCenterBeforeLogin("这是参数");
-                break;
-            case R.id.tv_myfont:
-                QsHelper.commitDialogFragment(new CustomDialog());
-                break;
-            case R.id.tv_download:
-                break;
+    public void onViewClick(View view) {
+        if (view == binding.llHeader) {
+            goUserCenterBeforeLogin("这是参数");
+        } else if (view == binding.tvMyfont) {
+            new CustomDialog().show(this);
+        } else if (view == binding.tvDownload) {
+
         }
     }
 
@@ -68,12 +69,12 @@ public class UserFragment extends QsFragment {
 
     @Subscribe
     public void onEvent(UserEvent.OnLogin event) {
-        tv_name.setText(UserConfig.getInstance().userName);
+        binding.tvName.setText(UserConfig.getInstance().userName);
     }
 
     @Subscribe
     public void onEvent(UserEvent.OnLogout event) {
-        tv_name.setText("点击登录");
+        binding.tvName.setText("点击登录");
     }
 
     @Override public boolean isOpenViewState() {

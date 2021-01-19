@@ -16,7 +16,7 @@ import androidx.annotation.NonNull;
  */
 @AutoProperty
 public class AppConfig extends QsProperties {
-    private static AppConfig APP_CONFIG = new AppConfig("AppConfig");
+    private static final AppConfig APP_CONFIG = new AppConfig("AppConfig");
 
     /**
      * 单例模式

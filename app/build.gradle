@@ -15,6 +15,9 @@ android {
         versionCode 100
         versionName "1.0.0"
     }
+    dataBinding {
+        enabled = true
+    }
     sourceSets {
         main {
             java.srcDirs = ['src/main/java']

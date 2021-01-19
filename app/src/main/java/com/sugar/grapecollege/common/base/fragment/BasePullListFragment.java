@@ -1,21 +1,22 @@
 package com.sugar.grapecollege.common.base.fragment;
 
 import com.qsmaxmin.qsbase.common.widget.ptr.PtrUIHandler;
-import com.qsmaxmin.qsbase.mvp.fragment.QsPullListFragment;
-import com.qsmaxmin.qsbase.mvp.presenter.QsPresenter;
+import com.qsmaxmin.qsbase.mvvm.fragment.MvPullListFragment;
 import com.sugar.grapecollege.R;
+
+import org.jetbrains.annotations.NotNull;
 
 /**
  * @CreateBy qsmaxmin
  * @Date 16/7/29
  * @Description 抽象类，重写了下拉刷新动画
  */
-public abstract class BasePullListFragment<T extends QsPresenter, D> extends QsPullListFragment<T, D> {
+public abstract class BasePullListFragment<D> extends MvPullListFragment<D> {
 
     /**
      * 重写可以自定义刷新头
      */
-    @Override public PtrUIHandler getPtrUIHandlerView() {
+    @NotNull @Override public PtrUIHandler getPtrUIHandlerView() {
         return super.getPtrUIHandlerView();
     }
 

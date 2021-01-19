@@ -1,63 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/colorAccent"
-    android:orientation="vertical">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!--banner-->
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_198"
-        android:background="@color/color_white"
-        android:clipChildren="false">
+    <data>
 
-        <ImageView
-            android:id="@+id/iv_banner_bg"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_centerInParent="true"
-            android:background="@mipmap/ic_launcher"
-            android:scaleType="centerInside" />
-
-        <com.qsmaxmin.qsbase.common.widget.viewpager.autoscroll.AutoScrollViewPager
-            android:id="@+id/banner"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-        <com.qsmaxmin.qsbase.common.widget.viewpager.autoscroll.CirclePageIndicator
-            android:id="@+id/page_indicator"
-            android:layout_width="match_parent"
-            android:layout_gravity="bottom"
-            android:layout_marginBottom="20dp"
-            android:layout_height="10dp" />
-
-    </FrameLayout>
+        <variable
+            name="owner"
+            type="com.qsmaxmin.qsbase.mvvm.IView" />
+    </data>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tv_left"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="?android:selectableItemBackground"
-            android:clickable="true"
-            android:gravity="center"
-            android:text="测试Activity" />
+        <!--banner-->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_198"
+            android:background="@color/color_white"
+            android:clipChildren="false">
 
-        <TextView
-            android:id="@+id/tv_right"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="?android:selectableItemBackground"
-            android:gravity="center"
-            android:text="测试ActionBarActivity" />
+            <ImageView
+                android:id="@+id/iv_banner_bg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@mipmap/ic_launcher"
+                android:scaleType="centerInside" />
+
+            <com.qsmaxmin.qsbase.common.widget.viewpager.autoscroll.AutoScrollViewPager
+                android:id="@+id/banner"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <com.qsmaxmin.qsbase.common.widget.viewpager.autoscroll.CirclePageIndicator
+                android:id="@+id/page_indicator"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="20dp" />
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_left"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="20dp"
+                android:layout_weight="1"
+                android:background="?android:selectableItemBackground"
+                android:gravity="center"
+                android:onClick="@{v->owner.onViewClicked(v)}"
+                android:text="测试TestHeaderViewPagerActivity"
+                android:layout_marginEnd="20dp" />
+
+            <TextView
+                android:id="@+id/tv_right"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="?android:selectableItemBackground"
+                android:gravity="center"
+                android:onClick="@{v->owner.onViewClicked(v)}"
+                android:text="测试TestPullRecyclerActivity" />
+
+        </LinearLayout>
 
     </LinearLayout>
-
-</LinearLayout>
+</layout>

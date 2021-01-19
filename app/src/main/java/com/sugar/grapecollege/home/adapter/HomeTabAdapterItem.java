@@ -9,6 +9,11 @@ import android.widget.TextView;
 import com.qsmaxmin.qsbase.mvvm.adapter.MvTabAdapterItem;
 import com.qsmaxmin.qsbase.mvvm.model.MvModelPager;
 import com.sugar.grapecollege.R;
+
+import org.jetbrains.annotations.NotNull;
+
+import androidx.annotation.NonNull;
+
 /**
  * @CreateBy qsmaxmin
  * @Date 2020/10/30 16:10
@@ -21,10 +26,10 @@ public class HomeTabAdapterItem extends MvTabAdapterItem {
         super(position);
     }
 
-    @Override public View onCreateTabItemView(LayoutInflater inflater, ViewGroup parent) {
+    @Override public View onCreateTabItemView(@NonNull LayoutInflater inflater, @NotNull ViewGroup parent) {
         View inflate = inflater.inflate(R.layout.item_home_tab, parent, false);
         tv_tab = inflate.findViewById(R.id.tv_tab);
-        return inflater.inflate(R.layout.item_home_tab, parent, false);
+        return inflate;
     }
 
     @Override public void bindData(MvModelPager pagers, int position) {

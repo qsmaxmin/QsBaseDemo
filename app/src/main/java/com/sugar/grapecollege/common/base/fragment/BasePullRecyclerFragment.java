@@ -1,9 +1,10 @@
 package com.sugar.grapecollege.common.base.fragment;
 
 import com.qsmaxmin.qsbase.common.widget.ptr.PtrUIHandler;
-import com.qsmaxmin.qsbase.mvp.fragment.QsPullRecyclerFragment;
-import com.qsmaxmin.qsbase.mvp.presenter.QsPresenter;
+import com.qsmaxmin.qsbase.mvvm.fragment.MvPullRecyclerFragment;
 import com.sugar.grapecollege.R;
+
+import org.jetbrains.annotations.NotNull;
 
 
 /**
@@ -11,12 +12,11 @@ import com.sugar.grapecollege.R;
  * @Date 16/7/29
  * @Description
  */
-public abstract class BasePullRecyclerFragment<P extends QsPresenter, D> extends QsPullRecyclerFragment<P, D> {
-
+public abstract class BasePullRecyclerFragment<D> extends MvPullRecyclerFragment<D> {
     /**
      * 重写可以自定义刷新头
      */
-    @Override public PtrUIHandler getPtrUIHandlerView() {
+    @NotNull @Override public PtrUIHandler getPtrUIHandlerView() {
         return super.getPtrUIHandlerView();
     }
 

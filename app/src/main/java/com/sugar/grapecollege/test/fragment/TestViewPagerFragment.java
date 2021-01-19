@@ -2,8 +2,8 @@ package com.sugar.grapecollege.test.fragment;
 
 import android.os.Bundle;
 
-import com.qsmaxmin.qsbase.mvp.fragment.QsViewPagerFragment;
-import com.qsmaxmin.qsbase.mvp.model.QsModelPager;
+import com.qsmaxmin.qsbase.mvvm.model.MvModelPager;
+import com.sugar.grapecollege.common.base.fragment.BaseViewPagerFragment;
 
 import androidx.fragment.app.Fragment;
 
@@ -13,28 +13,28 @@ import androidx.fragment.app.Fragment;
  * @Description
  */
 
-public class TestViewPagerFragment extends QsViewPagerFragment {
+public class TestViewPagerFragment extends BaseViewPagerFragment {
 
     public static Fragment getInstance() {
         return new TestViewPagerFragment();
     }
 
-    @Override public QsModelPager[] createModelPagers() {
-        QsModelPager modelPager1 = new QsModelPager();
+    @Override public MvModelPager[] createModelPagers() {
+        MvModelPager modelPager1 = new MvModelPager();
         modelPager1.fragment = TestFragment.getInstance();
-        modelPager1.title = "Fragment";
+        modelPager1.title = "TestFragment0";
         modelPager1.position = 0;
 
-        QsModelPager modelPager2 = new QsModelPager();
-        modelPager2.fragment = TestListFragment.getInstance();
-        modelPager2.title = "ListFragment";
+        MvModelPager modelPager2 = new MvModelPager();
+        modelPager2.fragment = TestFragment.getInstance();
+        modelPager2.title = "TestFragment1";
         modelPager2.position = 1;
 
-        QsModelPager modelPager3 = new QsModelPager();
-        modelPager3.fragment = TestPullListFragment.getInstance();
-        modelPager3.title = "PullListFragment";
+        MvModelPager modelPager3 = new MvModelPager();
+        modelPager3.fragment = TestFragment.getInstance();
+        modelPager3.title = "TestFragment2";
         modelPager3.position = 2;
-        return new QsModelPager[]{modelPager1, modelPager2, modelPager3};
+        return new MvModelPager[]{modelPager1, modelPager2, modelPager3};
     }
 
     @Override public void initData(Bundle savedInstanceState) {

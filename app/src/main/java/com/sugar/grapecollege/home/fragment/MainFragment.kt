@@ -1,61 +1,80 @@
 package com.sugar.grapecollege.home.fragment
 
+import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
-import com.qsmaxmin.annotation.bind.Bind
-import com.qsmaxmin.annotation.bind.OnClick
+import androidx.databinding.DataBindingUtil
 import com.qsmaxmin.annotation.event.Subscribe
-import com.qsmaxmin.annotation.presenter.Presenter
-import com.qsmaxmin.annotation.thread.ThreadPoint
-import com.qsmaxmin.annotation.thread.ThreadType
 import com.qsmaxmin.qsbase.common.log.L
 import com.qsmaxmin.qsbase.common.widget.toast.QsToast
-import com.qsmaxmin.qsbase.common.widget.viewpager.autoscroll.AutoScrollViewPager
-import com.qsmaxmin.qsbase.common.widget.viewpager.autoscroll.CirclePageIndicator
 import com.qsmaxmin.qsbase.common.widget.viewpager.autoscroll.InfinitePagerAdapter
-import com.qsmaxmin.qsbase.mvp.adapter.QsListAdapterItem
+import com.qsmaxmin.qsbase.mvvm.adapter.MvListAdapterItem
 import com.sugar.grapecollege.R
 import com.sugar.grapecollege.common.base.fragment.BasePullListFragment
 import com.sugar.grapecollege.common.event.ApplicationEvent.TestClickEvent
 import com.sugar.grapecollege.common.http.resp.ModelHomeHeader
 import com.sugar.grapecollege.common.http.resp.ModelProductInfo.ProductInfo
+import com.sugar.grapecollege.common.http.resp.ModelProductList
+import com.sugar.grapecollege.databinding.HeaderMainFragmentBinding
 import com.sugar.grapecollege.home.adapter.MainListAdapterItem
-import com.sugar.grapecollege.home.presenter.MainPresenter
-import com.sugar.grapecollege.test.TestABActivity
-import com.sugar.grapecollege.test.TestActivity
+import com.sugar.grapecollege.test.TestHeaderViewPagerActivity
+import com.sugar.grapecollege.test.TestPullRecyclerActivity
 import kotlinx.android.synthetic.main.header_main_fragment.*
+import java.util.*
 
 /**
  * @CreateBy qsmaxmin
  * @Date 2017/4/27 15:58
  * @Description
  */
-@Presenter(MainPresenter::class)
-class MainFragment : BasePullListFragment<MainPresenter?, ProductInfo?>() {
+class MainFragment : BasePullListFragment<ProductInfo?>() {
+    lateinit var binding: HeaderMainFragmentBinding
 
-    override fun getHeaderLayout(): Int {
-        return R.layout.header_main_fragment
+    override fun onCreateListHeaderView(inflater: LayoutInflater): View {
+        binding = DataBindingUtil.inflate(inflater, R.layout.header_main_fragment, null, false)
+        binding.owner = this
+        return binding.root
     }
 
-    override fun getListAdapterItem(i: Int): QsListAdapterItem<ProductInfo?> {
+    override fun getListAdapterItem(i: Int): MvListAdapterItem<ProductInfo?> {
         return MainListAdapterItem()
     }
 
     override fun onRefresh() {
-        presenter!!.requestListData(false, false)
+        val testListData = getTestListData()
+        data = testListData.list
     }
 
     override fun onLoad() {
-        presenter!!.requestListData(true, false)
+        val testListData = getTestListData()
+        addData(testListData.list)
     }
 
     override fun initData(bundle: Bundle?) {
-        presenter!!.requestBannerData()
-        presenter!!.requestListData(false, true)
+        val testHeaderData = getTestHeaderData()
+        updateHeader(testHeaderData)
+
+        val testListData = getTestListData()
+        data = testListData.list
     }
 
-    @ThreadPoint(ThreadType.MAIN)
-    fun updateHeader(header: ModelHomeHeader) {
+
+    private fun getTestHeaderData(): ModelHomeHeader {
+        val header = ModelHomeHeader()
+        header.code = 0
+        header.data = ArrayList(5)
+        if (context != null) {
+            val bitmap = BitmapFactory.decodeResource(context!!.resources, R.mipmap.ic_launcher)
+            header.data.add(bitmap)
+            header.data.add(bitmap)
+            header.data.add(bitmap)
+            header.data.add(bitmap)
+        }
+        return header
+    }
+
+    private fun updateHeader(header: ModelHomeHeader) {
         L.i(initTag(), "updateHeader 当前线程:" + Thread.currentThread().name)
         val adapter = InfinitePagerAdapter()
         adapter.setOnPageClickListener { position -> QsToast.show("click:$position") }
@@ -63,6 +82,18 @@ class MainFragment : BasePullListFragment<MainPresenter?, ProductInfo?>() {
         banner.adapter = adapter
         page_indicator.setViewPager(banner)
         showContentView()
+    }
+
+    private fun getTestListData(): ModelProductList {
+        val productList = ModelProductList()
+        productList.code = 0
+        productList.list = ArrayList(20)
+        for (i in 0..19) {
+            val detail = ProductInfo()
+            detail.productName = "哈哈$i"
+            productList.list.add(detail)
+        }
+        return productList
     }
 
     override fun onResume() {
@@ -75,11 +106,10 @@ class MainFragment : BasePullListFragment<MainPresenter?, ProductInfo?>() {
         banner!!.stopAutoScroll()
     }
 
-    @OnClick(R.id.tv_left, R.id.tv_right)
     override fun onViewClick(view: View) {
-        when (view.id) {
-            R.id.tv_left -> intent2Activity(TestActivity::class.java)
-            R.id.tv_right -> intent2Activity(TestABActivity::class.java)
+        when (view) {
+            binding.tvLeft -> intent2Activity(TestHeaderViewPagerActivity::class.java)
+            binding.tvRight -> intent2Activity(TestPullRecyclerActivity::class.java)
         }
     }
 
@@ -88,6 +118,6 @@ class MainFragment : BasePullListFragment<MainPresenter?, ProductInfo?>() {
      */
     @Subscribe
     fun onEvent(event: TestClickEvent?) {
-        intent2Activity(TestActivity::class.java)
+        intent2Activity(TestHeaderViewPagerActivity::class.java)
     }
 }

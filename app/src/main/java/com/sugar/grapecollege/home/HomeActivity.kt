@@ -58,15 +58,11 @@ class HomeActivity : MvViewPagerActivity() {
         }
     }
 
-    override fun isTransparentStatusBar(): Boolean {
-        return true
-    }
-
     override fun createModelPagers(): Array<MvModelPager>? {
         return null
     }
 
-    @Permission(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_PHONE_STATE, Manifest.permission.CAMERA)
+    @Permission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
     fun checkPermissionThenInit() {
         val modelPager1 = MvModelPager()
         modelPager1.fragment = MainFragment()
@@ -98,5 +94,9 @@ class HomeActivity : MvViewPagerActivity() {
         tabStrip.indicatorHeight = 0
         tabStrip.shouldExpand = true
         //......
+    }
+
+    override fun isTransparentStatusBar(): Boolean {
+        return true
     }
 }

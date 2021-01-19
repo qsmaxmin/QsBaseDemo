@@ -1,10 +1,14 @@
 package com.sugar.grapecollege.common.dialog;
 
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 
-import com.qsmaxmin.annotation.bind.OnClick;
 import com.qsmaxmin.qsbase.common.widget.dialog.QsDialogFragment;
 import com.sugar.grapecollege.R;
+import com.sugar.grapecollege.databinding.DialogCompatibleBinding;
+
+import androidx.databinding.DataBindingUtil;
 
 /**
  * @CreateBy qsmaxmin
@@ -13,6 +17,7 @@ import com.sugar.grapecollege.R;
  */
 
 public class CustomDialog extends QsDialogFragment {
+    private DialogCompatibleBinding binding;
 
     @Override protected int getDialogTheme() {
         return R.style.BottomTopDialogStyle;
@@ -22,20 +27,20 @@ public class CustomDialog extends QsDialogFragment {
         return R.layout.dialog_compatible;
     }
 
+    @Override protected View onCreateContentView(LayoutInflater inflater, ViewGroup parent) {
+        binding = DataBindingUtil.inflate(inflater, R.layout.dialog_compatible, parent, true);
+        binding.setOwner(this);
+        return binding.getRoot();
+    }
+
     @Override protected void initData() {
     }
 
-    @OnClick({R.id.view_click, R.id.tv_positive, R.id.tv_neutral, R.id.tv_negative})
     @Override public void onViewClick(View view) {
-        switch (view.getId()) {
-            case R.id.view_click:
-                break;
-            case R.id.tv_positive:
-                break;
-            case R.id.tv_neutral:
-                break;
-            case R.id.tv_negative:
-                break;
+        if (view == binding.tvPositive) {
+
+        } else if (view == binding.tvNeutral) {
+
         }
         dismissAllowingStateLoss();
     }

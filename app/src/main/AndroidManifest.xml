@@ -43,11 +43,11 @@
         </activity>
 
         <activity
-            android:name=".test.TestABActivity"
+            android:name=".test.TestPullRecyclerActivity"
             android:screenOrientation="portrait"
             android:theme="@style/SugarTheme" />
         <activity
-            android:name=".test.TestActivity"
+            android:name=".test.TestHeaderViewPagerActivity"
             android:screenOrientation="portrait"
             android:theme="@style/SugarTheme" />
         <activity
