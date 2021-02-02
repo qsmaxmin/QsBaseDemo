@@ -4,6 +4,9 @@ package com.sugar.grapecollege;
 import com.qsmaxmin.qsbase.QsApplication;
 import com.qsmaxmin.qsbase.common.http.QsHttpCallback;
 import com.qsmaxmin.qsbase.common.utils.ImageHelper;
+import com.qsmaxmin.qsbase.common.widget.dialog.QsProgressDialog;
+import com.sugar.grapecollege.common.base.BaseActivity;
+import com.sugar.grapecollege.common.base.fragment.BaseFragment;
 import com.sugar.grapecollege.common.http.CustomHttpCallback;
 
 /**
@@ -56,4 +59,13 @@ public class GrapeApplication extends QsApplication {
         return R.layout.fragment_common_loading;
     }
 
+    /**
+     * 自定义loading窗
+     *
+     * @see BaseActivity#loading()
+     * @see BaseFragment#loading()
+     */
+    @Override public QsProgressDialog getLoadingDialog() {
+        return super.getLoadingDialog();
+    }
 }
