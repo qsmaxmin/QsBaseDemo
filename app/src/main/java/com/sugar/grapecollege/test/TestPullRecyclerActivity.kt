@@ -2,20 +2,16 @@ package com.sugar.grapecollege.test
 
 import android.os.Bundle
 import android.os.SystemClock
-import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.qsmaxmin.annotation.bind.OnClick
 import com.qsmaxmin.annotation.thread.ThreadPoint
 import com.qsmaxmin.annotation.thread.ThreadType
 import com.qsmaxmin.qsbase.mvvm.adapter.MvRecycleAdapterItem
-import com.sugar.grapecollege.R
 import com.sugar.grapecollege.common.base.BasePullRecyclerActivity
+import com.sugar.grapecollege.databinding.ActionbarTitleEditBinding
 import com.sugar.grapecollege.test.adapter.TestRecyclerAdapter
-import com.sugar.grapecollege.test.fragment.TestViewPagerFragment
 import com.sugar.grapecollege.test.model.TestModel.TestModelInfo
-import kotlinx.android.synthetic.main.actionbar_title_edit.*
 
 /**
  * @CreateBy qsmaxmin
@@ -24,9 +20,12 @@ import kotlinx.android.synthetic.main.actionbar_title_edit.*
  */
 class TestPullRecyclerActivity : BasePullRecyclerActivity<TestModelInfo>() {
     private var loadingCount: Int = 0
+    lateinit var actionbarBinding: ActionbarTitleEditBinding
 
     override fun onCreateActionbarView(inflater: LayoutInflater, parent: ViewGroup): View {
-        return createDefaultActionbar(inflater, parent).root
+        actionbarBinding = createDefaultActionbar(inflater, parent)
+        actionbarBinding.tvTitle.text = "BasePullRecyclerActivity"
+        return actionbarBinding.root
     }
 
     override fun getRecycleAdapterItem(inflater: LayoutInflater, parent: ViewGroup, type: Int): MvRecycleAdapterItem<TestModelInfo> {
@@ -34,8 +33,11 @@ class TestPullRecyclerActivity : BasePullRecyclerActivity<TestModelInfo>() {
     }
 
     override fun initData(bundle: Bundle?) {
-        tv_edit.text = "BasePullRecyclerActivity"
         requestTestData(false)
+    }
+
+    override fun isOpenViewState(): Boolean {
+        return true;
     }
 
     @ThreadPoint(ThreadType.HTTP)
@@ -59,16 +61,8 @@ class TestPullRecyclerActivity : BasePullRecyclerActivity<TestModelInfo>() {
         } else {
             loadingCount = 0
             data = arrayListOf
+            showContentView()
         }
-    }
-
-    override fun onKeyDown(event: KeyEvent, keyCode: Int): Boolean {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            tv_edit!!.visibility = View.VISIBLE
-            onBackPressed()
-            return true
-        }
-        return super.onKeyDown(keyCode, event)
     }
 
     override fun isTransparentStatusBar(): Boolean {
