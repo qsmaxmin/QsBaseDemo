@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -12,7 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorAccent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:ignore="HardcodedText">
 
         <!--banner-->
         <FrameLayout
@@ -51,13 +53,23 @@
                 android:id="@+id/tv_left"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginRight="20dp"
                 android:layout_weight="1"
                 android:background="?android:selectableItemBackground"
                 android:gravity="center"
                 android:onClick="@{v->owner.onViewClicked(v)}"
-                android:text="测试TestHeaderViewPagerActivity"
-                android:layout_marginEnd="20dp" />
+                android:text="测试\nTestHeaderViewPagerActivity"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_center"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="?android:selectableItemBackground"
+                android:gravity="center"
+                android:onClick="@{v->owner.onViewClicked(v)}"
+                android:text="测试TestSlidingViewActivity"
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/tv_right"
@@ -67,7 +79,8 @@
                 android:background="?android:selectableItemBackground"
                 android:gravity="center"
                 android:onClick="@{v->owner.onViewClicked(v)}"
-                android:text="测试TestPullRecyclerActivity" />
+                android:text="测试TestPullRecyclerActivity"
+                android:textSize="12sp" />
 
         </LinearLayout>
 

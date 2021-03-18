@@ -51,6 +51,10 @@
             android:screenOrientation="portrait"
             android:theme="@style/SugarTheme" />
         <activity
+            android:name=".test.TestSlidingViewActivity"
+            android:screenOrientation="behind"
+            android:theme="@style/SugarTheme.Sliding" />
+        <activity
             android:name=".user.UserHomeActivity"
             android:screenOrientation="portrait"
             android:theme="@style/SugarTheme" />

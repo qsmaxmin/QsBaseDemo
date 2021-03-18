@@ -20,6 +20,7 @@ import com.sugar.grapecollege.databinding.HeaderMainFragmentBinding
 import com.sugar.grapecollege.home.adapter.MainListAdapterItem
 import com.sugar.grapecollege.test.TestHeaderViewPagerActivity
 import com.sugar.grapecollege.test.TestPullRecyclerActivity
+import com.sugar.grapecollege.test.TestSlidingViewActivity
 import kotlinx.android.synthetic.main.header_main_fragment.*
 import java.util.*
 
@@ -109,6 +110,7 @@ class MainFragment : BasePullListFragment<ProductInfo?>() {
     override fun onViewClick(view: View) {
         when (view) {
             binding.tvLeft -> intent2Activity(TestHeaderViewPagerActivity::class.java)
+            binding.tvCenter -> intent2Activity(TestSlidingViewActivity::class.java)
             binding.tvRight -> intent2Activity(TestPullRecyclerActivity::class.java)
         }
     }
