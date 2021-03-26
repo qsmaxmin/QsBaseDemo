@@ -15,7 +15,7 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
         //todo QsBase Add
-        classpath 'com.github.qsmaxmin:QsTransform:10.10.7'
+        classpath 'com.github.qsmaxmin:QsTransform:10.10.9'
     }
 }
 
