@@ -2,12 +2,12 @@ package com.sugar.grapecollege;
 
 
 import com.qsmaxmin.qsbase.QsApplication;
-import com.qsmaxmin.qsbase.common.http.QsHttpCallback;
+import com.qsmaxmin.qsbase.common.http.HttpInterceptor;
 import com.qsmaxmin.qsbase.common.utils.ImageHelper;
 import com.qsmaxmin.qsbase.common.widget.dialog.QsProgressDialog;
 import com.sugar.grapecollege.common.base.BaseActivity;
 import com.sugar.grapecollege.common.base.fragment.BaseFragment;
-import com.sugar.grapecollege.common.http.CustomHttpCallback;
+import com.sugar.grapecollege.common.http.CustomHttpInterceptor;
 
 /**
  * @CreateBy qsmaxmin
@@ -25,10 +25,10 @@ public class GrapeApplication extends QsApplication {
     }
 
     /**
-     * http全局回调监听
+     * http全局拦截器
      */
-    @Override public QsHttpCallback registerGlobalHttpListener() {
-        return new CustomHttpCallback();
+    @Override public HttpInterceptor registerGlobalHttpInterceptor() {
+        return new CustomHttpInterceptor();
     }
 
     /**
