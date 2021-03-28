@@ -4,8 +4,10 @@ import android.os.Build;
 import android.text.TextUtils;
 
 import com.qsmaxmin.qsbase.common.http.Chain;
+import com.qsmaxmin.qsbase.common.http.HttpHelper;
 import com.qsmaxmin.qsbase.common.http.HttpInterceptor;
 import com.qsmaxmin.qsbase.common.http.HttpRequest;
+import com.qsmaxmin.qsbase.common.log.L;
 
 import java.util.HashMap;
 
@@ -59,12 +61,41 @@ public class CustomHttpInterceptor implements HttpInterceptor {
             if (body == null) throw new Exception("response body is null");
             byte[] bytes = body.bytes();
             body.close();
-            //此处执行解密操作.......
+            byte[] decryptData = decryptData(bytes);
+            if (L.isEnable()) {
+                printBody(request.getMethodName(), decryptData);
+            }
             ResponseBody newBody = ResponseBody.create(body.contentType(), bytes);
             return response.newBuilder().body(newBody).build();
         } else {
-            return chain.process();
+            if (L.isEnable()) {
+                Response response = chain.process();
+                ResponseBody body = response.body();
+                if (body == null) throw new Exception("response body is null");
+                byte[] bytes = body.bytes();
+                printBody(request.getMethodName(), bytes);
+                body.close();
+                ResponseBody newBody = ResponseBody.create(body.contentType(), bytes);
+                return response.newBuilder().body(newBody).build();
+            } else {
+                return chain.process();
+            }
         }
+    }
+
+    private byte[] decryptData(byte[] bytes) {
+        byte[] decryptData = new byte[bytes.length];
+        System.arraycopy(bytes, 0, decryptData, 0, bytes.length);
+        return decryptData;
+    }
+
+    /**
+     * 打印http响应体json
+     */
+    private void printBody(String methodName, byte[] body) {
+        L.i("CustomHttpInterceptor", "response....methodName：" + methodName
+                + "\nbody：" + HttpHelper.getInstance().formatJson(new String(body)));
+
     }
 
     private void addCommonParamsForGet(HashMap<String, String> queryMap) {
