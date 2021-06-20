@@ -20,10 +20,9 @@ public class GrapeApplication extends QsApplication {
         super.onCreate();
     }
 
-    @Override public boolean isLogOpen() {
+    @Override public boolean isDebug() {
         return true;
     }
-
     /**
      * http全局拦截器
      */

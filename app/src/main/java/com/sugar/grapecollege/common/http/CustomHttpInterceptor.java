@@ -30,11 +30,11 @@ public class CustomHttpInterceptor implements HttpInterceptor {
         switch (requestType) {
             case "POST":
                 HashMap<String, Object> formMap = request.getFiledMap();
-                addCommonParamsForPost(formMap);
+                addCommonParams(formMap);
                 break;
             case "GET":
-                HashMap<String, String> queryMap = request.getQueryMap();
-                addCommonParamsForGet(queryMap);
+                HashMap<String, Object> queryMap = request.getQueryMap();
+                addCommonParams(queryMap);
                 break;
         }
 
@@ -94,16 +94,10 @@ public class CustomHttpInterceptor implements HttpInterceptor {
      */
     private void printBody(String methodName, byte[] body) {
         L.i("CustomHttpInterceptor", "response....methodName：" + methodName
-                + "\nbody：" + HttpHelper.getInstance().formatJson(new String(body)));
-
+                + "\nbody：" + HttpHelper.formatJson(new String(body)));
     }
 
-    private void addCommonParamsForGet(HashMap<String, String> queryMap) {
-        queryMap.put("userId", "123456");
-        queryMap.put("sys", String.valueOf(Build.VERSION.SDK_INT));
-    }
-
-    private void addCommonParamsForPost(HashMap<String, Object> formMap) {
+    private void addCommonParams(HashMap<String, Object> formMap) {
         formMap.put("userId", "123456");
         formMap.put("sys", String.valueOf(Build.VERSION.SDK_INT));
     }

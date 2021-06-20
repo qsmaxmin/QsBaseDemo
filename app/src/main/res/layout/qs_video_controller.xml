@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="HardcodedText">
+
+    <FrameLayout
+        android:id="@+id/vg_function"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/iv_play"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="bottom"
+            android:padding="10dp"
+            android:src="@android:drawable/ic_media_play" />
+
+        <com.qsmaxmin.qsbase.common.widget.progress.QsSeekBar
+            android:id="@+id/sk_progress"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="bottom"
+            android:layout_marginStart="40dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginRight="50dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            app:qsb_progress="40"
+            app:qsb_progressThickness="2dp"
+            app:qsb_thumbDrawable="@color/color_red" />
+
+        <TextView
+            android:id="@+id/tv_speed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="5dp"
+            android:width="40dp"
+            android:height="30dp"
+            android:background="@drawable/qs_shape_bg_default_progress_dialog"
+            android:gravity="center"
+            android:text="1x"
+            android:textColor="@color/color_white" />
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/vg_loading"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:background="@drawable/qs_shape_bg_default_progress_dialog"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ProgressBar
+            android:layout_width="30dp"
+            android:layout_height="30dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/loading"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/vg_error"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:background="@drawable/qs_shape_bg_default_progress_dialog"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@android:drawable/stat_notify_error" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="播放错误"
+            android:textColor="@android:color/white" />
+
+    </LinearLayout>
+
+</FrameLayout>

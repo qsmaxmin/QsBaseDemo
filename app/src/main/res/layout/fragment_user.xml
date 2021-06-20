@@ -87,7 +87,7 @@
                     android:id="@+id/tv_download"
                     style="@style/ClickAble_Item"
                     android:onClick="@{v->owner.onViewClicked(v)}"
-                    android:text="哈哈哈" />
+                    android:text="videoTest" />
 
                 <View
                     android:layout_width="match_parent"

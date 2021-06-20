@@ -91,7 +91,7 @@ class HomeActivity : MvViewPagerActivity() {
      */
     override fun initTab(tabStrip: PagerSlidingTabStrip) {
         super.initTab(tabStrip)
-        tabStrip.indicatorHeight = 0
+        tabStrip.indicatorHeight = 0f
         tabStrip.shouldExpand = true
         //......
     }

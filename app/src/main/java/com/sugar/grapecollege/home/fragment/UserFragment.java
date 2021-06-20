@@ -18,6 +18,7 @@ import com.sugar.grapecollege.common.event.UserEvent;
 import com.sugar.grapecollege.common.model.UserConfig;
 import com.sugar.grapecollege.databinding.FragmentUserBinding;
 import com.sugar.grapecollege.home.model.HomeConstants;
+import com.sugar.grapecollege.test.TestVideoActivity;
 import com.sugar.grapecollege.user.UserHomeActivity;
 
 import androidx.annotation.NonNull;
@@ -58,7 +59,7 @@ public class UserFragment extends BaseFragment {
         } else if (view == binding.tvMyfont) {
             new CustomDialog().show(this);
         } else if (view == binding.tvDownload) {
-
+            intent2Activity(TestVideoActivity.class);
         }
     }
 

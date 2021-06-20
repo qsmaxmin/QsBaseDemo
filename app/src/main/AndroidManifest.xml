@@ -44,23 +44,23 @@
 
         <activity
             android:name=".test.TestPullRecyclerActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/SugarTheme" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".test.TestHeaderViewPagerActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/SugarTheme" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".test.TestSlidingViewActivity"
             android:screenOrientation="behind"
             android:theme="@style/SugarTheme.Sliding" />
         <activity
             android:name=".user.UserHomeActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/SugarTheme" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".user.LoginActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/SugarTheme" />
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".test.TestVideoActivity"
+            android:screenOrientation="sensor" />
+
     </application>
 </manifest>
