@@ -49,10 +49,7 @@ public class DefaultMediaController extends AbsMediaController {
         tv_speed = view.findViewById(R.id.tv_speed);
 
         if (inPlaybackState) {
-            int current = getMediaPlayer().getCurrentPosition();
-            int duration = getMediaPlayer().getDuration();
-            float progress = (sk_progress.getMax() - sk_progress.getMin()) * current / duration;
-            sk_progress.setProgress(sk_progress.getMin() + progress);
+            onMediaPlayerSeekComplete(getMediaPlayer().getCurrentPosition(), getMediaPlayer().getDuration());
         }
 
         sk_progress.setOnSeekBarChangeListener(new QsSeekBar.OnSeekBarChangeListener() {
@@ -87,36 +84,58 @@ public class DefaultMediaController extends AbsMediaController {
         return view;
     }
 
-    @Override public void onMediaPlayerLoading() {
+    @Override protected void onMediaPlayerLoading() {
+        super.onMediaPlayerLoading();
         vg_loading.setVisibility(View.VISIBLE);
+        vg_error.setVisibility(View.GONE);
     }
 
-    @Override public void onMediaPlayerPrepared() {
-
+    @Override protected void onMediaPlayerPrepared() {
+        super.onMediaPlayerPrepared();
+        vg_loading.setVisibility(View.GONE);
     }
 
-    @Override public void onMediaPlayerStarted() {
+    @Override protected void onMediaPlayerStarted() {
+        super.onMediaPlayerStarted();
         iv_play.setImageResource(android.R.drawable.ic_media_pause);
     }
 
-    @Override public void onMediaPlayerPaused() {
+    @Override protected void onMediaPlayerBufferingStart() {
+        super.onMediaPlayerBufferingStart();
+        vg_loading.setVisibility(View.VISIBLE);
+    }
+
+    @Override protected void onMediaPlayerBufferingEnd() {
+        super.onMediaPlayerBufferingEnd();
+        vg_loading.setVisibility(View.GONE);
+    }
+
+    @Override protected void onMediaPlayerRenderingStart() {
+        super.onMediaPlayerRenderingStart();
+    }
+
+    @Override protected void onMediaPlayerPaused() {
+        super.onMediaPlayerPaused();
         iv_play.setImageResource(android.R.drawable.ic_media_play);
     }
 
-    @Override public void onMediaPlayerError() {
-
+    @Override protected void onMediaPlayerError() {
+        super.onMediaPlayerError();
+        vg_error.setVisibility(View.VISIBLE);
     }
 
-    @Override public void onMediaPlayerSeekComplete(int position) {
-
+    @Override protected void onMediaPlayerSeekComplete(int position, int duration) {
+        super.onMediaPlayerSeekComplete(position, duration);
+        float progress = (sk_progress.getMax() - sk_progress.getMin()) * position / duration;
+        sk_progress.setProgress(sk_progress.getMin() + progress);
     }
 
-    @Override public void onMediaPlayerCompletion() {
-
+    @Override protected void onMediaPlayerCompletion() {
+        super.onMediaPlayerCompletion();
     }
 
-    @Override public void onMediaPlayerStopped() {
-
+    @Override protected void onMediaPlayerStopped() {
+        super.onMediaPlayerStopped();
     }
 
     public void hideFunctionView() {

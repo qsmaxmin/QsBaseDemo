@@ -238,7 +238,7 @@ public class QsVideoView extends FrameLayout implements IMediaPlayer {
             mCurrentState = STATE_ERROR;
             mTargetState = STATE_ERROR;
             if (mMediaController != null) {
-                mMediaController.onMediaPlayerError(MediaPlayer.MEDIA_ERROR_UNKNOWN, 0);
+                mMediaController.onMediaPlayerError(AbsMediaController.ERROR_CODE_INIT, 0);
             }
         }
     }
@@ -345,7 +345,8 @@ public class QsVideoView extends FrameLayout implements IMediaPlayer {
             mMediaPlayer.seekTo(position);
             mSeekWhenPrepared = 0;
             if (mMediaController != null) {
-                mMediaController.onMediaPlayerSeekComplete(position);
+                int duration = mMediaPlayer.getDuration();
+                mMediaController.onMediaPlayerSeekComplete(position, duration);
             }
         } else {
             mSeekWhenPrepared = position;

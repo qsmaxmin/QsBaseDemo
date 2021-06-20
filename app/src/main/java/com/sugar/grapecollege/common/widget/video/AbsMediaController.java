@@ -1,11 +1,14 @@
 package com.sugar.grapecollege.common.widget.video;
 
 import android.content.Context;
+import android.media.MediaPlayer;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.qsmaxmin.qsbase.common.log.L;
 
 /**
  * @CreateBy qsmaxmin
@@ -13,8 +16,9 @@ import android.view.ViewGroup;
  * @Description
  */
 public abstract class AbsMediaController {
-    private View         mContentView;
-    private IMediaPlayer mPlayer;
+    static final int          ERROR_CODE_INIT = 996;
+    private      View         mContentView;
+    private      IMediaPlayer mPlayer;
 
     final void setMediaPlayer(IMediaPlayer player) {
         this.mPlayer = player;
@@ -48,44 +52,132 @@ public abstract class AbsMediaController {
         }
     }
 
-    public final boolean removeCallback(Runnable action) {
-        return mContentView.removeCallbacks(action);
+    public final void removeCallback(Runnable action) {
+        mContentView.removeCallbacks(action);
     }
 
-    public boolean onTouchEvent(MotionEvent ev) {
+    protected boolean onTouchEvent(MotionEvent ev) {
         return false;
     }
 
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
+    protected boolean onKeyDown(int keyCode, KeyEvent event) {
         return false;
     }
 
     protected abstract View onCreateContentView(LayoutInflater inflater, ViewGroup parent);
 
-    public abstract void onMediaPlayerLoading();
-
-    public abstract void onMediaPlayerPrepared();
-
-    public abstract void onMediaPlayerStarted();
-
-    public abstract void onMediaPlayerPaused();
-
-    public abstract void onMediaPlayerSeekComplete(int position);
-
-    public abstract void onMediaPlayerCompletion();
-
-    public abstract void onMediaPlayerStopped();
-
-    public abstract void onMediaPlayerError();
-
-    public final void onMediaPlayerInfo(int what, int extra) {
-
+    protected void onMediaPlayerLoading() {
+        if (L.isEnable()) L.i(initTag(), "onMediaPlayerLoading.........");
     }
 
-    public final void onMediaPlayerError(int what, int extra) {
+    protected void onMediaPlayerPrepared() {
+        if (L.isEnable()) L.i(initTag(), "onMediaPlayerPrepared.........");
+    }
 
-        int currentPosition = mPlayer.getCurrentPosition();
-        mPlayer.seekTo(currentPosition);
+    protected void onMediaPlayerStarted() {
+        if (L.isEnable()) L.i(initTag(), "onMediaPlayerStarted.........");
+    }
+
+    protected void onMediaPlayerRenderingStart() {
+        if (L.isEnable()) L.i(initTag(), "onMediaPlayerRenderingStart.........");
+    }
+
+    protected void onMediaPlayerBufferingStart() {
+        if (L.isEnable()) L.i(initTag(), "onMediaPlayerBufferingStart.........");
+    }
+
+    protected void onMediaPlayerBufferingEnd() {
+        if (L.isEnable()) L.i(initTag(), "onMediaPlayerBufferingEnd.........");
+    }
+
+    protected void onMediaPlayerPaused() {
+        if (L.isEnable()) L.i(initTag(), "onMediaPlayerPaused.........");
+    }
+
+    protected void onMediaPlayerSeekComplete(int position, int duration) {
+        if (L.isEnable()) L.i(initTag(), "onMediaPlayerSeekComplete.........pos :" + position + "/" + duration);
+    }
+
+    protected void onMediaPlayerCompletion() {
+        if (L.isEnable()) L.i(initTag(), "onMediaPlayerCompletion.........");
+    }
+
+    protected void onMediaPlayerStopped() {
+        if (L.isEnable()) L.i(initTag(), "onMediaPlayerStopped.........");
+    }
+
+    protected void onMediaPlayerError() {
+        if (L.isEnable()) L.i(initTag(), "onMediaPlayerError.........");
+    }
+
+    /**
+     * Called to indicate an info or a warning.
+     *
+     * what:    the type of info or warning.
+     * <li>{@link MediaPlayer#MEDIA_INFO_UNKNOWN}
+     * <li>{@link MediaPlayer#MEDIA_INFO_VIDEO_TRACK_LAGGING}
+     * <li>{@link MediaPlayer#MEDIA_INFO_VIDEO_RENDERING_START}
+     * <li>{@link MediaPlayer#MEDIA_INFO_BUFFERING_START}
+     * <li>{@link MediaPlayer#MEDIA_INFO_BUFFERING_END}
+     * <li><code>MEDIA_INFO_NETWORK_BANDWIDTH (703)</code> -
+     * bandwidth information is available (as <code>extra</code> kbps)
+     * <li>{@link MediaPlayer#MEDIA_INFO_BAD_INTERLEAVING}
+     * <li>{@link MediaPlayer#MEDIA_INFO_NOT_SEEKABLE}
+     * <li>{@link MediaPlayer#MEDIA_INFO_METADATA_UPDATE}
+     * <li>{@link MediaPlayer#MEDIA_INFO_UNSUPPORTED_SUBTITLE}
+     * <li>{@link MediaPlayer#MEDIA_INFO_SUBTITLE_TIMED_OUT}
+     * </ul>
+     * extra: an extra code, specific to the info. Typically implementation dependent.
+     */
+    final void onMediaPlayerInfo(int what, int extra) {
+        if (what == MediaPlayer.MEDIA_INFO_VIDEO_RENDERING_START) {
+            onMediaPlayerRenderingStart();
+
+        } else if (what == MediaPlayer.MEDIA_INFO_BUFFERING_START) {
+            onMediaPlayerBufferingStart();
+
+        } else if (what == MediaPlayer.MEDIA_INFO_BUFFERING_END) {
+            onMediaPlayerBufferingEnd();
+
+        } else if (extra == MediaPlayer.MEDIA_ERROR_IO
+                || extra == MediaPlayer.MEDIA_ERROR_MALFORMED
+                || extra == MediaPlayer.MEDIA_ERROR_UNSUPPORTED
+                || extra == MediaPlayer.MEDIA_ERROR_TIMED_OUT) {
+            reloadMediaPlayer();
+        }
+    }
+
+    /**
+     * what :
+     * MEDIA_ERROR_UNKNOWN（1），未指定的错误
+     * MEDIA_ERROR_SERVER_DIED（100），media server died，需要释放当前media player，创建一个新的mediaPlayer
+     *
+     * extra :
+     * MEDIA_ERROR_IO（-1004），io错误，文件或者网络相关错误
+     * MEDIA_ERROR_MALFORMED（-1007），音视频格式错误，demux或解码错误
+     * MEDIA_ERROR_UNSUPPORTED（-1010），不支持的音视频格式
+     * MEDIA_ERROR_TIMED_OUT（-110），操作超时，通常是超过了3—5秒
+     * MEDIA_ERROR_SYSTEM（ -2147483648），系统底层错误
+     */
+    final void onMediaPlayerError(int what, int extra) {
+        if (what == ERROR_CODE_INIT) {
+            onMediaPlayerError();
+
+        } else if (what == MediaPlayer.MEDIA_ERROR_SERVER_DIED
+                || extra == MediaPlayer.MEDIA_ERROR_IO
+                || extra == MediaPlayer.MEDIA_ERROR_MALFORMED
+                || extra == MediaPlayer.MEDIA_ERROR_UNSUPPORTED
+                || extra == MediaPlayer.MEDIA_ERROR_TIMED_OUT) {
+            reloadMediaPlayer();
+        }
+    }
+
+    private void reloadMediaPlayer() {
+        mPlayer.seekTo(mPlayer.getCurrentPosition());
         mPlayer.reload();
+    }
+
+    private String initTag() {
+        return getClass().getSimpleName();
     }
 }
