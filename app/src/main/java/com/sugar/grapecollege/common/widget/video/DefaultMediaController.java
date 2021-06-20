@@ -49,7 +49,13 @@ public class DefaultMediaController extends AbsMediaController {
         tv_speed = view.findViewById(R.id.tv_speed);
 
         if (inPlaybackState) {
-            onMediaPlayerSeekComplete(getMediaPlayer().getCurrentPosition(), getMediaPlayer().getDuration());
+            onPlayerPositionUpdate(getMediaPlayer().getCurrentPosition(), getMediaPlayer().getDuration());
+            if (getMediaPlayer().isPlaying()) {
+                onPlayerStarted();
+            } else {
+                onPlayerPaused();
+            }
+            tv_speed.setText(getMediaPlayer().getSpeed() + "x");
         }
 
         sk_progress.setOnSeekBarChangeListener(new QsSeekBar.OnSeekBarChangeListener() {
@@ -84,58 +90,48 @@ public class DefaultMediaController extends AbsMediaController {
         return view;
     }
 
-    @Override protected void onMediaPlayerLoading() {
-        super.onMediaPlayerLoading();
+    @Override protected void onPlayerLoading() {
         vg_loading.setVisibility(View.VISIBLE);
         vg_error.setVisibility(View.GONE);
     }
 
-    @Override protected void onMediaPlayerPrepared() {
-        super.onMediaPlayerPrepared();
+    @Override protected void onPlayerPrepared() {
         vg_loading.setVisibility(View.GONE);
     }
 
-    @Override protected void onMediaPlayerStarted() {
-        super.onMediaPlayerStarted();
+    @Override protected void onPlayerStarted() {
         iv_play.setImageResource(android.R.drawable.ic_media_pause);
     }
 
-    @Override protected void onMediaPlayerBufferingStart() {
-        super.onMediaPlayerBufferingStart();
+    @Override protected void onPlayerBufferingStart() {
         vg_loading.setVisibility(View.VISIBLE);
     }
 
-    @Override protected void onMediaPlayerBufferingEnd() {
-        super.onMediaPlayerBufferingEnd();
+    @Override protected void onPlayerBufferingEnd() {
         vg_loading.setVisibility(View.GONE);
     }
 
-    @Override protected void onMediaPlayerRenderingStart() {
-        super.onMediaPlayerRenderingStart();
+    @Override protected void onPlayerRenderingStart() {
     }
 
-    @Override protected void onMediaPlayerPaused() {
-        super.onMediaPlayerPaused();
+    @Override protected void onPlayerPaused() {
         iv_play.setImageResource(android.R.drawable.ic_media_play);
     }
 
-    @Override protected void onMediaPlayerError() {
-        super.onMediaPlayerError();
+    @Override protected void onPlayerError() {
         vg_error.setVisibility(View.VISIBLE);
     }
 
-    @Override protected void onMediaPlayerSeekComplete(int position, int duration) {
-        super.onMediaPlayerSeekComplete(position, duration);
+
+    @Override protected void onPlayerPositionUpdate(int position, int duration) {
         float progress = (sk_progress.getMax() - sk_progress.getMin()) * position / duration;
         sk_progress.setProgress(sk_progress.getMin() + progress);
     }
 
-    @Override protected void onMediaPlayerCompletion() {
-        super.onMediaPlayerCompletion();
+    @Override protected void onPlayerCompletion() {
     }
 
-    @Override protected void onMediaPlayerStopped() {
-        super.onMediaPlayerStopped();
+    @Override protected void onPlayerStopped() {
     }
 
     public void hideFunctionView() {

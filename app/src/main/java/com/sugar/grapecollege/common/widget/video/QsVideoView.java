@@ -346,7 +346,7 @@ public class QsVideoView extends FrameLayout implements IMediaPlayer {
             mSeekWhenPrepared = 0;
             if (mMediaController != null) {
                 int duration = mMediaPlayer.getDuration();
-                mMediaController.onMediaPlayerSeekComplete(position, duration);
+                mMediaController.onMediaPlayerPositionUpdate(position, duration);
             }
         } else {
             mSeekWhenPrepared = position;
@@ -357,7 +357,7 @@ public class QsVideoView extends FrameLayout implements IMediaPlayer {
         if (speed <= 0 || android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.M) {
             return false;
         } else {
-            if (isInPlaybackState()) {
+            if (isPlaying()) {
                 PlaybackParams params = mMediaPlayer.getPlaybackParams();
                 params.setSpeed(speed);
                 mMediaPlayer.setPlaybackParams(params);

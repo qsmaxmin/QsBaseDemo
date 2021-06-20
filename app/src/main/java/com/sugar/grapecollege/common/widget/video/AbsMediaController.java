@@ -16,9 +16,40 @@ import com.qsmaxmin.qsbase.common.log.L;
  * @Description
  */
 public abstract class AbsMediaController {
-    static final int          ERROR_CODE_INIT = 996;
-    private      View         mContentView;
-    private      IMediaPlayer mPlayer;
+    static final  int             ERROR_CODE_INIT = 996;
+    private final ProgressUpdater progressUpdater;
+    private       View            mContentView;
+    private       IMediaPlayer    mPlayer;
+
+    public AbsMediaController() {
+        progressUpdater = new ProgressUpdater();
+    }
+
+    private class ProgressUpdater implements Runnable {
+        private boolean running;
+
+        @Override public void run() {
+            if (running && mPlayer.isPlaying()) {
+                onMediaPlayerPositionUpdate(mPlayer.getCurrentPosition(), mPlayer.getDuration());
+                postDelayed(this, getPlayerUpdateDelayed());
+            }
+        }
+
+        private void start() {
+            running = true;
+            removeCallback(this);
+            post(this);
+        }
+
+        private void cancel() {
+            running = false;
+            removeCallback(this);
+        }
+    }
+
+    protected long getPlayerUpdateDelayed() {
+        return 1000;
+    }
 
     final void setMediaPlayer(IMediaPlayer player) {
         this.mPlayer = player;
@@ -66,48 +97,77 @@ public abstract class AbsMediaController {
 
     protected abstract View onCreateContentView(LayoutInflater inflater, ViewGroup parent);
 
-    protected void onMediaPlayerLoading() {
+    protected abstract void onPlayerLoading();
+
+    protected abstract void onPlayerPrepared();
+
+    protected abstract void onPlayerStarted();
+
+    protected abstract void onPlayerRenderingStart();
+
+    protected abstract void onPlayerPositionUpdate(int position, int duration);
+
+    protected abstract void onPlayerBufferingStart();
+
+    protected abstract void onPlayerBufferingEnd();
+
+    protected abstract void onPlayerPaused();
+
+    protected abstract void onPlayerCompletion();
+
+    protected abstract void onPlayerStopped();
+
+    protected abstract void onPlayerError();
+
+    final void onMediaPlayerLoading() {
         if (L.isEnable()) L.i(initTag(), "onMediaPlayerLoading.........");
+        onPlayerLoading();
     }
 
-    protected void onMediaPlayerPrepared() {
+    final void onMediaPlayerPrepared() {
         if (L.isEnable()) L.i(initTag(), "onMediaPlayerPrepared.........");
+        progressUpdater.start();
+        onPlayerPrepared();
     }
 
-    protected void onMediaPlayerStarted() {
+    final void onMediaPlayerStarted() {
         if (L.isEnable()) L.i(initTag(), "onMediaPlayerStarted.........");
+        onPlayerStarted();
     }
 
-    protected void onMediaPlayerRenderingStart() {
+    final void onMediaPlayerRenderingStart() {
         if (L.isEnable()) L.i(initTag(), "onMediaPlayerRenderingStart.........");
+        onPlayerRenderingStart();
     }
 
-    protected void onMediaPlayerBufferingStart() {
+    final void onMediaPlayerPositionUpdate(int position, int duration) {
+        if (L.isEnable()) L.i(initTag(), "onMediaPlayerPositionUpdate.........pos:" + position + "/" + duration);
+        onPlayerPositionUpdate(position, duration);
+    }
+
+    final void onMediaPlayerBufferingStart() {
         if (L.isEnable()) L.i(initTag(), "onMediaPlayerBufferingStart.........");
+        onPlayerBufferingStart();
     }
 
-    protected void onMediaPlayerBufferingEnd() {
+    final void onMediaPlayerBufferingEnd() {
         if (L.isEnable()) L.i(initTag(), "onMediaPlayerBufferingEnd.........");
+        onPlayerBufferingEnd();
     }
 
-    protected void onMediaPlayerPaused() {
+    final void onMediaPlayerPaused() {
         if (L.isEnable()) L.i(initTag(), "onMediaPlayerPaused.........");
+        onPlayerPaused();
     }
 
-    protected void onMediaPlayerSeekComplete(int position, int duration) {
-        if (L.isEnable()) L.i(initTag(), "onMediaPlayerSeekComplete.........pos :" + position + "/" + duration);
-    }
-
-    protected void onMediaPlayerCompletion() {
+    final void onMediaPlayerCompletion() {
         if (L.isEnable()) L.i(initTag(), "onMediaPlayerCompletion.........");
+        onPlayerCompletion();
     }
 
-    protected void onMediaPlayerStopped() {
+    final void onMediaPlayerStopped() {
         if (L.isEnable()) L.i(initTag(), "onMediaPlayerStopped.........");
-    }
-
-    protected void onMediaPlayerError() {
-        if (L.isEnable()) L.i(initTag(), "onMediaPlayerError.........");
+        onPlayerStopped();
     }
 
     /**
@@ -161,7 +221,8 @@ public abstract class AbsMediaController {
      */
     final void onMediaPlayerError(int what, int extra) {
         if (what == ERROR_CODE_INIT) {
-            onMediaPlayerError();
+            if (L.isEnable()) L.e(initTag(), "onPlayerError.........what:" + what + ", extra:" + extra);
+            onPlayerError();
 
         } else if (what == MediaPlayer.MEDIA_ERROR_SERVER_DIED
                 || extra == MediaPlayer.MEDIA_ERROR_IO
