@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="owner"
             type="com.qsmaxmin.qsbase.mvvm.IView" />
@@ -10,6 +12,15 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <com.google.android.exoplayer2.ui.StyledPlayerView
+            android:id="@+id/player_view"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:background="#33FF0000"
+            app:player_layout_id="@layout/course_player_view"
+            app:resize_mode="fit"
+            app:use_controller="true" />
 
     </FrameLayout>
 </layout>
