@@ -89,6 +89,8 @@ public class QsVideoView extends FrameLayout {
             int videoLeft = (viewWidth - videoWidth) / 2;
             int videoTop = (viewHeight - videoHeight) / 2;
             surfaceView.layout(videoLeft, videoTop, videoLeft + videoWidth, videoTop + videoHeight);
+        } else {
+            surfaceView.layout(0, 0, right - left, bottom - top);
         }
         vg_function.layout(0, 0, right - left, bottom - top);
     }
