@@ -11,9 +11,10 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@android:color/holo_green_dark">
 
-        <com.google.android.exoplayer2.ui.StyledPlayerView
+        <com.sugar.grapecollege.common.widget.video.QsVideoView
             android:id="@+id/player_view"
             android:layout_width="match_parent"
             android:layout_height="180dp"

@@ -3,6 +3,7 @@ package com.sugar.grapecollege;
 
 import com.qsmaxmin.qsbase.QsApplication;
 import com.qsmaxmin.qsbase.common.http.HttpInterceptor;
+import com.qsmaxmin.qsbase.common.log.L;
 import com.qsmaxmin.qsbase.common.utils.ImageHelper;
 import com.qsmaxmin.qsbase.common.widget.dialog.QsProgressDialog;
 import com.sugar.grapecollege.common.base.BaseActivity;
@@ -18,6 +19,7 @@ public class GrapeApplication extends QsApplication {
 
     @Override public void onCreate() {
         super.onCreate();
+        L.init(true);
     }
 
     @Override public boolean isDebug() {

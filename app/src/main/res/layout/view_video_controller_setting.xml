@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="#88000000"
+    android:paddingLeft="10dp"
+    android:paddingTop="20dp"
+    android:paddingRight="10dp"
+    android:paddingBottom="20dp"
+    tools:ignore="HardcodedText">
+
+    <RadioGroup
+        android:id="@+id/rg_speed"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/rb_0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:text="0.25x"
+            android:textSize="14sp"
+            android:textColor="@android:color/white" />
+        <RadioButton
+            android:id="@+id/rb_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:text="0.5x"
+            android:textSize="14sp"
+            android:textColor="@android:color/white" />
+        <RadioButton
+            android:id="@+id/rb_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:text="0.75x"
+            android:textSize="14sp"
+            android:textColor="@android:color/white" />
+        <RadioButton
+            android:id="@+id/rb_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:text="正常"
+            android:textSize="14sp"
+            android:textColor="@android:color/white" />
+        <RadioButton
+            android:id="@+id/rb_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:text="0.25x"
+            android:textSize="14sp"
+            android:textColor="@android:color/white" />
+        <RadioButton
+            android:id="@+id/rb_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:text="0.25x"
+            android:textSize="14sp"
+            android:textColor="@android:color/white" />
+        <RadioButton
+            android:id="@+id/rb_6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:text="0.25x"
+            android:textSize="14sp"
+            android:textColor="@android:color/white" />
+    </RadioGroup>
+
+</ScrollView>
