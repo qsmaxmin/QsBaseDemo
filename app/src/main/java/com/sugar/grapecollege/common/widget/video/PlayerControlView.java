@@ -37,7 +37,6 @@ public class PlayerControlView extends FrameLayout {
     private static final int MAX_UPDATE_INTERVAL_MS = 1_000;
 
     private Timeline.Window                 window;
-    private Timeline.Period                 period;
     private Player                          mPlayer;
     private ComponentListener               componentListener;
     private HideAction                      hideAction;
@@ -47,10 +46,9 @@ public class PlayerControlView extends FrameLayout {
     private TextView                        positionView;
     private TextView                        durationView;
     private ImageView                       repeatToggleButton;
-    private View                            subtitleButton;
     private View                            settingsButton;
     private ImageView                       fullScreenButton;
-    private Runnable                        updateProgressAction;
+    private UpdateProgressAction            updateProgressAction;
     private Resources                       resources;
     private int                             repeatToggleModes;
     private DefaultControlDispatcher        controlDispatcher;
@@ -88,13 +86,12 @@ public class PlayerControlView extends FrameLayout {
         settingsButton = findViewById(R.id.exo_settings);
         fullScreenButton = findViewById(R.id.exo_fullscreen);
 
-        period = new Timeline.Period();
         window = new Timeline.Window();
 
         componentListener = new ComponentListener();
         formatter = new TimeFormatter();
         hideAction = new HideAction();
-        updateProgressAction = this::updateProgress;
+        updateProgressAction = new UpdateProgressAction();
 
         settingsWindow = new SettingView(getContext());
         settingsWindow.setOnDismissListener(componentListener);
@@ -105,6 +102,7 @@ public class PlayerControlView extends FrameLayout {
         settingsButton.setOnClickListener(componentListener);
         fullScreenButton.setOnClickListener(componentListener);
     }
+
 
     private void updateAll() {
         updatePlayPauseButton();
@@ -125,6 +123,7 @@ public class PlayerControlView extends FrameLayout {
             player.addListener(componentListener);
         }
         updateAll();
+        updateProgressAction.startLooper();
     }
 
     void hide() {
@@ -221,23 +220,6 @@ public class PlayerControlView extends FrameLayout {
         }
         timeBar.setPosition(position);
         timeBar.setBufferedPosition(bufferedPosition);
-
-        removeCallbacks(updateProgressAction);
-        int playbackState = mPlayer == null ? Player.STATE_IDLE : mPlayer.getPlaybackState();
-        if (mPlayer != null && mPlayer.isPlaying()) {
-            long mediaTimeDelayMs = timeBar.getPreferredUpdateDelay();
-
-            long mediaTimeUntilNextFullSecondMs = 1000 - position % 1000;
-            mediaTimeDelayMs = Math.min(mediaTimeDelayMs, mediaTimeUntilNextFullSecondMs);
-
-            float playbackSpeed = mPlayer.getPlaybackParameters().speed;
-            long delayMs = playbackSpeed > 0 ? (long) (mediaTimeDelayMs / playbackSpeed) : MAX_UPDATE_INTERVAL_MS;
-
-            delayMs = Util.constrainValue(delayMs, 200, MAX_UPDATE_INTERVAL_MS);
-            postDelayed(updateProgressAction, delayMs);
-        } else if (playbackState != Player.STATE_ENDED && playbackState != Player.STATE_IDLE) {
-            postDelayed(updateProgressAction, MAX_UPDATE_INTERVAL_MS);
-        }
     }
 
     private void dispatchPlayPause() {
@@ -382,5 +364,32 @@ public class PlayerControlView extends FrameLayout {
 
     interface OnFullScreenButtonClickListener {
         void onFullScreenButtonClicked(boolean fullScreen);
+    }
+
+    private class UpdateProgressAction implements Runnable {
+        @Override public void run() {
+            updateProgress();
+            int playbackState = mPlayer == null ? Player.STATE_IDLE : mPlayer.getPlaybackState();
+            if (mPlayer != null && mPlayer.isPlaying()) {
+                long position = mPlayer.getCurrentPosition();
+                long mediaTimeDelayMs = timeBar.getPreferredUpdateDelay();
+
+                long mediaTimeUntilNextFullSecondMs = 1000 - position % 1000;
+                mediaTimeDelayMs = Math.min(mediaTimeDelayMs, mediaTimeUntilNextFullSecondMs);
+
+                float playbackSpeed = mPlayer.getPlaybackParameters().speed;
+                long delayMs = playbackSpeed > 0 ? (long) (mediaTimeDelayMs / playbackSpeed) : MAX_UPDATE_INTERVAL_MS;
+
+                delayMs = Util.constrainValue(delayMs, 200, MAX_UPDATE_INTERVAL_MS);
+                postDelayed(this, delayMs);
+            } else if (playbackState != Player.STATE_ENDED && playbackState != Player.STATE_IDLE) {
+                postDelayed(this, MAX_UPDATE_INTERVAL_MS);
+            }
+        }
+
+        void startLooper() {
+            removeCallbacks(this);
+            post(this);
+        }
     }
 }

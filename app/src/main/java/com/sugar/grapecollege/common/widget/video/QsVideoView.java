@@ -37,6 +37,7 @@ public class QsVideoView extends FrameLayout {
     private SimpleMediaPlayer player;
     private float             videoWidthHeightRatio;
     private ComponentListener componentListener;
+    private View              vg_function;
 
     public QsVideoView(@NonNull Context context) {
         super(context);
@@ -56,6 +57,7 @@ public class QsVideoView extends FrameLayout {
     private void init() {
         inflate(getContext(), R.layout.view_video_player, this);
         surfaceView = findViewById(R.id.exo_surface);
+        vg_function = findViewById(R.id.vg_function);
         artworkView = findViewById(R.id.exo_artwork);
         bufferingView = findViewById(R.id.exo_buffering);
         errorMessageView = findViewById(R.id.exo_error_message);
@@ -71,7 +73,6 @@ public class QsVideoView extends FrameLayout {
     }
 
     @Override protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
-        super.onLayout(changed, left, top, right, bottom);
         if (videoWidthHeightRatio != 0) {
             int viewWidth = right - left;
             int viewHeight = bottom - top;
@@ -89,6 +90,7 @@ public class QsVideoView extends FrameLayout {
             int videoTop = (viewHeight - videoHeight) / 2;
             surfaceView.layout(videoLeft, videoTop, videoLeft + videoWidth, videoTop + videoHeight);
         }
+        vg_function.layout(0, 0, right - left, bottom - top);
     }
 
     public void startPlay(String url) {
