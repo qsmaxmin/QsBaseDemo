@@ -127,7 +127,7 @@ public class PlayerControlView extends FrameLayout {
     }
 
     void hide() {
-        setVisibility(INVISIBLE);
+        setVisibility(GONE);
     }
 
     void show() {

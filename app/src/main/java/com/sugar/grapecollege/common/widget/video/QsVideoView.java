@@ -63,6 +63,7 @@ public class QsVideoView extends FrameLayout {
         errorMessageView = findViewById(R.id.exo_error_message);
         controllerView = findViewById(R.id.exo_controller);
 
+        controllerView.hide();
         componentListener = new ComponentListener();
         controllerView.setOnFullScreenButtonClickListener(componentListener);
         surfaceView.setOnClickListener(componentListener);
