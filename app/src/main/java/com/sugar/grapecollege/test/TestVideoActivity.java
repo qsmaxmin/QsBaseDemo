@@ -40,6 +40,11 @@ public class TestVideoActivity extends MvActivity {
         contentBinding.playerView.startPlay(url);
     }
 
+    @Override protected void onDestroy() {
+        super.onDestroy();
+        contentBinding.playerView.release();
+    }
+
     @Override public boolean isTransparentStatusBar() {
         return true;
     }
