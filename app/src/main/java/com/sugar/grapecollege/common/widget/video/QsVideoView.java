@@ -13,12 +13,9 @@ import android.widget.TextView;
 import com.google.android.exoplayer2.ExoPlaybackException;
 import com.google.android.exoplayer2.MediaItem;
 import com.google.android.exoplayer2.Player;
-import com.google.android.exoplayer2.text.Cue;
 import com.google.android.exoplayer2.video.VideoSize;
 import com.qsmaxmin.qsbase.common.log.L;
 import com.sugar.grapecollege.R;
-
-import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -199,10 +196,6 @@ public class QsVideoView extends FrameLayout {
 
         @Override public void onEvents(@NonNull Player player, @NonNull Player.Events events) {
             eventPrinter.printEvent(player, events);
-        }
-
-        @Override public void onCues(@NonNull List<Cue> cues) {
-
         }
 
         @Override public void onVideoSizeChanged(@NonNull VideoSize videoSize) {
