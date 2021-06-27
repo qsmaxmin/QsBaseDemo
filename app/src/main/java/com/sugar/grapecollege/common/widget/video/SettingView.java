@@ -37,6 +37,10 @@ public class SettingView {
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.view_video_controller_setting, null);
         rg_speed = view.findViewById(R.id.rg_speed);
+        for (int i = 0; i < speedButtonIdArr.length; i++) {
+            RadioButton button = rg_speed.findViewById(speedButtonIdArr[i]);
+            button.setText(speedTextArr[i]);
+        }
         rg_speed.setOnCheckedChangeListener((group, checkedId) -> {
             int index = findIndexById(checkedId);
             float speed = speedArr[index];
@@ -46,11 +50,11 @@ public class SettingView {
             }
         });
 
-        RadioButton rb_0 = view.findViewById(R.id.rb_0);
         popupWindow = new PopupWindow(view, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         if (Util.SDK_INT < 23) {
             popupWindow.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         }
+        popupWindow.setOutsideTouchable(true);
     }
 
     private int findIndexById(int id) {
