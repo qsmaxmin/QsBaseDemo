@@ -132,6 +132,7 @@ public class PlayerControlView extends FrameLayout {
 
     void show() {
         setVisibility(VISIBLE);
+        updateAll();
     }
 
     void showTimeout() {
@@ -151,7 +152,7 @@ public class PlayerControlView extends FrameLayout {
     }
 
     private void updatePlaybackSpeedList() {
-        if (mPlayer == null) return;
+        if (!isVisible() || mPlayer == null) return;
         settingsWindow.updateSelectedIndex(mPlayer.getPlaybackParameters().speed);
     }
 
@@ -185,41 +186,46 @@ public class PlayerControlView extends FrameLayout {
     }
 
     private void updatePlayPauseButton() {
-        if (shouldShowPauseButton()) {
-            playPauseButton.setImageDrawable(Util.getDrawable(resources, R.mipmap.exo_icon_pause));
-        } else {
-            playPauseButton.setImageDrawable(Util.getDrawable(resources, R.mipmap.exo_icon_play));
+        if (isVisible()) {
+            if (shouldShowPauseButton()) {
+                playPauseButton.setImageDrawable(Util.getDrawable(resources, R.mipmap.exo_icon_pause));
+            } else {
+                playPauseButton.setImageDrawable(Util.getDrawable(resources, R.mipmap.exo_icon_play));
+            }
         }
     }
 
     private void updateTimeline() {
-        long durationMs = 0;
-        if (mPlayer != null) {
-            Timeline timeline = mPlayer.getCurrentTimeline();
-            if (!timeline.isEmpty()) {
-                int windowIndex = mPlayer.getCurrentWindowIndex();
-                timeline.getWindow(windowIndex, this.window);
-                durationMs = window.getDurationMs();
+        if (isVisible()) {
+            long durationMs = 0;
+            if (mPlayer != null) {
+                Timeline timeline = mPlayer.getCurrentTimeline();
+                if (!timeline.isEmpty()) {
+                    int windowIndex = mPlayer.getCurrentWindowIndex();
+                    timeline.getWindow(windowIndex, this.window);
+                    durationMs = window.getDurationMs();
+                }
             }
+            durationView.setText(formatter.getStringForTime(durationMs));
+            timeBar.setDuration(durationMs);
+            updateProgress();
         }
-        durationView.setText(formatter.getStringForTime(durationMs));
-        timeBar.setDuration(durationMs);
-        updateProgress();
     }
 
     private void updateProgress() {
-        if (!isVisible()) return;
-        long position = 0;
-        long bufferedPosition = 0;
-        if (mPlayer != null) {
-            position = mPlayer.getCurrentPosition();
-            bufferedPosition = mPlayer.getBufferedPosition();
+        if (isVisible()) {
+            long position = 0;
+            long bufferedPosition = 0;
+            if (mPlayer != null) {
+                position = mPlayer.getCurrentPosition();
+                bufferedPosition = mPlayer.getBufferedPosition();
+            }
+            if (!scrubbing) {
+                positionView.setText(formatter.getStringForTime(position));
+            }
+            timeBar.setPosition(position);
+            timeBar.setBufferedPosition(bufferedPosition);
         }
-        if (!scrubbing) {
-            positionView.setText(formatter.getStringForTime(position));
-        }
-        timeBar.setPosition(position);
-        timeBar.setBufferedPosition(bufferedPosition);
     }
 
     private void dispatchPlayPause() {
