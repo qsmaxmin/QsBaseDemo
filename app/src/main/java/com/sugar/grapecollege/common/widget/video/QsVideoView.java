@@ -5,6 +5,7 @@ import android.util.AttributeSet;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -27,7 +28,7 @@ import androidx.annotation.Nullable;
  * @Date 2021/6/23 10:15
  * @Description
  */
-public class QsVideoView extends ViewGroup {
+public class QsVideoView extends FrameLayout {
     private SurfaceView       surfaceView;
     private ImageView         artworkView;
     private ProgressBar       bufferingView;
@@ -146,6 +147,7 @@ public class QsVideoView extends ViewGroup {
         if (controllerView.isVisible()) {
             controllerView.hide();
         } else {
+
             if (shouldShowIndefinitely()) {
                 controllerView.show();
             } else {

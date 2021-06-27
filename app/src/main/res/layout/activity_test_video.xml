@@ -19,7 +19,6 @@
             android:layout_width="match_parent"
             android:layout_height="180dp"
             android:background="#33FF0000"
-            app:player_layout_id="@layout/course_player_view"
             app:resize_mode="fit"
             app:use_controller="true" />
 
