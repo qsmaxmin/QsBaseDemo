@@ -218,7 +218,9 @@ public class QsVideoView extends FrameLayout {
         @Override public void onPlaybackStateChanged(@Player.State int state) {
             updateBuffering();
             updateErrorMessage();
-            updateControllerVisibility();
+            if (state == Player.STATE_ENDED) {
+                updateControllerVisibility();
+            }
         }
 
         @Override
